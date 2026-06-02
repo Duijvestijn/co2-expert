@@ -5,9 +5,9 @@ import Image from 'next/image'
 
 const NAV_LINKS = [
   { href: '/how-it-works', label: 'How it works',     labelNL: 'Hoe het werkt' },
-  { href: '/pricing',      label: 'Pricing',           labelNL: 'Prijzen' },
-  { href: '/partners',     label: 'Partners',          labelNL: 'Partners' },
-  { href: '/about',        label: 'About',             labelNL: 'Over ons' },
+  { href: '/pricing',      label: 'Plans',             labelNL: 'Tarieven' },
+  { href: '/partners',     label: 'For Advisors',      labelNL: 'Voor Adviseurs' },
+  { href: '/about',        label: 'About us',          labelNL: 'Over ons' },
   { href: '/faq',          label: 'FAQ',               labelNL: 'FAQ' },
 ]
 

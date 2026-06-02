@@ -80,17 +80,16 @@ export default function ContactPage() {
                 marginBottom: 24,
               }}
             >
-              Book your demo
+              Find out what your carbon footprint looks like
             </h1>
             <p style={{ fontSize: 17, color: '#4B5563', lineHeight: 1.7, marginBottom: 36 }}>
-              See exactly how co2.expert fits your organisation. Our team will walk you through the
-              platform using your industry as context.
+              In 30 minutes, we show you exactly what your Scope 1, 2 and 3 footprint looks like — based on your own company data. No commitment. Just clarity.
             </p>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 16 }}>
               {[
-                '30-minute focused call — no fluff',
-                'See your data in the platform live',
-                'No commitment, no credit card',
+                'See your emissions broken down by Scope 1, 2 and 3',
+                'Understand what your customers are actually asking for',
+                'Get a clear timeline for your first verified report',
               ].map((point) => (
                 <li key={point} style={{ display: 'flex', alignItems: 'flex-start', gap: 12 }}>
                   <span

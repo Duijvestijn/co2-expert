@@ -75,10 +75,10 @@ export default function Footer({ lang = 'en' }: FooterProps) {
                 {nl ? 'Aan de slag' : 'Get started'}
               </p>
               <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.55)', marginBottom: 16, lineHeight: 1.6 }}>
-                {nl ? 'Begin vandaag met het meten van je CO₂-voetafdruk.' : 'Start measuring your carbon footprint today.'}
+                {nl ? 'Weet wat uw CO₂-voetafdruk is voordat uw klant erom vraagt.' : 'Find out what your carbon footprint is before your customers ask for it.'}
               </p>
               <Link href="/contact" className="btn-primary" style={{ fontSize: 14, padding: '10px 20px' }}>
-                {nl ? 'Demo aanvragen' : 'Request a demo'}
+                {nl ? 'Plan een gesprek' : 'Book a free call'}
               </Link>
             </div>
           </div>

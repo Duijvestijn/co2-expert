@@ -135,7 +135,7 @@ export default function HowItWorksPage() {
               Three steps to carbon neutral
             </h1>
             <p style={{ fontSize: 'clamp(17px, 2vw, 20px)', lineHeight: 1.7, color: '#CBD5E1', maxWidth: 580, margin: '0 auto 48px' }}>
-              From your first data upload to your carbon-neutral certificate — in as little as two weeks.
+              Customers and banks are increasingly asking businesses for their CO2 data. CO2 Expert gives you a complete, GHG Protocol-compliant footprint report — ready to share — in days, not months.
             </p>
 
             {/* Step indicators */}
@@ -952,7 +952,7 @@ export default function HowItWorksPage() {
               Ready to measure your carbon footprint?
             </h2>
             <p style={{ fontSize: 18, color: '#CBD5E1', lineHeight: 1.7, marginBottom: 40 }}>
-              Join the companies already on their path to carbon neutrality. Our team walks you through the entire process — from first data entry to certified offset.
+              We show you exactly what your footprint looks like before your customer asks.
             </p>
             <div style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap' }}>
               <Link
@@ -969,7 +969,7 @@ export default function HowItWorksPage() {
                   letterSpacing: '0.02em',
                 }}
               >
-                Request a demo
+                Book a free 30-minute call
               </Link>
               <Link
                 href="/pricing"
