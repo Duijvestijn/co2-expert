@@ -3,8 +3,8 @@ import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: 'Pricing — co2.expert',
-  description: "Transparent pricing for SMBs. No hidden enterprise contracts.",
+  title: 'Plans & Pricing — CO₂ Expert',
+  description: 'Transparent, needs-based pricing for SMBs. Get a complete Scope 1, 2 & 3 carbon footprint report ready to share with customers in 2 weeks.',
 };
 
 const features = [

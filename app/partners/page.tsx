@@ -4,26 +4,26 @@ import Footer from '@/components/Footer'
 import PartnerApplicationForm from './PartnerApplicationForm'
 
 export const metadata: Metadata = {
-  title: 'Partners — co2.expert',
+  title: 'Partner Programme — CO₂ Expert',
   description:
-    'Become a co2.expert partner. Help your clients become carbon neutral and grow your practice with referral commissions, co-branded materials, and dedicated support.',
+    'Help your clients measure their carbon footprint and answer customer data requests. A new service your business clients need right now.',
 }
 
 const whyPartner = [
   {
     icon: 'M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6',
-    title: 'New revenue stream',
-    body: 'Earn referral commission on every client subscription you bring in — recurring income with zero overhead.',
+    title: 'A new service your clients need right now',
+    body: 'CO2 measurement is moving from nice-to-have to essential. Your clients are already getting questionnaires. Offering this service means staying ahead of the demand.',
   },
   {
     icon: 'M12 22V12M12 12C12 12 7 8 7 5a5 5 0 0 1 10 0c0 3-5 7-5 7z',
-    title: 'Client retention',
-    body: 'Add sustainability reporting to your offering. Clients who see you as their ESG advisor stay longer and refer more.',
+    title: 'Keep clients out of trouble',
+    body: 'A client who cannot answer a CO2 question from their biggest customer has a problem. You can be the one who solves it.',
   },
   {
     icon: 'M13 2L3 14h9l-1 8 10-12h-9l1-8z',
-    title: 'Easy setup',
-    body: 'We handle the onboarding and implementation. You focus on the relationship; we handle the technical work.',
+    title: 'No sustainability expertise required',
+    body: 'CO2 Expert handles the methodology. You focus on the client relationship. We provide training, materials, and a dedicated partner contact.',
   },
 ]
 
@@ -99,13 +99,10 @@ export default function PartnersPage() {
             Partner Program
           </p>
           <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-6">
-            Help your clients become carbon neutral —{' '}
-            <span style={{ color: '#F5A623' }}>and grow your practice</span>
+            Help your clients answer the CO₂ question before they lose the contract
           </h1>
           <p className="text-lg text-gray-300 max-w-2xl mx-auto">
-            Join accountants and advisors who have turned sustainability into a
-            competitive advantage. Refer clients, earn recurring commission, and
-            become their trusted ESG partner.
+            Your clients are receiving sustainability questionnaires from large customers. As their advisor, you can help them measure their carbon footprint and produce a verified report — quickly, affordably, and without needing to become a sustainability expert yourself.
           </p>
           <a
             href="#apply"

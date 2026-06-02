@@ -135,7 +135,7 @@ export default function HoeHetWerktPage() {
               Drie stappen naar CO₂-neutraal
             </h1>
             <p style={{ fontSize: 'clamp(17px, 2vw, 20px)', lineHeight: 1.7, color: '#CBD5E1', maxWidth: 580, margin: '0 auto 48px' }}>
-              Van je eerste data-upload tot je CO₂-neutraal certificaat — in slechts twee weken.
+              Uw klanten en financiers vragen steeds vaker om uw CO2-gegevens. CO2 Expert geeft u een volledig, GHG Protocol-conform voetafdrukrapport — klaar om te delen — in dagen.
             </p>
 
             {/* Step indicators */}
@@ -947,7 +947,7 @@ export default function HoeHetWerktPage() {
               Klaar om je CO₂-voetafdruk in kaart te brengen?
             </h2>
             <p style={{ fontSize: 18, color: '#CBD5E1', lineHeight: 1.7, marginBottom: 40 }}>
-              Sluit je aan bij bedrijven die al op weg zijn naar CO₂-neutraliteit. Ons team begeleidt je door het hele proces — van eerste data-invoer tot gecertificeerde compensatie.
+              Wij laten u precies zien hoe uw voetafdruk eruitziet voordat uw klant ernaar vraagt.
             </p>
             <div style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap' }}>
               <Link
@@ -964,7 +964,7 @@ export default function HoeHetWerktPage() {
                   letterSpacing: '0.02em',
                 }}
               >
-                Vraag een demo aan
+                Plan een gratis gesprek
               </Link>
               <Link
                 href="/nl/prijzen"

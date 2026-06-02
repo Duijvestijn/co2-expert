@@ -3,9 +3,9 @@ import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: 'About — co2.expert',
+  title: 'About CO₂ Expert — Carbon Footprint Measurement for Business',
   description:
-    'co2.expert was built to close the loop between carbon measurement and real climate action. Powered by Green Earth Group N.V., listed on Euronext.',
+    'CO₂ Expert was built to solve one problem: businesses receiving CO2 data requests from large customers and having no way to answer. We give SMBs a complete, verified footprint report in days.',
 };
 
 const projects = [

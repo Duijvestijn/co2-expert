@@ -6,7 +6,7 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'How It Works — CO₂ Expert',
   description:
-    'Learn how CO₂ Expert guides you from your first data upload to a verified carbon-neutral certificate — covering Scope 1, 2 & 3 emissions, science-based reduction targets, and certified carbon credits from Green Earth Group.',
+    'From zero data to a GHG Protocol-compliant carbon footprint report in two weeks. No consultant required. Upload your data — we calculate your Scope 1, 2 & 3 and generate a shareable report.',
 }
 
 // ─── Shared tokens ────────────────────────────────────────────────────────────
