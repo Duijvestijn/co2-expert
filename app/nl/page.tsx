@@ -3,9 +3,9 @@ import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 
 export const metadata: Metadata = {
-  title: 'co2.expert — Measure it. Fix it. Prove it.',
+  title: 'co2.expert — Meet het. Fix het. Bewijs het.',
   description:
-    'The only carbon platform where measurement, reduction, and certified offsetting are one. Built for SMBs. Powered by Green Earth Group (EARTH).',
+    'Het enige CO₂-platform waarbij meten, reduceren én compenseren in één tool zitten. Gebouwd voor bedrijven zoals die van jou. Powered by Green Earth Group (EARTH).',
 }
 
 const ORANGE = '#F5A623'
@@ -16,10 +16,10 @@ const LIGHT_GREY = '#F9FAFB'
 const GREY = '#6B7280'
 const BORDER = '#E5E7EB'
 
-export default function HomePage() {
+export default function NLHomePage() {
   return (
     <main style={{ fontFamily: "'Inter', sans-serif", color: DARK }}>
-      <Nav lang="en" />
+      <Nav lang="nl" />
 
       {/* ── 1. HERO ─────────────────────────────────────────────────────────── */}
       <section
@@ -59,9 +59,9 @@ export default function HomePage() {
               letterSpacing: '-0.02em',
             }}
           >
-            Measure it.{' '}
-            <span style={{ color: ORANGE }}>Fix it.</span>{' '}
-            Prove it.
+            Meet het.{' '}
+            <span style={{ color: ORANGE }}>Fix het.</span>{' '}
+            Bewijs het.
           </h1>
 
           <p
@@ -73,8 +73,8 @@ export default function HomePage() {
               maxWidth: 600,
             }}
           >
-            The only carbon platform where measurement, reduction, and certified
-            offsetting are one. Built for businesses like yours.
+            Het enige CO₂-platform waarbij meten, reduceren én compenseren in één tool
+            zitten. Gebouwd voor bedrijven zoals die van jou.
           </p>
 
           <div
@@ -86,7 +86,7 @@ export default function HomePage() {
             }}
           >
             <a
-              href="/contact"
+              href="/nl/contact"
               style={{
                 display: 'inline-block',
                 background: ORANGE,
@@ -98,10 +98,10 @@ export default function HomePage() {
                 textDecoration: 'none',
               }}
             >
-              Request a demo →
+              Vraag een demo aan →
             </a>
             <a
-              href="https://app.co2.expert/login"
+              href="https://app.co2.expert/login?lang=nl"
               style={{
                 display: 'inline-block',
                 background: 'rgba(255,255,255,0.1)',
@@ -114,7 +114,7 @@ export default function HomePage() {
                 border: '1px solid rgba(255,255,255,0.25)',
               }}
             >
-              Start for free
+              Gratis starten
             </a>
           </div>
         </div>
@@ -140,7 +140,7 @@ export default function HomePage() {
             marginBottom: 24,
           }}
         >
-          Trusted by forward-thinking businesses
+          Vertrouwd door vooruitstrevende bedrijven
         </p>
         <div
           style={{
@@ -193,9 +193,9 @@ export default function HomePage() {
               marginBottom: 16,
             }}
           >
-            Carbon reporting is complex.
+            CO₂-rapportage is complex.
             <br />
-            <span style={{ color: ORANGE }}>Most tools make it worse.</span>
+            <span style={{ color: ORANGE }}>De meeste tools maken het erger.</span>
           </h2>
           <p
             style={{
@@ -208,7 +208,8 @@ export default function HomePage() {
               marginRight: 'auto',
             }}
           >
-            Here is what businesses like yours run into — and why we built something different.
+            Dit is wat bedrijven zoals het jouwe tegenkomen — en waarom wij iets anders
+            hebben gebouwd.
           </p>
 
           <div
@@ -221,21 +222,21 @@ export default function HomePage() {
             {[
               {
                 icon: '💸',
-                title: 'Enterprise pricing for enterprise problems',
+                title: 'Enterprise-tools kosten €50.000+/jaar',
                 body:
-                  'Tools like Watershed and Persefoni cost €50,000+/year. They are designed for Fortune 500 compliance teams — not a 40-person manufacturing company or a regional logistics firm.',
+                  'Tools zoals Watershed en Persefoni kosten €50.000+/jaar. Ze zijn gebouwd voor compliance-teams van Fortune 500-bedrijven — niet voor een productiebedrijf van 40 personen of een regionale logistieke dienstverlener.',
               },
               {
                 icon: '🔭',
-                title: 'Measurement without a next step',
+                title: 'Meeste tools stoppen bij meten',
                 body:
-                  'Greenly, Plan A, and Normative measure your footprint well. Then they hand you a PDF and leave. Knowing your emissions and doing something about them are two different things.',
+                  'Greenly, Plan A en Normative meten je voetafdruk goed. Daarna geven ze je een pdf en laten je staan. Je emissies kennen en er iets aan doen zijn twee heel verschillende dingen.',
               },
               {
                 icon: '🕳️',
-                title: 'Broker credits with no traceability',
+                title: 'Credits via tussenpersonen',
                 body:
-                  'Most offset marketplaces resell credits from third parties. No direct link to the underlying project. No certificate with your company name. No way to prove anything to a client or auditor.',
+                  'De meeste offsetmarktplaatsen verkopen credits van derden door. Geen directe link naar het onderliggende project. Geen certificaat op jouw bedrijfsnaam. Geen manier om iets te bewijzen aan een klant of accountant.',
               },
             ].map((card) => (
               <div
@@ -286,7 +287,7 @@ export default function HomePage() {
               marginBottom: 16,
             }}
           >
-            One platform. The full loop.
+            Één platform. De volledige cirkel.
           </h2>
           <p
             style={{
@@ -299,8 +300,8 @@ export default function HomePage() {
               marginRight: 'auto',
             }}
           >
-            co2.expert takes you from first measurement to carbon-neutral certificate
-            — without switching tools or vendors.
+            co2.expert neemt je mee van de eerste meting tot CO₂-neutraal certificaat —
+            zonder van tool of leverancier te hoeven wisselen.
           </p>
 
           <div
@@ -313,24 +314,24 @@ export default function HomePage() {
             {[
               {
                 step: '01',
-                label: 'Measure',
-                heading: 'Full Scope 1, 2 & 3 in one dashboard',
+                label: 'Stap 1: Meet',
+                heading: 'Volledig Scope 1, 2 & 3 in één dashboard',
                 body:
-                  'Connect your data sources once. Get a GHG Protocol-compliant footprint broken down by category, site, and activity — automatically updated as you add data.',
+                  'Koppel je databronnen eenmalig. Krijg een GHG Protocol-conform voetafdruk uitgesplitst per categorie, locatie en activiteit — automatisch bijgewerkt zodra je data toevoegt.',
               },
               {
                 step: '02',
-                label: 'Reduce',
-                heading: 'Science-based targets with year-on-year tracking',
+                label: 'Stap 2: Reduceer',
+                heading: 'Reductiedoelen met jaar-op-jaar vergelijking',
                 body:
-                  'Set reduction targets aligned with the Paris Agreement. Track progress across departments. See exactly what is working and where to focus next.',
+                  'Stel reductiedoelen in die aansluiten bij het Klimaatakkoord van Parijs. Volg voortgang per afdeling. Zie precies wat werkt en waar je als volgende op moet focussen.',
               },
               {
                 step: '03',
-                label: 'Offset',
-                heading: 'Certified credits from our own verified projects',
+                label: 'Stap 3: Compenseer',
+                heading: 'Gecertificeerde CO₂-credits van onze eigen geverifieerde projecten',
                 body:
-                  'Buy offset credits directly from Green Earth Group\'s reforestation and cookstove projects. Receive a signed, named carbon-neutral certificate with project details.',
+                  'Koop offsetcredits direct van de herbebossings- en cookstoveprojecten van Green Earth Group. Ontvang een ondertekend, op naam gesteld CO₂-neutraal certificaat met projectdetails.',
               },
             ].map((item) => (
               <div key={item.step}>
@@ -394,7 +395,7 @@ export default function HomePage() {
               marginBottom: 12,
             }}
           >
-            The only platform that closes the full loop
+            Het enige platform dat de volledige cirkel sluit
           </h2>
           <p
             style={{
@@ -404,7 +405,7 @@ export default function HomePage() {
               marginBottom: 48,
             }}
           >
-            Compare what you actually get.
+            Vergelijk wat je er echt voor terugkrijgt.
           </p>
 
           <div style={{ overflowX: 'auto' }}>
@@ -428,7 +429,7 @@ export default function HomePage() {
                       fontWeight: 700,
                     }}
                   >
-                    Feature
+                    Functie
                   </th>
                   <th
                     style={{
@@ -450,7 +451,7 @@ export default function HomePage() {
                       whiteSpace: 'nowrap',
                     }}
                   >
-                    Enterprise tools
+                    Enterprise-tools
                   </th>
                   <th
                     style={{
@@ -461,17 +462,17 @@ export default function HomePage() {
                       whiteSpace: 'nowrap',
                     }}
                   >
-                    Measurement-only
+                    Meet-only
                   </th>
                 </tr>
               </thead>
               <tbody>
                 {[
-                  ['Scope 1, 2 & 3 measurement', '✅', '✅', '✅'],
-                  ['Certified offset credits', '✅', '✅', '❌'],
-                  ['Own verified projects', '✅', '❌', '❌'],
-                  ['CSRD-ready reports', '✅', '✅', '⚠️ partial'],
-                  ['Built for SMBs — fair pricing', '✅', '❌ €50K+/yr', '⚠️ limited'],
+                  ['Scope 1, 2 & 3 meting', '✅', '✅', '✅'],
+                  ['Gecertificeerde offsetcredits', '✅', '✅', '❌'],
+                  ['Eigen geverifieerde projecten', '✅', '❌', '❌'],
+                  ['CSRD-klare rapportage', '✅', '✅', '⚠️ gedeeltelijk'],
+                  ['Gebouwd voor MKB — eerlijke prijs', '✅', '❌ €50K+/jr', '⚠️ beperkt'],
                 ].map(([feature, a, b, c], i) => (
                   <tr
                     key={String(feature)}
@@ -488,7 +489,7 @@ export default function HomePage() {
                       style={{
                         padding: '16px 20px',
                         textAlign: 'center',
-                        fontSize: String(b).startsWith('❌') ? 14 : 14,
+                        fontSize: 14,
                         color: String(b).startsWith('❌') ? '#DC2626' : '#374151',
                       }}
                     >
@@ -530,7 +531,7 @@ export default function HomePage() {
               marginBottom: 24,
             }}
           >
-            EU regulation
+            EU-regelgeving
           </span>
           <h2
             style={{
@@ -540,7 +541,7 @@ export default function HomePage() {
               marginBottom: 20,
             }}
           >
-            CSRD is coming for your business
+            CSRD komt eraan voor jouw bedrijf
           </h2>
           <p
             style={{
@@ -550,11 +551,11 @@ export default function HomePage() {
               marginBottom: 20,
             }}
           >
-            The EU Corporate Sustainability Reporting Directive (CSRD) will require
-            thousands of SMBs to disclose their carbon footprint — starting from 2026
-            for companies with over 250 employees, and phasing down from there.
-            Non-compliance risks supply chain exclusion, financing difficulties, and
-            regulatory penalties.
+            De EU Corporate Sustainability Reporting Directive (CSRD) verplicht duizenden
+            mkb-bedrijven om hun CO₂-voetafdruk openbaar te maken — vanaf 2026 voor
+            bedrijven met meer dan 250 medewerkers, daarna ook voor kleinere organisaties.
+            Niet-naleving brengt risico&apos;s mee: uitsluiting uit toeleveringsketens,
+            financieringsproblemen en regelgevende sancties.
           </p>
           <p
             style={{
@@ -563,9 +564,9 @@ export default function HomePage() {
               lineHeight: 1.7,
             }}
           >
-            co2.expert generates CSRD-aligned sustainability reports in the required
-            format. When your auditor or enterprise customer asks for documentation,
-            you hand them a verified report — not a spreadsheet.
+            co2.expert genereert CSRD-conforme duurzaamheidsrapportages in het vereiste
+            format. Als je accountant of zakelijke klant om documentatie vraagt, overhandig
+            je een geverifieerd rapport — geen spreadsheet.
           </p>
         </div>
       </section>
@@ -583,7 +584,7 @@ export default function HomePage() {
               marginBottom: 12,
             }}
           >
-            Offset credits from projects we own
+            Offsetcredits uit projecten die wij zelf bezitten
           </h2>
           <p
             style={{
@@ -596,8 +597,8 @@ export default function HomePage() {
               marginRight: 'auto',
             }}
           >
-            Every credit is traceable to a specific Green Earth Group project —
-            independently verified under Verra VCS or Gold Standard.
+            Elke credit is herleidbaar tot een specifiek Green Earth Group-project —
+            onafhankelijk geverifieerd onder Verra VCS of Gold Standard.
           </p>
 
           <div
@@ -610,31 +611,35 @@ export default function HomePage() {
             {[
               {
                 name: 'Greenzone Reforestation',
-                country: 'Cameroon',
+                country: 'Kameroen',
                 price: '€35 / credit',
                 standard: 'Verra VCS',
                 emoji: '🌿',
+                desc: 'Herbebossing van gedegradeerde tropische gebieden met inheemse boomsoorten.',
               },
               {
                 name: 'Bulindi Agroforestry',
-                country: 'Uganda',
+                country: 'Oeganda',
                 price: '€40 / credit',
                 standard: 'Gold Standard',
                 emoji: '🌳',
+                desc: 'Agroboslandbouw die CO₂ vastlegt en tegelijk voedselzekerheid voor lokale gemeenschappen verbetert.',
               },
               {
                 name: 'Hongera Cookstoves',
-                country: 'Kenya',
+                country: 'Kenia',
                 price: '€14 / credit',
                 standard: 'Gold Standard',
                 emoji: '🔥',
+                desc: 'Efficiënte kookvuren verminderen houtkap en verbeteren luchtkwaliteit in landelijke huishoudens.',
               },
               {
                 name: 'Lake Aral Afforestation',
-                country: 'Kazakhstan',
+                country: 'Kazachstan',
                 price: '€30 / credit',
                 standard: 'Verra VCS',
                 emoji: '🌱',
+                desc: 'Herbebossing van het drooggevallen Aralmeer-gebied ter bestrijding van woestijnvorming.',
               },
             ].map((project) => (
               <div
@@ -655,10 +660,20 @@ export default function HomePage() {
                   style={{
                     fontSize: 13,
                     color: 'rgba(255,255,255,0.5)',
-                    marginBottom: 20,
+                    marginBottom: 10,
                   }}
                 >
                   {project.country}
+                </p>
+                <p
+                  style={{
+                    fontSize: 13,
+                    color: 'rgba(255,255,255,0.65)',
+                    lineHeight: 1.6,
+                    marginBottom: 20,
+                  }}
+                >
+                  {project.desc}
                 </p>
                 <div
                   style={{
@@ -709,7 +724,7 @@ export default function HomePage() {
               marginBottom: 56,
             }}
           >
-            What our customers say
+            Wat onze klanten zeggen
           </h2>
 
           <div
@@ -722,21 +737,21 @@ export default function HomePage() {
             {[
               {
                 quote:
-                  'We had looked at two other platforms before. Both gave us a number and nothing else. co2.expert was the first tool that actually told us what to do next — and let us prove it to our clients.',
+                  'We hadden al twee andere platforms bekeken. Allebei gaven ze ons een getal en verder niets. co2.expert was het eerste platform dat ons echt vertelde wat we als volgende moesten doen — en ons in staat stelde dat aan klanten te bewijzen.',
                 name: 'Marieke de Vries',
                 title: 'CEO, Maarssen Holding',
               },
               {
                 quote:
-                  'Our bank started asking for carbon documentation as part of the sustainability review. co2.expert got us a proper CSRD-aligned report in two weeks. That would have taken us months on our own.',
+                  'Onze bank vroeg om CO₂-documentatie als onderdeel van de duurzaamheidsreview. co2.expert zorgde in twee weken voor een volwaardige CSRD-conforme rapportage. Op eigen kracht had ons dat maanden gekost.',
                 name: 'Thomas Baas',
                 title: 'CFO, De Hoeve Groep',
               },
               {
                 quote:
-                  'The offset credits come with a real certificate that names our company and links to the project in Uganda. That is something we can actually show customers — not just a checkbox.',
+                  'De offsetcredits worden geleverd met een echt certificaat op naam van ons bedrijf, met een directe link naar het project in Oeganda. Dat is iets wat we klanten echt kunnen laten zien — niet zomaar een vinkje.',
                 name: 'Sietze Dijkstra',
-                title: 'Director, Friesland Agri',
+                title: 'Directeur, Friesland Agri',
               },
             ].map((t) => (
               <div
@@ -785,7 +800,7 @@ export default function HomePage() {
               marginBottom: 12,
             }}
           >
-            Book your 30-minute demo.
+            Plan een 30-minuten demo.
           </h2>
           <p
             style={{
@@ -794,8 +809,8 @@ export default function HomePage() {
               marginBottom: 36,
             }}
           >
-            No commitment. We will walk through your specific situation and show
-            you exactly how co2.expert fits your business.
+            Zonder verplichtingen. We kijken samen naar jouw specifieke situatie en
+            laten je precies zien hoe co2.expert aansluit op jouw bedrijf.
           </p>
           <div
             style={{
@@ -806,7 +821,7 @@ export default function HomePage() {
             }}
           >
             <a
-              href="/contact"
+              href="/nl/contact"
               style={{
                 display: 'inline-block',
                 background: '#fff',
@@ -818,10 +833,10 @@ export default function HomePage() {
                 textDecoration: 'none',
               }}
             >
-              Request a demo →
+              Vraag een demo aan →
             </a>
             <a
-              href="https://app.co2.expert/login"
+              href="https://app.co2.expert/login?lang=nl"
               style={{
                 display: 'inline-block',
                 background: 'rgba(0,0,0,0.12)',
@@ -834,13 +849,13 @@ export default function HomePage() {
                 border: '1px solid rgba(255,255,255,0.3)',
               }}
             >
-              Start for free
+              Gratis starten
             </a>
           </div>
         </div>
       </section>
 
-      <Footer lang="en" />
+      <Footer lang="nl" />
     </main>
   )
 }
