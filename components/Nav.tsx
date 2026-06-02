@@ -4,11 +4,11 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 const NAV_LINKS = [
-  { href: '/how-it-works', label: 'How it works',     labelNL: 'Hoe het werkt' },
-  { href: '/pricing',      label: 'Plans',             labelNL: 'Tarieven' },
-  { href: '/partners',     label: 'For Advisors',      labelNL: 'Voor Adviseurs' },
-  { href: '/about',        label: 'About us',          labelNL: 'Over ons' },
-  { href: '/faq',          label: 'FAQ',               labelNL: 'FAQ' },
+  { href: '/how-it-works', hrefNL: '/nl/hoe-het-werkt', label: 'How it works', labelNL: 'Hoe het werkt' },
+  { href: '/pricing',      hrefNL: '/nl/tarieven',       label: 'Plans',        labelNL: 'Tarieven' },
+  { href: '/partners',     hrefNL: '/nl/partners',       label: 'For Advisors', labelNL: 'Voor Adviseurs' },
+  { href: '/about',        hrefNL: '/nl/over-ons',       label: 'About us',     labelNL: 'Over ons' },
+  { href: '/faq',          hrefNL: '/nl/faq',            label: 'FAQ',          labelNL: 'FAQ' },
 ]
 
 interface NavProps { lang?: 'en' | 'nl' }
@@ -42,7 +42,7 @@ export default function Nav({ lang = 'en' }: NavProps) {
         {/* Desktop nav */}
         <nav style={{ display: 'flex', alignItems: 'center', gap: 4, flex: 1 }} className="hidden md:flex">
           {NAV_LINKS.map(l => (
-            <Link key={l.href} href={l.href} style={{
+            <Link key={l.href} href={nl && l.hrefNL ? l.hrefNL : l.href} style={{
               fontSize: 14, fontWeight: 500, color: '#374151', padding: '6px 14px',
               borderRadius: 8, textDecoration: 'none', transition: 'color 0.15s',
             }}
@@ -72,7 +72,7 @@ export default function Nav({ lang = 'en' }: NavProps) {
           </Link>
 
           {/* CTA */}
-          <Link href="/contact" className="btn-primary" style={{ padding: '9px 20px', fontSize: 14 }}>
+          <Link href={nl ? '/nl/contact' : '/contact'} className="btn-primary" style={{ padding: '9px 20px', fontSize: 14 }}>
             {nl ? 'Plan een gesprek' : 'Book a free call'}
           </Link>
         </div>
@@ -97,7 +97,7 @@ export default function Nav({ lang = 'en' }: NavProps) {
       {menuOpen && (
         <div style={{ background: 'white', borderTop: '1px solid #E5E7EB', padding: '16px 24px 24px' }} className="md:hidden">
           {NAV_LINKS.map(l => (
-            <Link key={l.href} href={l.href} onClick={() => setMenuOpen(false)} style={{
+            <Link key={l.href} href={nl && l.hrefNL ? l.hrefNL : l.href} onClick={() => setMenuOpen(false)} style={{
               display: 'block', padding: '12px 0', fontSize: 15, fontWeight: 500,
               color: '#374151', textDecoration: 'none', borderBottom: '1px solid #F3F4F6',
             }}>
@@ -108,7 +108,7 @@ export default function Nav({ lang = 'en' }: NavProps) {
             <Link href="https://app.co2.expert/login" className="btn-outline" style={{ flex: 1, justifyContent: 'center', fontSize: 14 }}>
               {nl ? 'Inloggen' : 'Login'}
             </Link>
-            <Link href="/contact" className="btn-primary" style={{ flex: 1, justifyContent: 'center', fontSize: 14 }}>
+            <Link href={nl ? '/nl/contact' : '/contact'} className="btn-primary" style={{ flex: 1, justifyContent: 'center', fontSize: 14 }}>
               {nl ? 'Gesprek' : 'Free call'}
             </Link>
           </div>
