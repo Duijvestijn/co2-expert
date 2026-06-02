@@ -1,26 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --co2-orange:        #F5A623;
+  --co2-orange-dark:   #E8941A;
+  --co2-orange-light:  #FEF3E2;
+  --co2-green:         #2D6A4F;
+  --co2-dark:          #1A1A2E;
+  --co2-gray:          #6B7280;
+  --co2-border:        #E5E7EB;
+  --co2-bg:            #F9FAFB;
+  --co2-white:         #FFFFFF;
+  --co2-radius:        12px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--co2-white);
+  color: var(--co2-dark);
+  line-height: 1.6;
 }
+
+/* Smooth scrolling */
+html { scroll-behavior: smooth; }
+
+/* Orange CTA button */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--co2-orange);
+  color: white;
+  font-weight: 700;
+  font-size: 15px;
+  padding: 12px 24px;
+  border-radius: 50px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+}
+.btn-primary:hover { background: var(--co2-orange-dark); transform: translateY(-1px); }
+
+/* Outline button */
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: var(--co2-dark);
+  font-weight: 600;
+  font-size: 15px;
+  padding: 11px 24px;
+  border-radius: 50px;
+  text-decoration: none;
+  border: 1.5px solid var(--co2-border);
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+.btn-outline:hover { border-color: var(--co2-orange); color: var(--co2-orange); }
+
+/* Card */
+.card {
+  background: white;
+  border-radius: var(--co2-radius);
+  border: 1px solid var(--co2-border);
+  padding: 28px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+
+/* Section spacing */
+.section { padding: 80px 24px; }
+.section-sm { padding: 48px 24px; }
+.container { max-width: 1120px; margin: 0 auto; }
+
+/* Orange pill badge */
+.badge-orange {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--co2-orange-light);
+  color: var(--co2-orange-dark);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 50px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* Fade-in animation */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fadeUp 0.5s ease forwards; }

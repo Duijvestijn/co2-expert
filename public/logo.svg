@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 36" fill="none">
+  <!-- Cloud/leaf icon -->
+  <path d="M20 22 C14 22 10 18 10 13 C10 8.5 13.5 5 18 5 C19.2 5 20.3 5.3 21.3 5.8 C22.8 3.5 25.3 2 28.2 2 C32.9 2 36.7 5.8 36.7 10.5 C36.7 11 36.6 11.5 36.5 12 C38.5 12.8 40 14.7 40 17 C40 19.8 37.8 22 35 22 Z" fill="#F5A623"/>
+  <!-- text co₂expert -->
+  <text x="48" y="24" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="800" fill="#1A1A2E">co₂</text>
+  <text x="80" y="24" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="400" fill="#1A1A2E">expert</text>
+</svg>
