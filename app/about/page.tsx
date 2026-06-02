@@ -39,7 +39,7 @@ const values = [
   {
     icon: '◎',
     title: 'Transparency',
-    body: 'Every credit is traceable to a specific project and lot. We publish our methodology openly so anyone can verify our numbers.',
+    body: 'Every emission figure is traceable to a specific data input and calculation. We publish our methodology openly so anyone can verify our numbers.',
   },
   {
     icon: '⬡',
@@ -49,7 +49,7 @@ const values = [
   {
     icon: '▲',
     title: 'Impact-first',
-    body: 'We only work with projects that generate real, verified tonnes — reforestation, agroforestry, cookstoves. No paper offsets.',
+    body: 'Our measurement platform is backed by Green Earth Group\'s real climate projects — reforestation, agroforestry, cookstoves. Data you can stand behind.',
   },
 ];
 
@@ -89,7 +89,7 @@ export default function AboutPage() {
               margin: '0 auto',
             }}
           >
-            We believe every business can become carbon neutral
+            We believe every business deserves a carbon footprint report they can actually use
           </h1>
         </section>
 
@@ -119,10 +119,12 @@ export default function AboutPage() {
               lineHeight: 1.8,
             }}
           >
-            co2.expert was built because businesses want to act on climate, but the tools were either
-            too complex, too expensive, or stopped at measurement without offering a path to actual
-            neutrality. We close the loop — from measuring your footprint to retiring certified
-            credits from real projects, all in one platform built for the scale of an SMB.
+            co2.expert was built to solve a specific problem: businesses kept receiving sustainability
+            questionnaires from large customers and had no way to answer them. The existing tools were
+            either too complex, too expensive, or designed for multinationals with dedicated ESG teams.
+            We built a platform that helps SMBs measure and report their carbon footprint — Scope 1, 2
+            & 3, GHG Protocol compliant — so they can answer customer and bank data requests with
+            confidence.
           </p>
         </section>
 
@@ -159,9 +161,8 @@ export default function AboutPage() {
                 <strong style={{ color: '#1A1A2E' }}>EARTH</strong>.
               </p>
               <p style={{ fontSize: 16, color: '#374151', lineHeight: 1.75, marginBottom: 24 }}>
-                The direct connection matters: co2.expert customers purchase credits from GEG's own
-                certified projects — no brokers, no middlemen, full chain-of-custody traceability
-                from tonne to certificate.
+                The direct connection gives co2.expert customers access to verified project data
+                and methodology that underpins every GHG Protocol report generated on the platform.
               </p>
               <a
                 href="https://green.earth"
@@ -231,7 +232,7 @@ export default function AboutPage() {
               marginBottom: 44,
             }}
           >
-            Credits you retire through co2.expert come from these verified projects
+            Green Earth Group runs verified climate projects across Africa and Central Asia
           </p>
           <div
             style={{
@@ -361,7 +362,7 @@ export default function AboutPage() {
               marginBottom: 16,
             }}
           >
-            Join the movement
+            Know your footprint before your customers ask
           </h2>
           <p
             style={{
@@ -372,8 +373,8 @@ export default function AboutPage() {
               lineHeight: 1.6,
             }}
           >
-            Hundreds of SMBs have already started their journey to carbon neutrality.
-            Yours can be next.
+            Hundreds of SMBs already use co2.expert to answer sustainability questionnaires
+            from their customers and banks. Yours can be next.
           </p>
           <a
             href="/contact"
@@ -389,7 +390,7 @@ export default function AboutPage() {
               letterSpacing: '0.02em',
             }}
           >
-            Book a demo →
+            Book a free call →
           </a>
         </section>
       </main>

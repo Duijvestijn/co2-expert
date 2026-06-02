@@ -73,7 +73,7 @@ export default function Nav({ lang = 'en' }: NavProps) {
 
           {/* CTA */}
           <Link href="/contact" className="btn-primary" style={{ padding: '9px 20px', fontSize: 14 }}>
-            {nl ? 'Demo aanvragen' : 'Request a demo'}
+            {nl ? 'Plan een gesprek' : 'Book a free call'}
           </Link>
         </div>
 
@@ -109,7 +109,7 @@ export default function Nav({ lang = 'en' }: NavProps) {
               {nl ? 'Inloggen' : 'Login'}
             </Link>
             <Link href="/contact" className="btn-primary" style={{ flex: 1, justifyContent: 'center', fontSize: 14 }}>
-              {nl ? 'Demo' : 'Get demo'}
+              {nl ? 'Gesprek' : 'Free call'}
             </Link>
           </div>
         </div>

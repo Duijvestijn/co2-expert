@@ -13,20 +13,20 @@ const categories = [
     title: 'Getting Started',
     questions: [
       {
-        q: 'What is co2.expert?',
-        a: 'co2.expert is a full platform for SMBs to measure Scope 1, 2, and 3 emissions, set science-based reduction targets, and offset unavoidable emissions with certified carbon credits sourced directly from Green Earth Group\'s own projects.',
+        q: 'My customer is asking for our CO2 data. Where do I start?',
+        a: 'The first step is understanding what data you already have. Most businesses have enough in their existing records — energy bills, fuel receipts, travel expenses — to calculate a solid Scope 1 and 2 footprint. CO2 Expert guides you through exactly what to collect and calculates the rest. Most businesses have their first report ready within two weeks.',
       },
       {
-        q: 'How quickly can I get started?',
-        a: 'Typically 1–2 weeks from signup to your first measurement. Our team handles the entire setup — you just need to provide your data. Most clients complete their first carbon footprint within the first month.',
+        q: 'What is a carbon footprint and why is my customer asking for it?',
+        a: 'A carbon footprint is the total amount of greenhouse gas emissions caused by your business activities, measured in tonnes of CO2 equivalent. Large companies must now report their supply chain emissions under EU law (CSRD). That means they need your numbers to complete their own annual report. The Dutch Chamber of Commerce states it plainly: expect questions from larger companies that buy your products.',
       },
       {
-        q: 'Do I need technical knowledge?',
-        a: 'No technical knowledge required. If you can use Excel, you can use co2.expert. We also offer a dedicated onboarding call with a sustainability expert to walk you through every step.',
+        q: 'Do I need technical knowledge or a sustainability consultant?',
+        a: 'No. If you can work with Excel, you can use CO2 Expert. You upload your operational data — we calculate your footprint using GHG Protocol emission factors and produce a structured report. No sustainability background required. Our team is available for a 30-minute onboarding call if you need it.',
       },
       {
-        q: 'What data do I need to get started?',
-        a: 'Energy bills, fuel receipts, travel records, and basic company information are the main inputs. We guide you through each category with clear instructions and example templates so nothing gets missed.',
+        q: 'How long does it take to get a report I can share with my customer?',
+        a: 'Most businesses complete their first measurement within two weeks of signing up. The data collection phase takes one to three days, the calculation is instant, and the report is ready to download and share immediately.',
       },
     ],
   },
@@ -35,57 +35,57 @@ const categories = [
     questions: [
       {
         q: 'What is the difference between Scope 1, 2 and 3?',
-        a: 'Scope 1 covers direct emissions from sources you own or control — vehicles, gas boilers, and on-site fuel combustion. Scope 2 covers purchased energy such as electricity and district heat. Scope 3 covers everything else: supply chain emissions, business travel, waste, employee commuting, and more.',
+        a: 'Scope 1 covers emissions your business causes directly — company vehicles, gas heating, on-site combustion. Scope 2 covers emissions from energy you purchase — electricity, district heating. Scope 3 covers everything in your value chain — business travel, goods you buy, waste, logistics. Most customer questionnaires ask for at least Scope 1 and 2. CO2 Expert calculates all three.',
+      },
+      {
+        q: 'What data do I need to provide?',
+        a: 'For Scope 1 and 2: your energy bills (electricity, gas), fuel receipts for company vehicles, and details of any on-site combustion or refrigerants. For Scope 3: travel expense records, logistics data, and purchase invoices. You can import via Excel or CSV. We tell you exactly what to collect in the onboarding checklist — nothing more than what you already have.',
       },
       {
         q: 'How accurate are the calculations?',
-        a: 'We use GHG Protocol emission factors, updated annually from official national and international databases. Results are ISO 14064-1 aligned and audit-ready, meaning they can be reviewed and verified by an external auditor.',
+        a: 'CO2 Expert uses GHG Protocol emission factors, updated annually. These are the same factors used in professional sustainability audits and accepted by EU reporting frameworks. The results are ISO 14064-aligned and structured to be shareable with customers, banks, or auditors.',
       },
       {
-        q: 'Can I measure multiple locations?',
-        a: 'Yes. Unlimited locations are included in all plans. You can track emissions separately by site, cost centre, or country, and roll them up into a single company-wide footprint.',
-      },
-      {
-        q: 'Which standards does co2.expert support?',
-        a: 'co2.expert supports the GHG Protocol Corporate Standard, ISO 14064-1, and the CSRD/ESRS reporting framework. Reports can be exported in formats suitable for each standard.',
+        q: 'Can I measure multiple locations or subsidiaries?',
+        a: 'Yes. You can add unlimited locations — offices, warehouses, production sites — within a single account. Each location is measured separately and combined in your consolidated report.',
       },
     ],
   },
   {
-    title: 'Carbon Credits',
+    title: 'Reporting & Sharing',
     questions: [
       {
-        q: 'What are certified carbon credits?',
-        a: 'A carbon credit represents one tonne of CO₂ that has been avoided or removed from the atmosphere. Our credits are certified by Verra (VCS) or Gold Standard — the two most recognised certification bodies in the voluntary carbon market.',
+        q: 'What does the report look like and can my customer use it directly?',
+        a: 'Your report is a structured PDF that includes total emissions per scope, the methodology used, emission factors applied, and data sources. It is formatted so procurement teams and sustainability departments at large companies can incorporate your data directly into their own reporting. You can also export to Excel for customers who prefer structured data.',
       },
       {
-        q: 'Why are co2.expert credits different?',
-        a: 'Most platforms buy credits from brokers, adding margin at every step. co2.expert sells credits directly from Green Earth Group\'s own projects — giving you full traceability from tonne to tree, no middlemen, and fair market prices.',
+        q: 'My customer uses a specific sustainability questionnaire format. Can CO2 Expert handle that?',
+        a: 'CO2 Expert produces GHG Protocol-compliant data which is the international standard behind most corporate sustainability questionnaires. If your customer uses a specific format (EcoVadis, CDP, proprietary supplier forms), you can use the numbers from your CO2 Expert report to fill in those fields. We offer guidance on common questionnaire formats.',
       },
       {
-        q: 'What projects can I choose from?',
-        a: 'We currently offer four flagship projects: Greenzone Reforestation (Cameroon), Bulindi Agroforestry (Uganda), Hongera Cookstoves (Kenya), and Lake Aral Afforestation (Kazakhstan). Each project page includes impact data, satellite imagery, and third-party audit reports.',
+        q: 'What if my emissions data changes — can I update the report?',
+        a: 'Yes. You can update your input data at any time and generate a new report. At the end of the year, you simply upload updated figures and produce your annual report. Year-on-year comparisons are built in.',
       },
       {
-        q: 'Do I receive a certificate after offsetting?',
-        a: 'Yes. Once you complete an offset purchase, you receive a downloadable carbon-neutral certificate with your company name, total credits retired, the specific project(s), and the certification registry serial numbers for full traceability.',
+        q: 'Does CO2 Expert handle CSRD reporting for large companies?',
+        a: 'CO2 Expert is designed for SMBs who need to answer customer data requests, not for the full CSRD disclosure process (which applies to large companies with 1,000+ employees and €450M+ turnover). If your large company needs full CSRD support, contact us and we will point you in the right direction.',
       },
     ],
   },
   {
-    title: 'CSRD & Compliance',
+    title: 'CSRD & Regulation',
     questions: [
       {
-        q: 'What is CSRD and does it apply to my business?',
-        a: 'CSRD (Corporate Sustainability Reporting Directive) is an EU law requiring companies to publicly report on their sustainability impact. It phases in progressively: large listed companies from 2024, all large companies (250+ employees or €40M+ turnover) from 2025, and smaller listed companies (~50 employees) from 2026.',
+        q: 'Does CSRD apply to my company directly?',
+        a: 'Probably not, if you have fewer than 1,000 employees. The Omnibus I Directive (March 2026) raised the mandatory CSRD threshold to companies with both 1,000+ employees and €450M+ net turnover. However, if you supply goods or services to large companies that are themselves under CSRD, they are required to include your emissions in their supply chain report. That is why you are getting these questions.',
       },
       {
-        q: 'Can I use co2.expert for CSRD reporting?',
-        a: 'Yes. Our reports are structured to meet CSRD/ESRS E1 requirements for climate reporting. We also offer a dedicated CSRD readiness export that maps your data to the relevant ESRS disclosure points, making it straightforward to hand off to your auditor or sustainability consultant.',
+        q: 'What is the VSME Standard?',
+        a: 'The VSME (Voluntary SME Standard) is a simplified sustainability reporting framework developed specifically for small and medium-sized businesses. It defines what data SMBs can reasonably be asked to provide. CO2 Expert is structured around the VSME categories so your report covers exactly what large customers are entitled to ask for — nothing more.',
       },
       {
-        q: 'Is the data auditable?',
-        a: 'Yes. All inputs, emission factors used, calculation methodologies, and assumptions are fully traceable within the platform. You can export a complete audit trail that can be shared with third-party verifiers or internal auditors at any time.',
+        q: 'Will this satisfy my bank or financing institution?',
+        a: 'Many banks and investors are now incorporating sustainability criteria into credit assessments and financing conditions. A GHG Protocol-compliant carbon footprint report from CO2 Expert meets the data standards most financial institutions use. We recommend checking your specific bank\'s requirements, but our reports are accepted by the major Dutch financial institutions.',
       },
     ],
   },

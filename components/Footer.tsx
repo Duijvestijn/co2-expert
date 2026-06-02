@@ -20,8 +20,8 @@ export default function Footer({ lang = 'en' }: FooterProps) {
               <Image src="/logo-white.svg" alt="CO₂ Expert" width={120} height={30} style={{ height: 30, width: 'auto', marginBottom: 16 }} />
               <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.55)', lineHeight: 1.7, maxWidth: 240 }}>
                 {nl
-                  ? 'Jouw partner in CO₂-boekhouding. Meet, reduceer en compenseer je uitstoot.'
-                  : 'Your partner in carbon accounting. Measure, reduce and offset your emissions.'}
+                  ? 'Uw partner in CO₂-voetafdruk meting. Scope 1, 2 en 3 — GHG Protocol-conform rapport dat uw klanten kunnen gebruiken.'
+                  : 'Your partner in carbon footprint measurement. Scope 1, 2 & 3 — GHG Protocol compliant reports your customers can use.'}
               </p>
               <div style={{ display: 'flex', gap: 12, marginTop: 20 }}>
                 {['linkedin', 'twitter'].map(s => (

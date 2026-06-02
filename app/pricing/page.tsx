@@ -12,13 +12,12 @@ const features = [
   'Multiple locations',
   'GHG Protocol reports',
   'CSRD-ready export',
-  'Certified CO₂ credits',
-  'Carbon-neutral certificate',
+  'Scope 3 value chain tracking',
+  'Year-on-year comparison',
+  'Customer-ready PDF export',
   'Team accounts',
   'Dedicated support',
   'Annual subscription',
-  'No broker fees',
-  'Green Earth projects',
   'Audit trail',
 ];
 
@@ -159,7 +158,7 @@ export default function PricingPage() {
                 'Fair annual subscription',
                 '2-week setup',
                 'All-in-one platform',
-                'Built-in credits & certificates',
+                'Customer-ready PDF reports',
                 'Dedicated support team',
               ]}
             />
@@ -281,12 +280,22 @@ export default function PricingPage() {
               fontSize: 17,
               color: '#4B5563',
               lineHeight: 1.75,
-              marginBottom: 36,
+              marginBottom: 12,
             }}
           >
             {`Most SMBs get started from `}
             <strong style={{ color: '#1A1A2E' }}>{`€2,500/year`}</strong>
             {`. Request a quote for your exact needs.`}
+          </p>
+          <p
+            style={{
+              fontSize: 17,
+              color: '#4B5563',
+              lineHeight: 1.75,
+              marginBottom: 36,
+            }}
+          >
+            {`Most SMBs have a complete Scope 1, 2 & 3 report ready within 2 weeks of signup.`}
           </p>
           <a
             href="/contact"
