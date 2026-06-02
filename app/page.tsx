@@ -16,6 +16,10 @@ const LIGHT_GREY = '#F9FAFB'
 const GREY = '#6B7280'
 const BORDER = '#E5E7EB'
 
+function PainIcon({ d }: { d: string }) {
+  return <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d={d}/></svg>
+}
+
 export default function HomePage() {
   return (
     <main style={{ fontFamily: "'Inter', sans-serif", color: DARK }}>
@@ -223,19 +227,19 @@ export default function HomePage() {
           >
             {[
               {
-                icon: '💸',
+                icon: 'M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6',
                 title: 'Enterprise pricing for enterprise problems',
                 body:
                   'Tools like Watershed and Persefoni cost €50,000+/year. They are designed for Fortune 500 compliance teams — not a 40-person manufacturing company or a regional logistics firm.',
               },
               {
-                icon: '🔭',
+                icon: 'M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0',
                 title: 'Measurement without a next step',
                 body:
                   'Greenly, Plan A, and Normative measure your footprint well. Then they hand you a PDF and leave. Knowing your emissions and doing something about them are two different things.',
               },
               {
-                icon: '🕳️',
+                icon: 'M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z',
                 title: 'Broker credits with no traceability',
                 body:
                   'Most offset marketplaces resell credits from third parties. No direct link to the underlying project. No certificate with your company name. No way to prove anything to a client or auditor.',
@@ -250,7 +254,7 @@ export default function HomePage() {
                   padding: '32px 28px',
                 }}
               >
-                <div style={{ fontSize: 36, marginBottom: 16 }}>{card.icon}</div>
+                <div style={{ marginBottom: 16 }}><PainIcon d={card.icon} /></div>
                 <h3
                   style={{
                     fontSize: 18,
@@ -470,12 +474,21 @@ export default function HomePage() {
               </thead>
               <tbody>
                 {[
-                  ['Scope 1, 2 & 3 measurement', '✅', '✅', '✅'],
-                  ['Certified offset credits', '✅', '✅', '❌'],
-                  ['Own verified projects', '✅', '❌', '❌'],
-                  ['CSRD-ready reports', '✅', '✅', '⚠️ partial'],
-                  ['Built for SMBs — fair pricing', '✅', '❌ €50K+/yr', '⚠️ limited'],
-                ].map(([feature, a, b, c], i) => (
+                  ['Scope 1, 2 & 3 measurement', 'yes', 'yes', 'yes'],
+                  ['Certified offset credits', 'yes', 'yes', 'no'],
+                  ['Own verified projects', 'yes', 'no', 'no'],
+                  ['CSRD-ready reports', 'yes', 'yes', 'partial'],
+                  ['Built for SMBs — fair pricing', 'yes', 'no — €50K+/yr', 'partial'],
+                ].map(([feature, a, b, c], i) => {
+                  function CellIcon({ val }: { val: string }) {
+                    if (val === 'yes') return <svg width="16" height="16" viewBox="0 0 16 16"><path d="M4 8l3 3 6-6" stroke="#059669" strokeWidth="2.5" fill="none" strokeLinecap="round"/></svg>
+                    if (val === 'partial') return <svg width="16" height="16" viewBox="0 0 16 16"><path d="M4 8h8" stroke="#D97706" strokeWidth="2.5" fill="none" strokeLinecap="round"/></svg>
+                    if (val === 'no') return <svg width="16" height="16" viewBox="0 0 16 16"><path d="M5 5l6 6M11 5l-6 6" stroke="#DC2626" strokeWidth="2.5" fill="none" strokeLinecap="round"/></svg>
+                    // val starts with 'no — ...'
+                    const parts = val.split(' — ')
+                    return <span style={{ display: 'inline-flex', alignItems: 'center', gap: 4 }}><svg width="16" height="16" viewBox="0 0 16 16"><path d="M5 5l6 6M11 5l-6 6" stroke="#DC2626" strokeWidth="2.5" fill="none" strokeLinecap="round"/></svg><span style={{ fontSize: 13, color: '#DC2626' }}>{parts[1]}</span></span>
+                  }
+                  return (
                   <tr
                     key={String(feature)}
                     style={{
@@ -484,31 +497,18 @@ export default function HomePage() {
                     }}
                   >
                     <td style={{ padding: '16px 24px', fontWeight: 500 }}>{feature}</td>
-                    <td style={{ padding: '16px 20px', textAlign: 'center', fontSize: 20 }}>
-                      {a}
+                    <td style={{ padding: '16px 20px', textAlign: 'center' }}>
+                      <CellIcon val={String(a)} />
                     </td>
-                    <td
-                      style={{
-                        padding: '16px 20px',
-                        textAlign: 'center',
-                        fontSize: String(b).startsWith('❌') ? 14 : 14,
-                        color: String(b).startsWith('❌') ? '#DC2626' : '#374151',
-                      }}
-                    >
-                      {b}
+                    <td style={{ padding: '16px 20px', textAlign: 'center' }}>
+                      <CellIcon val={String(b)} />
                     </td>
-                    <td
-                      style={{
-                        padding: '16px 20px',
-                        textAlign: 'center',
-                        fontSize: 14,
-                        color: String(c) === '❌' ? '#DC2626' : '#374151',
-                      }}
-                    >
-                      {c}
+                    <td style={{ padding: '16px 20px', textAlign: 'center' }}>
+                      <CellIcon val={String(c)} />
                     </td>
                   </tr>
-                ))}
+                  )
+                })}
               </tbody>
             </table>
           </div>
@@ -616,28 +616,28 @@ export default function HomePage() {
                 country: 'Cameroon',
                 price: '€35 / credit',
                 standard: 'Verra VCS',
-                emoji: '🌿',
+                icon: 'M12 22V12M12 12C12 12 7 8 7 5a5 5 0 0 1 10 0c0 3-5 7-5 7z',
               },
               {
                 name: 'Bulindi Agroforestry',
                 country: 'Uganda',
                 price: '€40 / credit',
                 standard: 'Gold Standard',
-                emoji: '🌳',
+                icon: 'M12 22V12M12 12C12 12 7 8 7 5a5 5 0 0 1 10 0c0 3-5 7-5 7z',
               },
               {
                 name: 'Hongera Cookstoves',
                 country: 'Kenya',
                 price: '€14 / credit',
                 standard: 'Gold Standard',
-                emoji: '🔥',
+                icon: 'M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 3z',
               },
               {
                 name: 'Lake Aral Afforestation',
                 country: 'Kazakhstan',
                 price: '€30 / credit',
                 standard: 'Verra VCS',
-                emoji: '🌱',
+                icon: 'M12 22V12M12 12C12 12 7 8 7 5a5 5 0 0 1 10 0c0 3-5 7-5 7z',
               },
             ].map((project) => (
               <div
@@ -650,7 +650,7 @@ export default function HomePage() {
                   color: '#fff',
                 }}
               >
-                <div style={{ fontSize: 36, marginBottom: 16 }}>{project.emoji}</div>
+                <div style={{ marginBottom: 16 }}><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d={project.icon}/></svg></div>
                 <h3 style={{ fontSize: 17, fontWeight: 700, marginBottom: 6 }}>
                   {project.name}
                 </h3>

@@ -447,15 +447,10 @@ function ComparisonCard({
               gap: 8,
             }}
           >
-            <span
-              style={{
-                color: highlighted ? '#F5A623' : '#9CA3AF',
-                fontWeight: 700,
-                flexShrink: 0,
-              }}
-            >
-              {highlighted ? '✓' : '·'}
-            </span>
+            {highlighted
+              ? <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0 }}><path d="M5 12l4 4 10-10" stroke="#F5A623" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+              : <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0 }}><path d="M8 12h8" stroke="#D1D5DB" strokeWidth="2" strokeLinecap="round"/></svg>
+            }
             {item}
           </li>
         ))}

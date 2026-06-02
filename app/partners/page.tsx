@@ -11,17 +11,17 @@ export const metadata: Metadata = {
 
 const whyPartner = [
   {
-    icon: '💰',
+    icon: 'M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6',
     title: 'New revenue stream',
     body: 'Earn referral commission on every client subscription you bring in — recurring income with zero overhead.',
   },
   {
-    icon: '🌱',
+    icon: 'M12 22V12M12 12C12 12 7 8 7 5a5 5 0 0 1 10 0c0 3-5 7-5 7z',
     title: 'Client retention',
     body: 'Add sustainability reporting to your offering. Clients who see you as their ESG advisor stay longer and refer more.',
   },
   {
-    icon: '⚡',
+    icon: 'M13 2L3 14h9l-1 8 10-12h-9l1-8z',
     title: 'Easy setup',
     body: 'We handle the onboarding and implementation. You focus on the relationship; we handle the technical work.',
   },
@@ -132,7 +132,7 @@ export default function PartnersPage() {
                 key={card.title}
                 className="rounded-2xl border border-gray-100 p-8 shadow-sm hover:shadow-md transition-shadow"
               >
-                <div className="text-4xl mb-4">{card.icon}</div>
+                <div className="mb-4"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d={card.icon}/></svg></div>
                 <h3
                   className="text-xl font-bold mb-3"
                   style={{ color: '#1A1A2E' }}
@@ -215,12 +215,7 @@ export default function PartnersPage() {
                 <ul className="space-y-3">
                   {tier.items.map((item) => (
                     <li key={item} className="flex items-start gap-3 text-gray-700">
-                      <span
-                        className="mt-0.5 text-lg leading-none"
-                        style={{ color: '#F5A623' }}
-                      >
-                        ✓
-                      </span>
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style={{ color: '#F5A623', flexShrink: 0, marginTop: 2 }}><path d="M5 12l4 4 10-10" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
                       {item}
                     </li>
                   ))}
@@ -243,12 +238,7 @@ export default function PartnersPage() {
                 key={item}
                 className="flex items-center gap-4 bg-white/10 rounded-xl px-6 py-4 text-white"
               >
-                <span
-                  className="text-xl font-bold flex-shrink-0"
-                  style={{ color: '#F5A623' }}
-                >
-                  ✓
-                </span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0 }}><path d="M5 12l4 4 10-10" stroke="#F5A623" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
                 {item}
               </li>
             ))}

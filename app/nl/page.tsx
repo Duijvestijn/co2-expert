@@ -16,6 +16,10 @@ const LIGHT_GREY = '#F9FAFB'
 const GREY = '#6B7280'
 const BORDER = '#E5E7EB'
 
+function PainIcon({ d }: { d: string }) {
+  return <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d={d}/></svg>
+}
+
 export default function NLHomePage() {
   return (
     <main style={{ fontFamily: "'Inter', sans-serif", color: DARK }}>
@@ -221,19 +225,19 @@ export default function NLHomePage() {
           >
             {[
               {
-                icon: '💸',
+                icon: 'M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6',
                 title: 'Enterprise-tools kosten €50.000+/jaar',
                 body:
                   'Tools zoals Watershed en Persefoni kosten €50.000+/jaar. Ze zijn gebouwd voor compliance-teams van Fortune 500-bedrijven — niet voor een productiebedrijf van 40 personen of een regionale logistieke dienstverlener.',
               },
               {
-                icon: '🔭',
+                icon: 'M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0',
                 title: 'Meeste tools stoppen bij meten',
                 body:
                   'Greenly, Plan A en Normative meten je voetafdruk goed. Daarna geven ze je een pdf en laten je staan. Je emissies kennen en er iets aan doen zijn twee heel verschillende dingen.',
               },
               {
-                icon: '🕳️',
+                icon: 'M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z',
                 title: 'Credits via tussenpersonen',
                 body:
                   'De meeste offsetmarktplaatsen verkopen credits van derden door. Geen directe link naar het onderliggende project. Geen certificaat op jouw bedrijfsnaam. Geen manier om iets te bewijzen aan een klant of accountant.',
@@ -248,7 +252,7 @@ export default function NLHomePage() {
                   padding: '32px 28px',
                 }}
               >
-                <div style={{ fontSize: 36, marginBottom: 16 }}>{card.icon}</div>
+                <div style={{ marginBottom: 16 }}><PainIcon d={card.icon} /></div>
                 <h3
                   style={{
                     fontSize: 18,
@@ -468,12 +472,20 @@ export default function NLHomePage() {
               </thead>
               <tbody>
                 {[
-                  ['Scope 1, 2 & 3 meting', '✅', '✅', '✅'],
-                  ['Gecertificeerde offsetcredits', '✅', '✅', '❌'],
-                  ['Eigen geverifieerde projecten', '✅', '❌', '❌'],
-                  ['CSRD-klare rapportage', '✅', '✅', '⚠️ gedeeltelijk'],
-                  ['Gebouwd voor MKB — eerlijke prijs', '✅', '❌ €50K+/jr', '⚠️ beperkt'],
-                ].map(([feature, a, b, c], i) => (
+                  ['Scope 1, 2 & 3 meting', 'yes', 'yes', 'yes'],
+                  ['Gecertificeerde offsetcredits', 'yes', 'yes', 'no'],
+                  ['Eigen geverifieerde projecten', 'yes', 'no', 'no'],
+                  ['CSRD-klare rapportage', 'yes', 'yes', 'partial'],
+                  ['Gebouwd voor MKB — eerlijke prijs', 'yes', 'no — €50K+/jr', 'partial'],
+                ].map(([feature, a, b, c], i) => {
+                  function CellIcon({ val }: { val: string }) {
+                    if (val === 'yes') return <svg width="16" height="16" viewBox="0 0 16 16"><path d="M4 8l3 3 6-6" stroke="#059669" strokeWidth="2.5" fill="none" strokeLinecap="round"/></svg>
+                    if (val === 'partial') return <svg width="16" height="16" viewBox="0 0 16 16"><path d="M4 8h8" stroke="#D97706" strokeWidth="2.5" fill="none" strokeLinecap="round"/></svg>
+                    if (val === 'no') return <svg width="16" height="16" viewBox="0 0 16 16"><path d="M5 5l6 6M11 5l-6 6" stroke="#DC2626" strokeWidth="2.5" fill="none" strokeLinecap="round"/></svg>
+                    const parts = val.split(' — ')
+                    return <span style={{ display: 'inline-flex', alignItems: 'center', gap: 4 }}><svg width="16" height="16" viewBox="0 0 16 16"><path d="M5 5l6 6M11 5l-6 6" stroke="#DC2626" strokeWidth="2.5" fill="none" strokeLinecap="round"/></svg><span style={{ fontSize: 13, color: '#DC2626' }}>{parts[1]}</span></span>
+                  }
+                  return (
                   <tr
                     key={String(feature)}
                     style={{
@@ -482,31 +494,18 @@ export default function NLHomePage() {
                     }}
                   >
                     <td style={{ padding: '16px 24px', fontWeight: 500 }}>{feature}</td>
-                    <td style={{ padding: '16px 20px', textAlign: 'center', fontSize: 20 }}>
-                      {a}
+                    <td style={{ padding: '16px 20px', textAlign: 'center' }}>
+                      <CellIcon val={String(a)} />
                     </td>
-                    <td
-                      style={{
-                        padding: '16px 20px',
-                        textAlign: 'center',
-                        fontSize: 14,
-                        color: String(b).startsWith('❌') ? '#DC2626' : '#374151',
-                      }}
-                    >
-                      {b}
+                    <td style={{ padding: '16px 20px', textAlign: 'center' }}>
+                      <CellIcon val={String(b)} />
                     </td>
-                    <td
-                      style={{
-                        padding: '16px 20px',
-                        textAlign: 'center',
-                        fontSize: 14,
-                        color: String(c) === '❌' ? '#DC2626' : '#374151',
-                      }}
-                    >
-                      {c}
+                    <td style={{ padding: '16px 20px', textAlign: 'center' }}>
+                      <CellIcon val={String(c)} />
                     </td>
                   </tr>
-                ))}
+                  )
+                })}
               </tbody>
             </table>
           </div>
@@ -614,7 +613,7 @@ export default function NLHomePage() {
                 country: 'Kameroen',
                 price: '€35 / credit',
                 standard: 'Verra VCS',
-                emoji: '🌿',
+                icon: 'M12 22V12M12 12C12 12 7 8 7 5a5 5 0 0 1 10 0c0 3-5 7-5 7z',
                 desc: 'Herbebossing van gedegradeerde tropische gebieden met inheemse boomsoorten.',
               },
               {
@@ -622,7 +621,7 @@ export default function NLHomePage() {
                 country: 'Oeganda',
                 price: '€40 / credit',
                 standard: 'Gold Standard',
-                emoji: '🌳',
+                icon: 'M12 22V12M12 12C12 12 7 8 7 5a5 5 0 0 1 10 0c0 3-5 7-5 7z',
                 desc: 'Agroboslandbouw die CO₂ vastlegt en tegelijk voedselzekerheid voor lokale gemeenschappen verbetert.',
               },
               {
@@ -630,7 +629,7 @@ export default function NLHomePage() {
                 country: 'Kenia',
                 price: '€14 / credit',
                 standard: 'Gold Standard',
-                emoji: '🔥',
+                icon: 'M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 3z',
                 desc: 'Efficiënte kookvuren verminderen houtkap en verbeteren luchtkwaliteit in landelijke huishoudens.',
               },
               {
@@ -638,7 +637,7 @@ export default function NLHomePage() {
                 country: 'Kazachstan',
                 price: '€30 / credit',
                 standard: 'Verra VCS',
-                emoji: '🌱',
+                icon: 'M12 22V12M12 12C12 12 7 8 7 5a5 5 0 0 1 10 0c0 3-5 7-5 7z',
                 desc: 'Herbebossing van het drooggevallen Aralmeer-gebied ter bestrijding van woestijnvorming.',
               },
             ].map((project) => (
@@ -652,7 +651,7 @@ export default function NLHomePage() {
                   color: '#fff',
                 }}
               >
-                <div style={{ fontSize: 36, marginBottom: 16 }}>{project.emoji}</div>
+                <div style={{ marginBottom: 16 }}><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d={project.icon}/></svg></div>
                 <h3 style={{ fontSize: 17, fontWeight: 700, marginBottom: 6 }}>
                   {project.name}
                 </h3>

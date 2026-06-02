@@ -250,17 +250,17 @@ export default function HowItWorksPage() {
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
                     {[
                       {
-                        icon: '📊',
+                        icon: 'M3 3h18v18H3zM3 9h18M9 21V9',
                         title: 'Excel / CSV upload',
                         desc: 'Drop in your existing spreadsheets — our parser auto-detects columns and maps them to the right emission categories.',
                       },
                       {
-                        icon: '✏️',
+                        icon: 'M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z',
                         title: 'Manual entry per category',
                         desc: 'Work category by category with guided forms: fuel type, quantity, unit. Inline emission factors are applied automatically.',
                       },
                       {
-                        icon: '🔗',
+                        icon: 'M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71',
                         title: 'Google / Microsoft sign-in',
                         desc: 'Connect your Google Workspace or Microsoft 365 to pull travel data, energy bills, and procurement records directly.',
                       },
@@ -277,7 +277,7 @@ export default function HowItWorksPage() {
                           borderRadius: 10,
                         }}
                       >
-                        <span style={{ fontSize: 22, flexShrink: 0 }}>{method.icon}</span>
+                        <span style={{ flexShrink: 0 }}><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d={method.icon}/></svg></span>
                         <div>
                           <p style={{ fontWeight: 600, color: DARK, marginBottom: 4, fontSize: 15 }}>{method.title}</p>
                           <p style={{ fontSize: 14, color: '#6B7280', lineHeight: 1.6 }}>{method.desc}</p>
@@ -756,7 +756,7 @@ export default function HowItWorksPage() {
                           marginBottom: 8,
                         }}
                       >
-                        ✓
+                        <svg width='28' height='28' viewBox='0 0 24 24' fill='none'><circle cx='12' cy='12' r='11' stroke='#059669' strokeWidth='1.5'/><path d='M7 12l3.5 3.5 6.5-7' stroke='#059669' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round'/></svg>
                       </div>
                       <p style={{ fontSize: 11, color: '#9CA3AF' }}>Issued {new Date(2025, 1, 14).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
                     </div>
@@ -800,25 +800,25 @@ export default function HowItWorksPage() {
                   period: 'Day 1',
                   title: 'Account setup',
                   desc: 'Create your organisation profile, invite team members, configure reporting boundaries.',
-                  icon: '🚀',
+                  icon: 'M5 12h14M12 5l7 7-7 7',
                 },
                 {
                   period: 'Week 1',
                   title: 'Data input & calculation',
                   desc: 'Upload existing data or enter manually. Automatic Scope 1/2/3 calculation with audit trail.',
-                  icon: '📥',
+                  icon: 'M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3',
                 },
                 {
                   period: 'Week 2',
                   title: 'Review & validate',
                   desc: 'Our climate experts review your footprint. You receive a quality-assurance report.',
-                  icon: '🔍',
+                  icon: 'M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0',
                 },
                 {
                   period: 'Completion',
                   title: 'Certificate issued',
                   desc: 'Offset remaining emissions and receive your verifiable CO₂-neutral certificate.',
-                  icon: '🏆',
+                  icon: 'M8.21 13.89L7 23l5-3 5 3-1.21-9.12M22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24z',
                 },
               ].map((milestone, i) => (
                 <div
@@ -830,7 +830,7 @@ export default function HowItWorksPage() {
                     position: 'relative',
                   }}
                 >
-                  <span style={{ fontSize: 28, display: 'block', marginBottom: 12 }}>{milestone.icon}</span>
+                  <span style={{ display: 'block', marginBottom: 12 }}><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d={milestone.icon}/></svg></span>
                   <p
                     style={{
                       fontSize: 11,
