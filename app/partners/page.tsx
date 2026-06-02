@@ -84,7 +84,7 @@ const whatYouGet = [
 export default function PartnersPage() {
   return (
     <>
-      <Nav />
+      <Nav lang="en" />
 
       {/* HERO */}
       <section
@@ -259,7 +259,7 @@ export default function PartnersPage() {
         </div>
       </section>
 
-      <Footer />
+      <Footer lang="en" />
     </>
   )
 }

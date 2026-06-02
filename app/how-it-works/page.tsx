@@ -132,7 +132,7 @@ export default function HowItWorksPage() {
                 marginBottom: 24,
               }}
             >
-              Three steps to carbon neutral
+              Three steps to a verified carbon footprint
             </h1>
             <p style={{ fontSize: 'clamp(17px, 2vw, 20px)', lineHeight: 1.7, color: '#CBD5E1', maxWidth: 580, margin: '0 auto 48px' }}>
               Customers and banks are increasingly asking businesses for their CO2 data. CO2 Expert gives you a complete, GHG Protocol-compliant footprint report — ready to share — in days, not months.
@@ -150,7 +150,7 @@ export default function HowItWorksPage() {
               {[
                 { n: '1', label: 'Measure' },
                 { n: '2', label: 'Reduce' },
-                { n: '3', label: 'Offset' },
+                { n: '3', label: 'Report' },
               ].map((step, i) => (
                 <div key={step.n} style={{ display: 'flex', alignItems: 'center' }}>
                   <div style={{ textAlign: 'center', padding: '0 20px' }}>
@@ -547,7 +547,7 @@ export default function HowItWorksPage() {
           </div>
         </section>
 
-        {/* ── 4. STEP 3 — OFFSET ──────────────────────────────────────────── */}
+        {/* ── 4. STEP 3 — REPORT ──────────────────────────────────────────── */}
         <section style={{ background: '#F9FAFB', padding: '96px 24px' }}>
           <div style={{ maxWidth: 1100, margin: '0 auto' }}>
             <div
@@ -564,15 +564,15 @@ export default function HowItWorksPage() {
                   <StepBadge n="3" />
                   <SectionLabel>Step three</SectionLabel>
                 </div>
-                <SectionHeading>Offset residual emissions</SectionHeading>
+                <SectionHeading>Report, share &amp; track progress</SectionHeading>
                 <BodyText>
-                  Even the most ambitious reduction programmes leave residual emissions that cannot yet be eliminated. Carbon credits let you neutralise those tonnes while the world transitions to a low-carbon economy.
+                  Once your footprint is calculated, CO₂ Expert generates a GHG Protocol-compliant report you can share with customers, banks, and auditors immediately — and track year on year.
                 </BodyText>
 
                 <div style={{ marginTop: 28 }}>
-                  <p style={{ fontWeight: 700, color: DARK, marginBottom: 12 }}>What are certified carbon credits?</p>
+                  <p style={{ fontWeight: 700, color: DARK, marginBottom: 12 }}>What your report includes</p>
                   <BodyText>
-                    Verified Carbon Units (VCUs) and Verified Emission Reductions (VERs) represent one tonne of CO₂ equivalent that has been removed from or prevented from entering the atmosphere. Each credit is independently audited and registered on a public registry — so they can only be retired once.
+                    A complete Scope 1, 2 &amp; 3 breakdown with methodology notes, data sources, and emission factors. Exportable as a branded PDF, shareable via a secure link, and downloadable in machine-readable format for CSRD reporting.
                   </BodyText>
                 </div>
 
@@ -586,14 +586,14 @@ export default function HowItWorksPage() {
                   }}
                 >
                   <p style={{ fontWeight: 700, color: '#92400E', marginBottom: 8 }}>
-                    Why Green Earth Group projects are different
+                    Built for stakeholder transparency
                   </p>
                   <ul style={{ paddingLeft: 18, margin: 0 }}>
                     {[
-                      'Full traceability — every credit is linked to GPS-verified land or renewable infrastructure.',
-                      'No broker markup — you buy directly from the project, cutting out intermediaries.',
-                      'Direct community impact — projects deliver co-benefits: biodiversity, local jobs, water quality.',
-                      'Real-time registry access — see your retirement certificate on-chain within 24 hours.',
+                      'Customer-ready PDF — answer procurement questionnaires in one click.',
+                      'Audit trail — every data point is traceable to its source.',
+                      'Year-on-year dashboard — track your reduction progress automatically.',
+                      'CSRD-ready export — structured data for regulatory submissions.',
                     ].map((point) => (
                       <li key={point} style={{ fontSize: 15, color: '#78350F', lineHeight: 1.7, marginBottom: 4 }}>
                         {point}
@@ -604,12 +604,12 @@ export default function HowItWorksPage() {
 
                 {/* Process steps */}
                 <div style={{ marginTop: 32 }}>
-                  <p style={{ fontWeight: 700, color: DARK, marginBottom: 16 }}>How it works in three clicks</p>
+                  <p style={{ fontWeight: 700, color: DARK, marginBottom: 16 }}>From calculation to shareable report in three steps</p>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 0 }}>
                     {[
-                      { n: 'A', label: 'Choose a project', desc: 'Browse Green Earth Group\'s verified portfolio — reforestation, renewable energy, blue carbon.' },
-                      { n: 'B', label: 'Purchase credits', desc: 'Select the number of tonnes to retire. Transparent pricing, instant confirmation.' },
-                      { n: 'C', label: 'Receive certificate', desc: 'Your CO₂-neutral certificate is generated automatically and added to your compliance dashboard.' },
+                      { n: 'A', label: 'Review your footprint', desc: 'Our climate experts validate your data and flag any anomalies before the report is finalised.' },
+                      { n: 'B', label: 'Generate your report', desc: 'One click produces a branded, GHG Protocol-compliant PDF — ready to share with any stakeholder.' },
+                      { n: 'C', label: 'Track year on year', desc: 'Your dashboard updates every reporting period so you can monitor progress toward your reduction targets.' },
                     ].map((s, i) => (
                       <div key={s.n} style={{ display: 'flex', gap: 16, position: 'relative' }}>
                         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
@@ -645,7 +645,7 @@ export default function HowItWorksPage() {
                 </div>
               </div>
 
-              {/* Right: certificate mockup */}
+              {/* Right: report mockup */}
               <div>
                 <Card
                   style={{
@@ -654,7 +654,7 @@ export default function HowItWorksPage() {
                     overflow: 'hidden',
                   }}
                 >
-                  {/* Watermark stripe */}
+                  {/* Top stripe */}
                   <div
                     style={{
                       position: 'absolute',
@@ -670,18 +670,18 @@ export default function HowItWorksPage() {
                     {/* Header */}
                     <div style={{ textAlign: 'center', borderBottom: `1px solid ${BORDER}`, paddingBottom: 20, marginBottom: 20 }}>
                       <p style={{ fontSize: 11, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#9CA3AF', marginBottom: 6 }}>
-                        Certificate of Carbon Neutrality
+                        GHG Protocol Carbon Footprint Report
                       </p>
                       <p style={{ fontSize: 22, fontWeight: 800, color: DARK }}>CO₂ Expert</p>
-                      <p style={{ fontSize: 12, color: '#6B7280', marginTop: 4 }}>Verified under Verra VCS v4.0 & GHG Protocol</p>
+                      <p style={{ fontSize: 12, color: '#6B7280', marginTop: 4 }}>Scope 1, 2 &amp; 3 — Reporting year 2024</p>
                     </div>
 
                     {/* Body */}
                     <div style={{ textAlign: 'center', marginBottom: 24 }}>
-                      <p style={{ fontSize: 14, color: '#6B7280', marginBottom: 4 }}>This certifies that</p>
+                      <p style={{ fontSize: 14, color: '#6B7280', marginBottom: 4 }}>Prepared for</p>
                       <p style={{ fontSize: 20, fontWeight: 800, color: DARK, marginBottom: 4 }}>Acme BV</p>
-                      <p style={{ fontSize: 14, color: '#6B7280', marginBottom: 16 }}>has achieved carbon neutrality for the reporting year</p>
-                      <p style={{ fontSize: 28, fontWeight: 900, color: '#14442E' }}>2024</p>
+                      <p style={{ fontSize: 14, color: '#6B7280', marginBottom: 16 }}>Total measured carbon footprint</p>
+                      <p style={{ fontSize: 28, fontWeight: 900, color: '#14442E' }}>1 247 tCO₂e</p>
                     </div>
 
                     {/* Key figures */}
@@ -698,9 +698,9 @@ export default function HowItWorksPage() {
                       }}
                     >
                       {[
-                        { label: 'Total emissions', value: '1 247 tCO₂e' },
-                        { label: 'Credits retired', value: '1 247 VCUs' },
-                        { label: 'Project', value: 'GEG Borneo' },
+                        { label: 'Scope 1', value: '312 tCO₂e' },
+                        { label: 'Scope 2', value: '498 tCO₂e' },
+                        { label: 'Scope 3', value: '437 tCO₂e' },
                       ].map((fig) => (
                         <div key={fig.label} style={{ background: '#fff', padding: '12px 10px', textAlign: 'center' }}>
                           <p style={{ fontSize: 11, color: '#9CA3AF', marginBottom: 4 }}>{fig.label}</p>
@@ -709,7 +709,7 @@ export default function HowItWorksPage() {
                       ))}
                     </div>
 
-                    {/* Registry */}
+                    {/* Status */}
                     <div
                       style={{
                         background: '#F0FDF4',
@@ -723,8 +723,8 @@ export default function HowItWorksPage() {
                       }}
                     >
                       <div>
-                        <p style={{ fontSize: 11, color: '#9CA3AF', marginBottom: 2 }}>Verra Registry ID</p>
-                        <p style={{ fontSize: 13, fontWeight: 700, color: '#166534', fontFamily: 'monospace' }}>VCS-2024-GEG-00481</p>
+                        <p style={{ fontSize: 11, color: '#9CA3AF', marginBottom: 2 }}>Standard</p>
+                        <p style={{ fontSize: 13, fontWeight: 700, color: '#166534', fontFamily: 'monospace' }}>GHG Protocol Corporate Standard</p>
                       </div>
                       <div
                         style={{
@@ -736,11 +736,11 @@ export default function HowItWorksPage() {
                           borderRadius: 20,
                         }}
                       >
-                        RETIRED
+                        VERIFIED
                       </div>
                     </div>
 
-                    {/* Seal */}
+                    {/* Footer */}
                     <div style={{ textAlign: 'center' }}>
                       <div
                         style={{
@@ -758,7 +758,7 @@ export default function HowItWorksPage() {
                       >
                         <svg width='28' height='28' viewBox='0 0 24 24' fill='none'><circle cx='12' cy='12' r='11' stroke='#059669' strokeWidth='1.5'/><path d='M7 12l3.5 3.5 6.5-7' stroke='#059669' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round'/></svg>
                       </div>
-                      <p style={{ fontSize: 11, color: '#9CA3AF' }}>Issued {new Date(2025, 1, 14).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
+                      <p style={{ fontSize: 11, color: '#9CA3AF' }}>Report generated {new Date(2025, 1, 14).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
                     </div>
                   </div>
                 </Card>
@@ -780,7 +780,7 @@ export default function HowItWorksPage() {
                 marginBottom: 16,
               }}
             >
-              From signup to certificate in 2 weeks
+              From signup to verified report in 2 weeks
             </h2>
             <p style={{ fontSize: 17, color: '#94A3B8', maxWidth: 560, margin: '0 auto 64px' }}>
               Our guided onboarding and pre-built emission factors mean most organisations complete their first footprint in days, not months.
@@ -816,8 +816,8 @@ export default function HowItWorksPage() {
                 },
                 {
                   period: 'Completion',
-                  title: 'Certificate issued',
-                  desc: 'Offset remaining emissions and receive your verifiable CO₂-neutral certificate.',
+                  title: 'Report delivered',
+                  desc: 'Receive your GHG Protocol-compliant footprint report — ready to share with customers, banks, and auditors.',
                   icon: 'M8.21 13.89L7 23l5-3 5 3-1.21-9.12M22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24z',
                 },
               ].map((milestone, i) => (
@@ -858,7 +858,7 @@ export default function HowItWorksPage() {
               <SectionLabel>Built on international standards</SectionLabel>
               <SectionHeading>Recognised globally, trusted by auditors</SectionHeading>
               <BodyText style={{ maxWidth: 600, margin: '0 auto' }}>
-                CO₂ Expert is designed from the ground up to comply with the leading international frameworks, so your certificate holds up to scrutiny — from investors, regulators, and the public.
+                CO₂ Expert is designed from the ground up to comply with the leading international frameworks, so your footprint report holds up to scrutiny — from investors, regulators, and the public.
               </BodyText>
             </div>
 

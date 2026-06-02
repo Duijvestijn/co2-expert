@@ -6,7 +6,7 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Zo werkt het — CO₂ Expert',
   description:
-    'Ontdek hoe CO₂ Expert je begeleidt van je eerste data-upload tot een geverifieerd CO₂-neutraal certificaat — met Scope 1, 2 & 3-emissies, wetenschappelijk onderbouwde reductiedoelen en gecertificeerde CO₂-credits van Green Earth Group.',
+    'Ontdek hoe CO₂ Expert je begeleidt van je eerste data-upload tot een geverifieerd CO₂-voetafdrukrapport — met Scope 1, 2 & 3-emissies, wetenschappelijk onderbouwde reductiedoelen en jaar-op-jaar voortgangsmeting.',
 }
 
 // ─── Shared tokens ────────────────────────────────────────────────────────────
@@ -132,7 +132,7 @@ export default function HoeHetWerktPage() {
                 marginBottom: 24,
               }}
             >
-              Drie stappen naar CO₂-neutraal
+              Drie stappen naar een geverifieerde CO₂-voetafdruk
             </h1>
             <p style={{ fontSize: 'clamp(17px, 2vw, 20px)', lineHeight: 1.7, color: '#CBD5E1', maxWidth: 580, margin: '0 auto 48px' }}>
               Uw klanten en financiers vragen steeds vaker om uw CO2-gegevens. CO2 Expert geeft u een volledig, GHG Protocol-conform voetafdrukrapport — klaar om te delen — in dagen.
@@ -150,7 +150,7 @@ export default function HoeHetWerktPage() {
               {[
                 { n: '1', label: 'Meet' },
                 { n: '2', label: 'Reduceer' },
-                { n: '3', label: 'Compenseer' },
+                { n: '3', label: 'Rapporteer' },
               ].map((step, i) => (
                 <div key={step.n} style={{ display: 'flex', alignItems: 'center' }}>
                   <div style={{ textAlign: 'center', padding: '0 20px' }}>
@@ -542,7 +542,7 @@ export default function HoeHetWerktPage() {
           </div>
         </section>
 
-        {/* ── 4. STAP 3 — COMPENSEER ──────────────────────────────────────── */}
+        {/* ── 4. STAP 3 — RAPPORTEER ──────────────────────────────────────── */}
         <section style={{ background: '#F9FAFB', padding: '96px 24px' }}>
           <div style={{ maxWidth: 1100, margin: '0 auto' }}>
             <div
@@ -559,15 +559,15 @@ export default function HoeHetWerktPage() {
                   <StepBadge n="3" />
                   <SectionLabel>Stap drie</SectionLabel>
                 </div>
-                <SectionHeading>Compenseer resterende emissies</SectionHeading>
+                <SectionHeading>Rapporteer, deel &amp; volg voortgang</SectionHeading>
                 <BodyText>
-                  Zelfs de meest ambitieuze reductieprogramma&apos;s laten resterende emissies over die nog niet geëlimineerd kunnen worden. CO₂-credits stellen je in staat die tonnen te neutraliseren terwijl de wereld overschakelt naar een koolstofarme economie.
+                  Zodra je voetafdruk is berekend, genereert CO₂ Expert een GHG Protocol-conform rapport dat je direct kunt delen met klanten, banken en accountants — en jaar op jaar kunt bijhouden.
                 </BodyText>
 
                 <div style={{ marginTop: 28 }}>
-                  <p style={{ fontWeight: 700, color: DARK, marginBottom: 12 }}>Wat zijn gecertificeerde CO₂-credits?</p>
+                  <p style={{ fontWeight: 700, color: DARK, marginBottom: 12 }}>Wat je rapport bevat</p>
                   <BodyText>
-                    Verified Carbon Units (VCUs) en Verified Emission Reductions (VERs) vertegenwoordigen één ton CO₂-equivalent die uit de atmosfeer is verwijderd of daar niet in terechtgekomen is. Elke credit wordt onafhankelijk gecontroleerd en geregistreerd in een openbaar register — zodat ze slechts eenmaal ingenomen kunnen worden.
+                    Een volledige Scope 1-, 2- en 3-uitsplitsing met methodologienotities, databronnen en emissiefactoren. Exporteerbaar als gebrandmerkte PDF, deelbaar via een beveiligde link, en downloadbaar in machine-leesbaar formaat voor CSRD-rapportage.
                   </BodyText>
                 </div>
 
@@ -581,14 +581,14 @@ export default function HoeHetWerktPage() {
                   }}
                 >
                   <p style={{ fontWeight: 700, color: '#92400E', marginBottom: 8 }}>
-                    Waarom Green Earth Group-projecten anders zijn
+                    Gebouwd voor transparantie naar stakeholders
                   </p>
                   <ul style={{ paddingLeft: 18, margin: 0 }}>
                     {[
-                      'Volledige traceerbaarheid — elke credit is gekoppeld aan GPS-geverifieerd land of hernieuwbare infrastructuur.',
-                      'Geen tussenpersonen — je koopt rechtstreeks van het project, zonder opslag van makelaars.',
-                      'Directe community-impact — projecten leveren co-voordelen: biodiversiteit, lokale banen, waterkwaliteit.',
-                      'Real-time registertoegang — zie je innamebevestiging binnen 24 uur.',
+                      'Klantklare PDF — beantwoord inkoopvragenlijsten met één klik.',
+                      'Auditspoor — elk datapunt is herleidbaar naar zijn bron.',
+                      'Jaar-op-jaar dashboard — volg je reductievoortgang automatisch.',
+                      'CSRD-export — gestructureerde data voor regelgevingsrapportages.',
                     ].map((point) => (
                       <li key={point} style={{ fontSize: 15, color: '#78350F', lineHeight: 1.7, marginBottom: 4 }}>
                         {point}
@@ -599,12 +599,12 @@ export default function HoeHetWerktPage() {
 
                 {/* Process steps */}
                 <div style={{ marginTop: 32 }}>
-                  <p style={{ fontWeight: 700, color: DARK, marginBottom: 16 }}>Hoe het werkt in drie stappen</p>
+                  <p style={{ fontWeight: 700, color: DARK, marginBottom: 16 }}>Van berekening naar deelbaar rapport in drie stappen</p>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 0 }}>
                     {[
-                      { n: 'A', label: 'Kies een project', desc: 'Blader door de geverifieerde portfolio van Green Earth Group — herbebossing, hernieuwbare energie, blauwe koolstof.' },
-                      { n: 'B', label: 'Koop credits', desc: 'Selecteer het aantal ton dat je wilt innemen. Transparante prijzen, directe bevestiging.' },
-                      { n: 'C', label: 'Ontvang certificaat', desc: 'Je CO₂-neutraal certificaat wordt automatisch gegenereerd en toegevoegd aan je compliance-dashboard.' },
+                      { n: 'A', label: 'Bekijk je voetafdruk', desc: 'Onze klimaatexperts valideren je data en signaleren afwijkingen voordat het rapport wordt afgerond.' },
+                      { n: 'B', label: 'Genereer je rapport', desc: 'Met één klik maak je een gebrandmerkte, GHG Protocol-conforme PDF — klaar om te delen met elke stakeholder.' },
+                      { n: 'C', label: 'Volg jaar op jaar', desc: 'Je dashboard wordt bijgewerkt elke rapportageperiode zodat je voortgang kunt bewaken naar je reductiedoelen.' },
                     ].map((s, i) => (
                       <div key={s.n} style={{ display: 'flex', gap: 16, position: 'relative' }}>
                         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
@@ -640,7 +640,7 @@ export default function HoeHetWerktPage() {
                 </div>
               </div>
 
-              {/* Right: certificate mockup */}
+              {/* Right: report mockup */}
               <div>
                 <Card
                   style={{
@@ -649,7 +649,7 @@ export default function HoeHetWerktPage() {
                     overflow: 'hidden',
                   }}
                 >
-                  {/* Watermark stripe */}
+                  {/* Top stripe */}
                   <div
                     style={{
                       position: 'absolute',
@@ -665,18 +665,18 @@ export default function HoeHetWerktPage() {
                     {/* Header */}
                     <div style={{ textAlign: 'center', borderBottom: `1px solid ${BORDER}`, paddingBottom: 20, marginBottom: 20 }}>
                       <p style={{ fontSize: 11, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#9CA3AF', marginBottom: 6 }}>
-                        Certificaat van CO₂-Neutraliteit
+                        GHG Protocol CO₂-voetafdrukrapport
                       </p>
                       <p style={{ fontSize: 22, fontWeight: 800, color: DARK }}>CO₂ Expert</p>
-                      <p style={{ fontSize: 12, color: '#6B7280', marginTop: 4 }}>Geverifieerd onder Verra VCS v4.0 & GHG Protocol</p>
+                      <p style={{ fontSize: 12, color: '#6B7280', marginTop: 4 }}>Scope 1, 2 &amp; 3 — Rapportagejaar 2024</p>
                     </div>
 
                     {/* Body */}
                     <div style={{ textAlign: 'center', marginBottom: 24 }}>
-                      <p style={{ fontSize: 14, color: '#6B7280', marginBottom: 4 }}>Hiermee wordt bevestigd dat</p>
+                      <p style={{ fontSize: 14, color: '#6B7280', marginBottom: 4 }}>Opgesteld voor</p>
                       <p style={{ fontSize: 20, fontWeight: 800, color: DARK, marginBottom: 4 }}>Acme BV</p>
-                      <p style={{ fontSize: 14, color: '#6B7280', marginBottom: 16 }}>CO₂-neutraliteit heeft bereikt voor het rapportagejaar</p>
-                      <p style={{ fontSize: 28, fontWeight: 900, color: '#14442E' }}>2024</p>
+                      <p style={{ fontSize: 14, color: '#6B7280', marginBottom: 16 }}>Totale gemeten CO₂-voetafdruk</p>
+                      <p style={{ fontSize: 28, fontWeight: 900, color: '#14442E' }}>1 247 tCO₂e</p>
                     </div>
 
                     {/* Key figures */}
@@ -693,9 +693,9 @@ export default function HoeHetWerktPage() {
                       }}
                     >
                       {[
-                        { label: 'Totale emissies', value: '1 247 tCO₂e' },
-                        { label: 'Credits ingenomen', value: '1 247 VCUs' },
-                        { label: 'Project', value: 'GEG Borneo' },
+                        { label: 'Scope 1', value: '312 tCO₂e' },
+                        { label: 'Scope 2', value: '498 tCO₂e' },
+                        { label: 'Scope 3', value: '437 tCO₂e' },
                       ].map((fig) => (
                         <div key={fig.label} style={{ background: '#fff', padding: '12px 10px', textAlign: 'center' }}>
                           <p style={{ fontSize: 11, color: '#9CA3AF', marginBottom: 4 }}>{fig.label}</p>
@@ -704,7 +704,7 @@ export default function HoeHetWerktPage() {
                       ))}
                     </div>
 
-                    {/* Registry */}
+                    {/* Status */}
                     <div
                       style={{
                         background: '#F0FDF4',
@@ -718,8 +718,8 @@ export default function HoeHetWerktPage() {
                       }}
                     >
                       <div>
-                        <p style={{ fontSize: 11, color: '#9CA3AF', marginBottom: 2 }}>Verra Register-ID</p>
-                        <p style={{ fontSize: 13, fontWeight: 700, color: '#166534', fontFamily: 'monospace' }}>VCS-2024-GEG-00481</p>
+                        <p style={{ fontSize: 11, color: '#9CA3AF', marginBottom: 2 }}>Norm</p>
+                        <p style={{ fontSize: 13, fontWeight: 700, color: '#166534', fontFamily: 'monospace' }}>GHG Protocol Corporate Standard</p>
                       </div>
                       <div
                         style={{
@@ -731,11 +731,11 @@ export default function HoeHetWerktPage() {
                           borderRadius: 20,
                         }}
                       >
-                        INGENOMEN
+                        GEVERIFIEERD
                       </div>
                     </div>
 
-                    {/* Seal */}
+                    {/* Footer */}
                     <div style={{ textAlign: 'center' }}>
                       <div
                         style={{
@@ -753,7 +753,7 @@ export default function HoeHetWerktPage() {
                       >
                         <svg width='28' height='28' viewBox='0 0 24 24' fill='none'><circle cx='12' cy='12' r='11' stroke='#059669' strokeWidth='1.5'/><path d='M7 12l3.5 3.5 6.5-7' stroke='#059669' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round'/></svg>
                       </div>
-                      <p style={{ fontSize: 11, color: '#9CA3AF' }}>Uitgegeven op 14 februari 2025</p>
+                      <p style={{ fontSize: 11, color: '#9CA3AF' }}>Rapport gegenereerd op 14 februari 2025</p>
                     </div>
                   </div>
                 </Card>
@@ -775,7 +775,7 @@ export default function HoeHetWerktPage() {
                 marginBottom: 16,
               }}
             >
-              Van aanmelding tot certificaat in 2 weken
+              Van aanmelding tot geverifieerd rapport in 2 weken
             </h2>
             <p style={{ fontSize: 17, color: '#94A3B8', maxWidth: 560, margin: '0 auto 64px' }}>
               Onze begeleide onboarding en kant-en-klare emissiefactoren zorgen ervoor dat de meeste organisaties hun eerste voetafdruk in dagen voltooien, niet in maanden.
@@ -811,8 +811,8 @@ export default function HoeHetWerktPage() {
                 },
                 {
                   period: 'Afsluiting',
-                  title: 'Certificaat uitgegeven',
-                  desc: 'Compenseer resterende emissies en ontvang je verifieerbare CO₂-neutraal certificaat.',
+                  title: 'Rapport opgeleverd',
+                  desc: 'Ontvang je GHG Protocol-conform voetafdrukrapport — klaar om te delen met klanten, banken en accountants.',
                   icon: 'M8.21 13.89L7 23l5-3 5 3-1.21-9.12M22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24z',
                 },
               ].map((milestone, i) => (
@@ -853,7 +853,7 @@ export default function HoeHetWerktPage() {
               <SectionLabel>Gebouwd op internationale normen</SectionLabel>
               <SectionHeading>Wereldwijd erkend, vertrouwd door accountants</SectionHeading>
               <BodyText style={{ maxWidth: 600, margin: '0 auto' }}>
-                CO₂ Expert is van de grond af aan ontworpen om te voldoen aan de toonaangevende internationale frameworks, zodat je certificaat de toets der kritiek doorstaat — van investeerders, toezichthouders en het publiek.
+                CO₂ Expert is van de grond af aan ontworpen om te voldoen aan de toonaangevende internationale frameworks, zodat je voetafdrukrapport de toets der kritiek doorstaat — van investeerders, toezichthouders en het publiek.
               </BodyText>
             </div>
 
@@ -967,7 +967,7 @@ export default function HoeHetWerktPage() {
                 Plan een gratis gesprek
               </Link>
               <Link
-                href="/nl/prijzen"
+                href="/pricing"
                 style={{
                   display: 'inline-block',
                   background: 'transparent',

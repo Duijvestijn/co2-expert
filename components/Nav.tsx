@@ -5,10 +5,10 @@ import Image from 'next/image'
 
 const NAV_LINKS = [
   { href: '/how-it-works', hrefNL: '/nl/hoe-het-werkt', label: 'How it works', labelNL: 'Hoe het werkt' },
-  { href: '/pricing',      hrefNL: '/nl/tarieven',       label: 'Plans',        labelNL: 'Tarieven' },
-  { href: '/partners',     hrefNL: '/nl/partners',       label: 'For Advisors', labelNL: 'Voor Adviseurs' },
-  { href: '/about',        hrefNL: '/nl/over-ons',       label: 'About us',     labelNL: 'Over ons' },
-  { href: '/faq',          hrefNL: '/nl/faq',            label: 'FAQ',          labelNL: 'FAQ' },
+  { href: '/pricing',      hrefNL: '/pricing',           label: 'Plans',        labelNL: 'Tarieven' },
+  { href: '/partners',     hrefNL: '/partners',          label: 'For Advisors', labelNL: 'Voor Adviseurs' },
+  { href: '/about',        hrefNL: '/about',             label: 'About us',     labelNL: 'Over ons' },
+  { href: '/faq',          hrefNL: '/faq',               label: 'FAQ',          labelNL: 'FAQ' },
 ]
 
 interface NavProps { lang?: 'en' | 'nl' }

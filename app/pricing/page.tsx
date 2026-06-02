@@ -51,7 +51,7 @@ const faqs = [
 export default function PricingPage() {
   return (
     <>
-      <Nav />
+      <Nav lang="en" />
 
       <main style={{ fontFamily: "'Inter', sans-serif", backgroundColor: '#f9fafb' }}>
 
@@ -143,7 +143,7 @@ export default function PricingPage() {
                 '3–6 months to implement',
                 'Manual, error-prone process',
                 'One-off reports only',
-                'Credits handled separately',
+                'No reusable data year to year',
               ]}
             />
 
@@ -359,7 +359,7 @@ export default function PricingPage() {
 
       </main>
 
-      <Footer />
+      <Footer lang="en" />
     </>
   );
 }
