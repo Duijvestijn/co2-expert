@@ -35,25 +35,6 @@ export default function NLHomePage() {
         }}
       >
         <div style={{ maxWidth: 760, margin: '0 auto' }}>
-          {/* Trust badge */}
-          <span
-            style={{
-              display: 'inline-block',
-              background: 'rgba(245,166,35,0.15)',
-              color: ORANGE,
-              border: '1px solid rgba(245,166,35,0.4)',
-              borderRadius: 999,
-              fontSize: 13,
-              fontWeight: 600,
-              letterSpacing: '0.04em',
-              padding: '5px 16px',
-              marginBottom: 32,
-            }}
-          >
-            Powered by Green Earth Group &nbsp;·&nbsp;{' '}
-            <span style={{ opacity: 0.8 }}>EARTH</span>
-          </span>
-
           <h1
             style={{
               fontSize: 'clamp(40px, 6vw, 72px)',

@@ -82,15 +82,17 @@ export default function Footer({ lang = 'en' }: FooterProps) {
             </div>
           </div>
 
-          {/* Partners */}
-          <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: 32, display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16 }}>
-            <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)' }}>
-              {nl ? 'Onderdeel van' : 'Part of the'} Green Earth Group ecosystem
-            </p>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 24, opacity: 0.5, filter: 'brightness(0) invert(1)' }}>
-              <Image src="/partners/green-earth.svg" alt="Green Earth" width={100} height={24} style={{ height: 24, width: 'auto' }} />
-              <Image src="/partners/kader.svg" alt="Kader" width={80} height={24} style={{ height: 24, width: 'auto' }} />
-            </div>
+          {/* Powered by — subtle */}
+          <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: 24, display: 'flex', alignItems: 'center', justifyContent: 'flex-end', flexWrap: 'wrap', gap: 8 }}>
+            <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.22)', letterSpacing: '0.04em' }}>
+              {nl ? 'Aangedreven door' : 'Powered by'}
+            </span>
+            <a href="https://www.green.earth" target="_blank" rel="noopener noreferrer" style={{ opacity: 0.28, textDecoration: 'none', transition: 'opacity 0.2s' }}
+              onMouseEnter={(e) => (e.currentTarget.style.opacity = '0.55')}
+              onMouseLeave={(e) => (e.currentTarget.style.opacity = '0.28')}
+            >
+              <Image src="/partners/green-earth.svg" alt="Green Earth Group" width={90} height={20} style={{ height: 20, width: 'auto', filter: 'brightness(0) invert(1)' }} />
+            </a>
           </div>
         </div>
       </div>
