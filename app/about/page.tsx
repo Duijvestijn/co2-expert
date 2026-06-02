@@ -35,13 +35,6 @@ const projects = [
   },
 ];
 
-const team = [
-  { name: 'Rob van den Berg', role: 'CEO', bio: 'Serial entrepreneur in climate tech and sustainable finance.' },
-  { name: 'Lisa Hendriks', role: 'Head of Product', bio: 'Former sustainability consultant turned product builder.' },
-  { name: 'Marc Jansen', role: 'CTO', bio: 'Full-stack engineer with a background in data-heavy SaaS platforms.' },
-  { name: 'Emma de Wit', role: 'Carbon Expert', bio: 'Certified GHG Protocol auditor and CSRD implementation specialist.' },
-];
-
 const values = [
   {
     icon: '◎',
@@ -297,76 +290,6 @@ export default function AboutPage() {
                 </span>
               </div>
             ))}
-          </div>
-        </section>
-
-        {/* TEAM */}
-        <section
-          style={{
-            backgroundColor: '#F9FAFB',
-            borderTop: '1px solid #E5E7EB',
-            padding: '72px 24px',
-          }}
-        >
-          <div style={{ maxWidth: 880, margin: '0 auto' }}>
-            <h2
-              style={{
-                fontSize: 28,
-                fontWeight: 800,
-                color: '#1A1A2E',
-                textAlign: 'center',
-                marginBottom: 44,
-              }}
-            >
-              The team
-            </h2>
-            <div
-              style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fill, minmax(190px, 1fr))',
-                gap: 24,
-              }}
-            >
-              {team.map((member) => (
-                <div
-                  key={member.name}
-                  style={{
-                    backgroundColor: '#ffffff',
-                    borderRadius: 14,
-                    padding: '28px 20px',
-                    border: '1.5px solid #E5E7EB',
-                    textAlign: 'center',
-                  }}
-                >
-                  {/* Avatar placeholder */}
-                  <div
-                    style={{
-                      width: 64,
-                      height: 64,
-                      borderRadius: '50%',
-                      backgroundColor: '#E5E7EB',
-                      margin: '0 auto 16px',
-                    }}
-                  />
-                  <h3 style={{ fontSize: 15, fontWeight: 700, color: '#1A1A2E', marginBottom: 3 }}>
-                    {member.name}
-                  </h3>
-                  <p
-                    style={{
-                      fontSize: 12,
-                      fontWeight: 600,
-                      color: '#F5A623',
-                      textTransform: 'uppercase',
-                      letterSpacing: '0.06em',
-                      marginBottom: 10,
-                    }}
-                  >
-                    {member.role}
-                  </p>
-                  <p style={{ fontSize: 13, color: '#6B7280', lineHeight: 1.55 }}>{member.bio}</p>
-                </div>
-              ))}
-            </div>
           </div>
         </section>
 

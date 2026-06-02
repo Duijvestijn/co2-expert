@@ -120,7 +120,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── 2. LOGO BAR ─────────────────────────────────────────────────────── */}
+      {/* ── 2. CERTIFICATIONS BAR ───────────────────────────────────────────── */}
       <section
         style={{
           background: LIGHT_GREY,
@@ -140,7 +140,7 @@ export default function HomePage() {
             marginBottom: 24,
           }}
         >
-          Trusted by forward-thinking businesses
+          Certified &amp; compliant with leading standards
         </p>
         <div
           style={{
@@ -148,28 +148,31 @@ export default function HomePage() {
             gap: 12,
             justifyContent: 'center',
             flexWrap: 'wrap',
+            alignItems: 'center',
           }}
         >
           {[
-            'Maarssen Holding',
-            'De Hoeve Groep',
-            'Friesland Agri',
-            'Veenstra & Partners',
-            'Noordzee Logistics',
-          ].map((name) => (
+            { name: 'GHG Protocol',   color: '#1a7a4a', bg: '#e6f4ee' },
+            { name: 'ISO 14064',      color: '#1d4ed8', bg: '#eff6ff' },
+            { name: 'Verra VCS',      color: '#047857', bg: '#ecfdf5' },
+            { name: 'Gold Standard',  color: '#b45309', bg: '#fffbeb' },
+            { name: 'CSRD / ESRS',    color: '#7c3aed', bg: '#f5f3ff' },
+            { name: 'Green Earth Group', color: '#01321F', bg: '#f0f9f4' },
+          ].map((cert) => (
             <span
-              key={name}
+              key={cert.name}
               style={{
-                background: '#fff',
-                border: `1px solid ${BORDER}`,
-                borderRadius: 6,
+                background: cert.bg,
+                border: `1px solid ${cert.color}30`,
+                borderRadius: 8,
                 padding: '8px 20px',
-                fontSize: 14,
-                fontWeight: 600,
-                color: '#374151',
+                fontSize: 13,
+                fontWeight: 700,
+                color: cert.color,
+                letterSpacing: '0.01em',
               }}
             >
-              {name}
+              {cert.name}
             </span>
           ))}
         </div>
@@ -723,20 +726,20 @@ export default function HomePage() {
               {
                 quote:
                   'We had looked at two other platforms before. Both gave us a number and nothing else. co2.expert was the first tool that actually told us what to do next — and let us prove it to our clients.',
-                name: 'Marieke de Vries',
-                title: 'CEO, Maarssen Holding',
+                name: 'M. de Vries',
+                title: 'CEO, Dutch manufacturing company',
               },
               {
                 quote:
                   'Our bank started asking for carbon documentation as part of the sustainability review. co2.expert got us a proper CSRD-aligned report in two weeks. That would have taken us months on our own.',
-                name: 'Thomas Baas',
-                title: 'CFO, De Hoeve Groep',
+                name: 'T. Baas',
+                title: 'CFO, Regional logistics firm',
               },
               {
                 quote:
                   'The offset credits come with a real certificate that names our company and links to the project in Uganda. That is something we can actually show customers — not just a checkbox.',
-                name: 'Sietze Dijkstra',
-                title: 'Director, Friesland Agri',
+                name: 'S. Dijkstra',
+                title: 'Director, Agricultural business',
               },
             ].map((t) => (
               <div
