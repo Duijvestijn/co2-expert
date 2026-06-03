@@ -1,1000 +1,779 @@
+import type { Metadata } from 'next'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
-import Link from 'next/link'
-import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'How It Works — CO₂ Expert',
   description:
-    'From zero data to a GHG Protocol-compliant carbon footprint report in two weeks. No consultant required. Upload your data — we calculate your Scope 1, 2 & 3 and generate a shareable report.',
+    'From zero data to a GHG Protocol-compliant carbon footprint report in two weeks. Upload your data, we calculate Scope 1, 2 & 3, and generate a shareable report — no consultant required.',
 }
 
-// ─── Shared tokens ────────────────────────────────────────────────────────────
-const ORANGE = '#F5A623'
-const DARK = '#1A1A2E'
-const BORDER = '#E5E7EB'
+// ── Design tokens (matches homepage) ──────────────────────────────────────────
+const O  = '#F5A623'   // orange
+const OL = '#FFF7ED'   // orange light bg
+const OB = '#FED7AA'   // orange border
+const D  = '#1A1A2E'   // dark text
+const G  = '#6B7280'   // grey
+const B  = '#E5E7EB'   // border
+const W  = '#FFFFFF'   // white
 
-// ─── Small reusable pieces ────────────────────────────────────────────────────
-
-function StepBadge({ n }: { n: string }) {
+function Icon({ d, size = 20, color = 'currentColor' }: { d: string; size?: number; color?: string }) {
   return (
-    <span
-      style={{
-        display: 'inline-flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        width: 48,
-        height: 48,
-        borderRadius: '50%',
-        background: ORANGE,
-        color: '#fff',
-        fontWeight: 700,
-        fontSize: 20,
-        flexShrink: 0,
-      }}
-    >
-      {n}
-    </span>
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none"
+      stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d={d}/>
+    </svg>
   )
 }
 
-function Card({ children, style }: { children: React.ReactNode; style?: React.CSSProperties }) {
+function Tick({ color = O }: { color?: string }) {
   return (
-    <div
-      style={{
-        background: '#fff',
-        border: `1px solid ${BORDER}`,
-        borderRadius: 12,
-        padding: '28px 32px',
-        ...style,
-      }}
-    >
-      {children}
-    </div>
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0, marginTop: 2 }}>
+      <path d="M5 12l4 4 10-10" stroke={color} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
   )
 }
-
-function SectionLabel({ children }: { children: React.ReactNode }) {
-  return (
-    <p
-      style={{
-        fontSize: 13,
-        fontWeight: 700,
-        letterSpacing: '0.12em',
-        textTransform: 'uppercase',
-        color: ORANGE,
-        marginBottom: 12,
-      }}
-    >
-      {children}
-    </p>
-  )
-}
-
-function SectionHeading({ children }: { children: React.ReactNode }) {
-  return (
-    <h2
-      style={{
-        fontSize: 'clamp(28px, 4vw, 40px)',
-        fontWeight: 800,
-        color: DARK,
-        lineHeight: 1.2,
-        marginBottom: 20,
-      }}
-    >
-      {children}
-    </h2>
-  )
-}
-
-function BodyText({ children, style }: { children: React.ReactNode; style?: React.CSSProperties }) {
-  return (
-    <p style={{ fontSize: 17, lineHeight: 1.7, color: '#4B5563', ...style }}>{children}</p>
-  )
-}
-
-// ─── Page ─────────────────────────────────────────────────────────────────────
 
 export default function HowItWorksPage() {
   return (
-    <>
-      <Nav />
+    <main style={{ fontFamily: "'Inter', sans-serif", color: D, background: W }}>
+      <Nav lang="en" />
 
-      <main style={{ fontFamily: 'system-ui, sans-serif' }}>
+      {/* ── HERO ─────────────────────────────────────────────────────────────── */}
+      <section style={{
+        background: W,
+        paddingTop: 132, paddingBottom: 80, paddingLeft: 24, paddingRight: 24,
+        borderBottom: `1px solid ${B}`,
+        position: 'relative', overflow: 'hidden',
+      }}>
+        {/* Decorative orange glow */}
+        <div style={{
+          position: 'absolute', top: -100, right: -100,
+          width: 480, height: 480, borderRadius: '50%',
+          background: `radial-gradient(circle, ${O}18 0%, transparent 70%)`,
+          pointerEvents: 'none',
+        }}/>
+        <div style={{
+          position: 'absolute', bottom: -80, left: -80,
+          width: 320, height: 320, borderRadius: '50%',
+          background: `radial-gradient(circle, ${O}0D 0%, transparent 70%)`,
+          pointerEvents: 'none',
+        }}/>
 
-        {/* ── 1. HERO ─────────────────────────────────────────────────────── */}
-        <section
-          style={{
-            background: 'linear-gradient(135deg, #0D2B1F 0%, #14442E 50%, #0B3324 100%)',
-            color: '#fff',
-            padding: '100px 24px 96px',
-            textAlign: 'center',
-          }}
-        >
-          <div style={{ maxWidth: 760, margin: '0 auto' }}>
-            <p
-              style={{
-                fontSize: 13,
-                fontWeight: 700,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: ORANGE,
-                marginBottom: 20,
-              }}
-            >
+        <div style={{ maxWidth: 760, margin: '0 auto', textAlign: 'center', position: 'relative' }}>
+
+          {/* Category pill */}
+          <div style={{
+            display: 'inline-flex', alignItems: 'center', gap: 8,
+            background: OL, border: `1px solid ${OB}`,
+            borderRadius: 50, padding: '6px 16px', marginBottom: 32,
+          }}>
+            <div style={{ width: 7, height: 7, borderRadius: '50%', background: O }}/>
+            <span style={{ fontSize: 12, fontWeight: 700, color: '#92400E', letterSpacing: '0.04em', textTransform: 'uppercase' }}>
               The CO₂ Expert process
-            </p>
-            <h1
-              style={{
-                fontSize: 'clamp(36px, 6vw, 64px)',
-                fontWeight: 900,
-                lineHeight: 1.1,
-                marginBottom: 24,
-              }}
-            >
-              Three steps to a verified carbon footprint
-            </h1>
-            <p style={{ fontSize: 'clamp(17px, 2vw, 20px)', lineHeight: 1.7, color: '#CBD5E1', maxWidth: 580, margin: '0 auto 48px' }}>
-              Customers and banks are increasingly asking businesses for their CO2 data. CO2 Expert gives you a complete, GHG Protocol-compliant footprint report — ready to share — in days, not months.
-            </p>
-
-            {/* Step indicators */}
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'center',
-                gap: 0,
-                flexWrap: 'wrap',
-              }}
-            >
-              {[
-                { n: '1', label: 'Measure' },
-                { n: '2', label: 'Reduce' },
-                { n: '3', label: 'Report' },
-              ].map((step, i) => (
-                <div key={step.n} style={{ display: 'flex', alignItems: 'center' }}>
-                  <div style={{ textAlign: 'center', padding: '0 20px' }}>
-                    <div
-                      style={{
-                        width: 56,
-                        height: 56,
-                        borderRadius: '50%',
-                        background: ORANGE,
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        fontWeight: 800,
-                        fontSize: 22,
-                        margin: '0 auto 8px',
-                      }}
-                    >
-                      {step.n}
-                    </div>
-                    <span style={{ fontWeight: 600, fontSize: 15 }}>{step.label}</span>
-                  </div>
-                  {i < 2 && (
-                    <div style={{ width: 60, height: 2, background: 'rgba(245,166,35,0.4)', flexShrink: 0 }} />
-                  )}
-                </div>
-              ))}
-            </div>
+            </span>
           </div>
-        </section>
 
-        {/* ── 2. STEP 1 — MEASURE ─────────────────────────────────────────── */}
-        <section style={{ background: '#F9FAFB', padding: '96px 24px' }}>
-          <div style={{ maxWidth: 1100, margin: '0 auto' }}>
-            <div
-              style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-                gap: 56,
-                alignItems: 'start',
-              }}
-            >
-              {/* Left: explanatory copy */}
-              <div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 24 }}>
-                  <StepBadge n="1" />
-                  <SectionLabel>Step one</SectionLabel>
+          <h1 style={{
+            fontSize: 'clamp(36px, 5.5vw, 60px)',
+            fontWeight: 800, lineHeight: 1.1,
+            letterSpacing: '-0.03em', margin: '0 0 24px', color: D,
+          }}>
+            From zero data to a
+            <br/>
+            <span style={{
+              background: `linear-gradient(135deg, ${O}, #E8831A)`,
+              WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+            }}>
+              verified footprint report.
+            </span>
+          </h1>
+
+          <p style={{
+            fontSize: 'clamp(16px, 2vw, 18px)', color: G,
+            lineHeight: 1.75, maxWidth: 560, margin: '0 auto 40px',
+          }}>
+            No consultant required. No months-long internal project. Upload what you have,
+            and CO₂ Expert calculates your complete Scope 1, 2 &amp; 3 emissions — ready
+            to share with any customer or bank in days.
+          </p>
+
+          <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap', marginBottom: 64 }}>
+            <a href="/contact" style={{
+              display: 'inline-flex', alignItems: 'center', gap: 8,
+              background: O, color: W, fontWeight: 700,
+              fontSize: 15, padding: '13px 26px', borderRadius: 8, textDecoration: 'none',
+              boxShadow: `0 1px 0 rgba(0,0,0,0.08), 0 4px 14px ${O}40`,
+            }}>
+              Book a free 30-min demo
+              <Icon d="M5 12h14M12 5l7 7-7 7" size={15}/>
+            </a>
+            <a href="/contact" style={{
+              display: 'inline-flex', alignItems: 'center', gap: 8,
+              background: W, color: D, fontWeight: 600,
+              fontSize: 15, padding: '13px 26px', borderRadius: 8, textDecoration: 'none',
+              border: `1.5px solid ${B}`,
+            }}>
+              View pricing
+            </a>
+          </div>
+
+          {/* Step indicators */}
+          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 0, flexWrap: 'wrap' }}>
+            {[
+              { n: '01', label: 'Measure' },
+              { n: '02', label: 'Calculate' },
+              { n: '03', label: 'Report' },
+              { n: '04', label: 'Track' },
+            ].map((step, i) => (
+              <div key={step.n} style={{ display: 'flex', alignItems: 'center' }}>
+                <div style={{ textAlign: 'center', padding: '0 16px' }}>
+                  <div style={{
+                    width: 48, height: 48, borderRadius: '50%',
+                    background: OL, border: `2px solid ${OB}`,
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    margin: '0 auto 8px',
+                  }}>
+                    <span style={{ fontSize: 13, fontWeight: 800, color: '#92400E' }}>{step.n}</span>
+                  </div>
+                  <span style={{ fontSize: 13, fontWeight: 600, color: D }}>{step.label}</span>
                 </div>
-                <SectionHeading>Measure your emissions</SectionHeading>
-                <BodyText>
-                  Before you can reduce your footprint, you need to know exactly where your emissions come from. CO₂ Expert follows the globally recognised GHG Protocol framework, breaking your emissions into three scopes.
-                </BodyText>
+                {i < 3 && (
+                  <div style={{ width: 48, height: 2, background: OB, flexShrink: 0 }}/>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-                <div style={{ marginTop: 32, display: 'flex', flexDirection: 'column', gap: 20 }}>
-                  {[
-                    {
-                      title: 'Scope 1 — Direct emissions',
-                      body: 'Emissions from sources owned or controlled by your organisation: company vehicles and fleet, on-site fuel combustion (boilers, generators), and process emissions from manufacturing or industrial activity.',
-                      color: '#EF4444',
-                    },
-                    {
-                      title: 'Scope 2 — Indirect energy emissions',
-                      body: 'Emissions associated with purchased electricity, steam, heat, or cooling that your company consumes. Even though the burning happens off-site, the demand is driven by your operations.',
-                      color: ORANGE,
-                    },
-                    {
-                      title: 'Scope 3 — Value-chain emissions',
-                      body: 'All other indirect emissions across your value chain: business travel and employee commuting, upstream supply chain (goods & services purchased), downstream product use, waste disposal, and capital goods.',
-                      color: '#10B981',
-                    },
-                  ].map((scope) => (
-                    <Card key={scope.title}>
-                      <div style={{ display: 'flex', gap: 14, alignItems: 'flex-start' }}>
-                        <div
-                          style={{
-                            width: 12,
-                            height: 12,
-                            borderRadius: '50%',
-                            background: scope.color,
-                            flexShrink: 0,
-                            marginTop: 5,
-                          }}
-                        />
-                        <div>
-                          <p style={{ fontWeight: 700, color: DARK, marginBottom: 6 }}>{scope.title}</p>
-                          <BodyText style={{ fontSize: 15, marginBottom: 0 }}>{scope.body}</BodyText>
-                        </div>
-                      </div>
-                    </Card>
-                  ))}
+      {/* ── STEP 1: MEASURE ──────────────────────────────────────────────────── */}
+      <section style={{ background: W, padding: '80px 24px', borderBottom: `1px solid ${B}` }}>
+        <div style={{ maxWidth: 1040, margin: '0 auto' }}>
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+            gap: 60,
+            alignItems: 'center',
+          }}>
+            {/* Left: text */}
+            <div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 20 }}>
+                <div style={{
+                  width: 40, height: 40, borderRadius: '50%',
+                  background: OL, border: `2px solid ${OB}`,
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                }}>
+                  <span style={{ fontSize: 13, fontWeight: 800, color: '#92400E' }}>01</span>
+                </div>
+                <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: O }}>
+                  Step one
+                </span>
+              </div>
+
+              <h2 style={{
+                fontSize: 'clamp(24px, 3.5vw, 38px)',
+                fontWeight: 800, letterSpacing: '-0.02em', marginBottom: 16, color: D,
+              }}>
+                Measure what you actually emit
+              </h2>
+
+              <p style={{ fontSize: 16, color: G, lineHeight: 1.75, marginBottom: 32 }}>
+                Upload your energy bills, fuel receipts, travel records, and purchasing data.
+                Via Excel, CSV, or your accounting software. Most businesses complete the
+                data input in a single afternoon.
+              </p>
+
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 12, marginBottom: 32 }}>
+                {[
+                  { icon: 'M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z M14 2v6h6', label: 'Excel & CSV upload', desc: 'Drop in your existing spreadsheets. Our parser auto-maps columns to emission categories.' },
+                  { icon: 'M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z', label: 'Guided manual entry', desc: 'Category-by-category forms with inline emission factors. No expertise required.' },
+                  { icon: 'M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71 M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71', label: 'Exact Online & accounting integrations', desc: 'Connect your bookkeeping to pull purchase and energy data automatically.' },
+                ].map(item => (
+                  <div key={item.label} style={{
+                    display: 'flex', gap: 14, alignItems: 'flex-start',
+                    padding: '14px 18px',
+                    background: '#FAFAFA', border: `1px solid ${B}`, borderRadius: 10,
+                  }}>
+                    <div style={{
+                      width: 36, height: 36, borderRadius: 9,
+                      background: OL, border: `1px solid ${OB}`,
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      color: O, flexShrink: 0,
+                    }}>
+                      <Icon d={item.icon} size={16}/>
+                    </div>
+                    <div>
+                      <p style={{ fontSize: 14, fontWeight: 700, color: D, marginBottom: 3 }}>{item.label}</p>
+                      <p style={{ fontSize: 13, color: G, lineHeight: 1.6 }}>{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <p style={{ fontSize: 13, color: '#9CA3AF', borderTop: `1px solid ${B}`, paddingTop: 16 }}>
+                Accepted formats: Excel (.xlsx), CSV, Exact Online, direct entry
+              </p>
+            </div>
+
+            {/* Right: measurement form mockup */}
+            <div>
+              <div style={{
+                background: W, border: `1px solid ${B}`, borderRadius: 16,
+                boxShadow: '0 8px 40px rgba(0,0,0,0.07), 0 1px 4px rgba(0,0,0,0.04)',
+                overflow: 'hidden',
+              }}>
+                {/* Browser bar */}
+                <div style={{
+                  background: '#F3F4F6', borderBottom: `1px solid ${B}`,
+                  padding: '10px 16px', display: 'flex', alignItems: 'center', gap: 8,
+                }}>
+                  <div style={{ display: 'flex', gap: 6 }}>
+                    {['#F87171','#FBBF24','#34D399'].map(c => (
+                      <div key={c} style={{ width: 10, height: 10, borderRadius: '50%', background: c }}/>
+                    ))}
+                  </div>
+                  <div style={{
+                    flex: 1, background: W, borderRadius: 6, padding: '4px 12px',
+                    fontSize: 11, color: G, border: `1px solid ${B}`, textAlign: 'center',
+                  }}>
+                    app.co2.expert / measure
+                  </div>
                 </div>
 
-                {/* Data input methods */}
-                <div style={{ marginTop: 40 }}>
-                  <p style={{ fontWeight: 700, color: DARK, marginBottom: 16, fontSize: 17 }}>
-                    Three ways to get your data in
+                <div style={{ padding: 20 }}>
+                  <p style={{ fontSize: 12, fontWeight: 700, color: D, marginBottom: 16, letterSpacing: '0.04em', textTransform: 'uppercase' }}>
+                    Data collection — 2024
                   </p>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-                    {[
-                      {
-                        icon: 'M3 3h18v18H3zM3 9h18M9 21V9',
-                        title: 'Excel / CSV upload',
-                        desc: 'Drop in your existing spreadsheets — our parser auto-detects columns and maps them to the right emission categories.',
-                      },
-                      {
-                        icon: 'M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z',
-                        title: 'Manual entry per category',
-                        desc: 'Work category by category with guided forms: fuel type, quantity, unit. Inline emission factors are applied automatically.',
-                      },
-                      {
-                        icon: 'M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71',
-                        title: 'Google / Microsoft sign-in',
-                        desc: 'Connect your Google Workspace or Microsoft 365 to pull travel data, energy bills, and procurement records directly.',
-                      },
-                    ].map((method) => (
-                      <div
-                        key={method.title}
-                        style={{
-                          display: 'flex',
-                          gap: 14,
-                          alignItems: 'flex-start',
-                          padding: '14px 18px',
-                          background: '#fff',
-                          border: `1px solid ${BORDER}`,
-                          borderRadius: 10,
-                        }}
-                      >
-                        <span style={{ flexShrink: 0 }}><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d={method.icon}/></svg></span>
-                        <div>
-                          <p style={{ fontWeight: 600, color: DARK, marginBottom: 4, fontSize: 15 }}>{method.title}</p>
-                          <p style={{ fontSize: 14, color: '#6B7280', lineHeight: 1.6 }}>{method.desc}</p>
+
+                  {/* Form fields mockup */}
+                  {[
+                    { label: 'Company vehicles — diesel (litres)', value: '18,420 L', color: '#EF4444', scope: 'Scope 1' },
+                    { label: 'Natural gas heating (m³)', value: '6,800 m³', color: '#EF4444', scope: 'Scope 1' },
+                    { label: 'Electricity consumption (kWh)', value: '42,600 kWh', color: '#3B82F6', scope: 'Scope 2' },
+                    { label: 'Business travel — flights (km)', value: '84,000 km', color: '#10B981', scope: 'Scope 3' },
+                    { label: 'Purchased goods & services', value: '€ 1,240,000', color: '#10B981', scope: 'Scope 3' },
+                  ].map(field => (
+                    <div key={field.label} style={{
+                      marginBottom: 10, padding: '10px 12px',
+                      background: '#FAFAFA', border: `1px solid ${B}`, borderRadius: 8,
+                      display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+                    }}>
+                      <div>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 2 }}>
+                          <div style={{ width: 7, height: 7, borderRadius: '50%', background: field.color, flexShrink: 0 }}/>
+                          <span style={{ fontSize: 9, fontWeight: 700, color: field.color, textTransform: 'uppercase', letterSpacing: '0.04em' }}>{field.scope}</span>
                         </div>
+                        <span style={{ fontSize: 11, color: '#374151' }}>{field.label}</span>
                       </div>
-                    ))}
+                      <span style={{ fontSize: 12, fontWeight: 700, color: D, flexShrink: 0, marginLeft: 8 }}>{field.value}</span>
+                    </div>
+                  ))}
+
+                  {/* Progress indicator */}
+                  <div style={{ marginTop: 16, padding: '12px 14px', background: OL, border: `1px solid ${OB}`, borderRadius: 8 }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 8 }}>
+                      <span style={{ fontSize: 11, fontWeight: 700, color: '#92400E' }}>Data completeness</span>
+                      <span style={{ fontSize: 11, fontWeight: 800, color: O }}>83%</span>
+                    </div>
+                    <div style={{ height: 6, background: OB, borderRadius: 4, overflow: 'hidden' }}>
+                      <div style={{ width: '83%', height: '100%', background: O, borderRadius: 4 }}/>
+                    </div>
+                    <p style={{ fontSize: 10, color: '#92400E', marginTop: 6 }}>3 categories remaining — all optional for a complete report</p>
                   </div>
                 </div>
               </div>
-
-              {/* Right: dashboard mockup */}
-              <div style={{ position: 'sticky', top: 100 }}>
-                <Card style={{ padding: 0, overflow: 'hidden', boxShadow: '0 8px 40px rgba(0,0,0,0.08)' }}>
-                  {/* Dashboard header bar */}
-                  <div
-                    style={{
-                      background: DARK,
-                      padding: '14px 24px',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: 8,
-                    }}
-                  >
-                    {['#EF4444', '#F5A623', '#10B981'].map((c) => (
-                      <div key={c} style={{ width: 10, height: 10, borderRadius: '50%', background: c }} />
-                    ))}
-                    <span style={{ color: '#94A3B8', fontSize: 13, marginLeft: 8 }}>Emissions Overview — 2024</span>
-                  </div>
-
-                  <div style={{ padding: 24 }}>
-                    {/* Total number */}
-                    <div style={{ marginBottom: 24 }}>
-                      <p style={{ fontSize: 12, color: '#9CA3AF', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 4 }}>
-                        Total CO₂e
-                      </p>
-                      <p style={{ fontSize: 36, fontWeight: 800, color: DARK, lineHeight: 1 }}>
-                        1 247 <span style={{ fontSize: 18, fontWeight: 400, color: '#9CA3AF' }}>tonnes</span>
-                      </p>
-                    </div>
-
-                    {/* Scope breakdown bars */}
-                    <div style={{ marginBottom: 28 }}>
-                      <p style={{ fontSize: 13, fontWeight: 600, color: DARK, marginBottom: 12 }}>Scope breakdown</p>
-                      {[
-                        { label: 'Scope 1', value: 312, pct: 25, color: '#EF4444' },
-                        { label: 'Scope 2', value: 498, pct: 40, color: ORANGE },
-                        { label: 'Scope 3', value: 437, pct: 35, color: '#10B981' },
-                      ].map((s) => (
-                        <div key={s.label} style={{ marginBottom: 12 }}>
-                          <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 5 }}>
-                            <span style={{ fontSize: 13, color: '#374151' }}>{s.label}</span>
-                            <span style={{ fontSize: 13, fontWeight: 600, color: DARK }}>{s.value} t</span>
-                          </div>
-                          <div style={{ background: '#F3F4F6', borderRadius: 4, height: 8 }}>
-                            <div
-                              style={{
-                                background: s.color,
-                                width: `${s.pct}%`,
-                                height: '100%',
-                                borderRadius: 4,
-                              }}
-                            />
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-
-                    {/* Donut placeholder */}
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
-                      {/* SVG donut */}
-                      <svg width={100} height={100} viewBox="0 0 100 100" style={{ flexShrink: 0 }}>
-                        <circle cx="50" cy="50" r="38" fill="none" stroke="#F3F4F6" strokeWidth="16" />
-                        {/* Scope 3 — 35% = 125.4 deg of 219.9 total arc */}
-                        <circle
-                          cx="50"
-                          cy="50"
-                          r="38"
-                          fill="none"
-                          stroke="#10B981"
-                          strokeWidth="16"
-                          strokeDasharray="83.5 155.5"
-                          strokeDashoffset="0"
-                          strokeLinecap="butt"
-                          transform="rotate(-90 50 50)"
-                        />
-                        {/* Scope 2 — 40% */}
-                        <circle
-                          cx="50"
-                          cy="50"
-                          r="38"
-                          fill="none"
-                          stroke={ORANGE}
-                          strokeWidth="16"
-                          strokeDasharray="95.3 143.7"
-                          strokeDashoffset="-83.5"
-                          strokeLinecap="butt"
-                          transform="rotate(-90 50 50)"
-                        />
-                        {/* Scope 1 — 25% */}
-                        <circle
-                          cx="50"
-                          cy="50"
-                          r="38"
-                          fill="none"
-                          stroke="#EF4444"
-                          strokeWidth="16"
-                          strokeDasharray="59.7 179.3"
-                          strokeDashoffset="-178.8"
-                          strokeLinecap="butt"
-                          transform="rotate(-90 50 50)"
-                        />
-                      </svg>
-
-                      {/* Legend */}
-                      <div style={{ display: 'flex', flexDirection: 'column', gap: 7 }}>
-                        {[
-                          { label: 'Scope 1', color: '#EF4444', pct: '25%' },
-                          { label: 'Scope 2', color: ORANGE, pct: '40%' },
-                          { label: 'Scope 3', color: '#10B981', pct: '35%' },
-                        ].map((l) => (
-                          <div key={l.label} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                            <div style={{ width: 10, height: 10, borderRadius: '50%', background: l.color, flexShrink: 0 }} />
-                            <span style={{ fontSize: 13, color: '#374151' }}>{l.label}</span>
-                            <span style={{ fontSize: 13, fontWeight: 600, color: DARK, marginLeft: 'auto' }}>{l.pct}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </Card>
-              </div>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* ── 3. STEP 2 — REDUCE ──────────────────────────────────────────── */}
-        <section style={{ background: '#fff', padding: '96px 24px' }}>
-          <div style={{ maxWidth: 1100, margin: '0 auto' }}>
-            <div
-              style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-                gap: 56,
-                alignItems: 'start',
-              }}
-            >
-              {/* Left: chart mockup */}
-              <div>
-                <Card style={{ boxShadow: '0 8px 40px rgba(0,0,0,0.07)' }}>
-                  <p style={{ fontWeight: 700, color: DARK, marginBottom: 6 }}>Year-on-year comparison</p>
-                  <p style={{ fontSize: 13, color: '#9CA3AF', marginBottom: 20 }}>Total tCO₂e per year</p>
+      {/* ── STEP 2: CALCULATE ────────────────────────────────────────────────── */}
+      <section style={{ background: '#FAFAFA', padding: '80px 24px', borderBottom: `1px solid ${B}` }}>
+        <div style={{ maxWidth: 1040, margin: '0 auto' }}>
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+            gap: 60,
+            alignItems: 'center',
+          }}>
+            {/* Left: scope breakdown chart mockup */}
+            <div style={{ order: 0 }}>
+              <div style={{
+                background: W, border: `1px solid ${B}`, borderRadius: 16,
+                boxShadow: '0 8px 40px rgba(0,0,0,0.07)',
+                overflow: 'hidden',
+              }}>
+                <div style={{ padding: '18px 20px', borderBottom: `1px solid ${B}` }}>
+                  <p style={{ fontSize: 13, fontWeight: 700, color: D }}>Emissions overview — 2024</p>
+                  <p style={{ fontSize: 11, color: G, marginTop: 2 }}>GHG Protocol — Scope 1, 2 & 3</p>
+                </div>
 
-                  {/* Bar chart mockup */}
-                  <div style={{ display: 'flex', alignItems: 'flex-end', gap: 16, height: 160, paddingBottom: 8 }}>
-                    {[
-                      { year: '2021', height: 148, tonne: 1620 },
-                      { year: '2022', height: 132, tonne: 1445 },
-                      { year: '2023', height: 108, tonne: 1180 },
-                      { year: '2024', height: 114, tonne: 1247 },
-                      { year: '2025', height: 88, tonne: 960, projected: true },
-                    ].map((bar) => (
-                      <div key={bar.year} style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6 }}>
-                        <span style={{ fontSize: 11, color: '#9CA3AF', fontWeight: 600 }}>{bar.tonne}</span>
-                        <div
-                          style={{
-                            width: '100%',
-                            height: bar.height,
-                            background: bar.projected
-                              ? `repeating-linear-gradient(45deg, ${ORANGE}, ${ORANGE} 4px, rgba(245,166,35,0.2) 4px, rgba(245,166,35,0.2) 8px)`
-                              : ORANGE,
-                            borderRadius: '6px 6px 0 0',
-                            opacity: bar.projected ? 0.85 : 1,
-                          }}
-                        />
-                        <span style={{ fontSize: 12, color: bar.projected ? ORANGE : '#374151', fontWeight: bar.projected ? 700 : 400 }}>
-                          {bar.year}{bar.projected ? '*' : ''}
-                        </span>
-                      </div>
-                    ))}
+                <div style={{ padding: '20px' }}>
+                  {/* Big number */}
+                  <div style={{ textAlign: 'center', marginBottom: 20, padding: '16px', background: '#FAFAFA', borderRadius: 10, border: `1px solid ${B}` }}>
+                    <p style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: G, marginBottom: 4 }}>
+                      Total CO₂e
+                    </p>
+                    <p style={{ fontSize: 36, fontWeight: 900, color: D, lineHeight: 1 }}>
+                      148.4
+                      <span style={{ fontSize: 16, fontWeight: 400, color: G }}> t</span>
+                    </p>
+                    <p style={{ fontSize: 11, color: G, marginTop: 4 }}>tonnes CO₂-equivalent, 2024</p>
                   </div>
 
-                  <p style={{ fontSize: 12, color: '#9CA3AF', marginTop: 8 }}>* 2025 figure is projected based on current reduction trajectory</p>
+                  {/* Scope bars */}
+                  {[
+                    { scope: 'Scope 1', label: 'Direct emissions', value: '48.2 t', pct: 33, color: '#EF4444', bg: '#FEF2F2' },
+                    { scope: 'Scope 2', label: 'Purchased energy', value: '36.8 t', pct: 25, color: '#3B82F6', bg: '#EFF6FF' },
+                    { scope: 'Scope 3', label: 'Value chain', value: '63.4 t', pct: 42, color: '#10B981', bg: '#ECFDF5' },
+                  ].map(s => (
+                    <div key={s.scope} style={{ marginBottom: 14 }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 6 }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                          <div style={{ width: 26, height: 26, borderRadius: 6, background: s.bg, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                            <div style={{ width: 8, height: 8, borderRadius: '50%', background: s.color }}/>
+                          </div>
+                          <div>
+                            <p style={{ fontSize: 12, fontWeight: 700, color: D, lineHeight: 1.2 }}>{s.scope}</p>
+                            <p style={{ fontSize: 10, color: G }}>{s.label}</p>
+                          </div>
+                        </div>
+                        <div style={{ textAlign: 'right' }}>
+                          <p style={{ fontSize: 13, fontWeight: 700, color: s.color }}>{s.value}</p>
+                          <p style={{ fontSize: 10, color: G }}>{s.pct}%</p>
+                        </div>
+                      </div>
+                      <div style={{ height: 7, background: '#F3F4F6', borderRadius: 4, overflow: 'hidden' }}>
+                        <div style={{ width: `${s.pct}%`, height: '100%', background: s.color, borderRadius: 4 }}/>
+                      </div>
+                    </div>
+                  ))}
 
-                  {/* Net-zero projection */}
-                  <div
-                    style={{
-                      marginTop: 20,
-                      padding: '14px 16px',
-                      background: '#F0FDF4',
-                      borderRadius: 8,
-                      border: '1px solid #BBF7D0',
-                    }}
-                  >
-                    <p style={{ fontSize: 13, fontWeight: 700, color: '#15803D', marginBottom: 4 }}>Net-zero trajectory</p>
-                    <p style={{ fontSize: 13, color: '#166534' }}>
-                      At the current −12 % reduction rate, your organisation is on track to reach net-zero by <strong>2036</strong>. Accelerate to −18 % to hit the Science Based Targets 1.5 °C pathway by 2030.
+                  {/* Emission factor note */}
+                  <div style={{
+                    marginTop: 16, padding: '10px 12px',
+                    background: OL, border: `1px solid ${OB}`, borderRadius: 8,
+                    display: 'flex', gap: 8, alignItems: 'flex-start',
+                  }}>
+                    <div style={{ color: O, flexShrink: 0, marginTop: 1 }}>
+                      <Icon d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" size={14}/>
+                    </div>
+                    <p style={{ fontSize: 11, color: '#92400E', lineHeight: 1.5 }}>
+                      GHG Protocol emission factors applied automatically. Full methodology in your report.
                     </p>
                   </div>
-                </Card>
-
-                {/* Per-location breakdown */}
-                <Card style={{ marginTop: 20 }}>
-                  <p style={{ fontWeight: 700, color: DARK, marginBottom: 16 }}>Per-location breakdown</p>
-                  {[
-                    { location: 'HQ — Amsterdam', value: 512, pct: 41 },
-                    { location: 'Warehouse — Rotterdam', value: 389, pct: 31 },
-                    { location: 'Office — Berlin', value: 224, pct: 18 },
-                    { location: 'Remote workers', value: 122, pct: 10 },
-                  ].map((loc) => (
-                    <div key={loc.location} style={{ marginBottom: 14 }}>
-                      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 5 }}>
-                        <span style={{ fontSize: 13, color: '#374151' }}>{loc.location}</span>
-                        <span style={{ fontSize: 13, fontWeight: 600, color: DARK }}>{loc.value} t</span>
-                      </div>
-                      <div style={{ background: '#F3F4F6', borderRadius: 4, height: 6 }}>
-                        <div style={{ background: ORANGE, width: `${loc.pct}%`, height: '100%', borderRadius: 4 }} />
-                      </div>
-                    </div>
-                  ))}
-                </Card>
-              </div>
-
-              {/* Right: copy */}
-              <div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 24 }}>
-                  <StepBadge n="2" />
-                  <SectionLabel>Step two</SectionLabel>
-                </div>
-                <SectionHeading>Reduce with science-based targets</SectionHeading>
-                <BodyText>
-                  Measuring is only the start. CO₂ Expert turns your emissions data into an actionable roadmap, aligned with the Science Based Targets initiative (SBTi) and the Paris Agreement&apos;s 1.5 °C pathway.
-                </BodyText>
-
-                <div style={{ marginTop: 32, display: 'flex', flexDirection: 'column', gap: 16 }}>
-                  {[
-                    {
-                      title: 'Science-based targets (SBTi)',
-                      body: 'We calculate your required annual reduction rate based on your industry sector and base year. Targets are validated against SBTi methodology, giving your stakeholders credible, independently verified goals.',
-                    },
-                    {
-                      title: 'Year-on-year comparison',
-                      body: 'Track progress across every reporting period. Automated comparison reports highlight which categories improved, which worsened, and what drove the change — so you can act quickly.',
-                    },
-                    {
-                      title: 'Per-location breakdown',
-                      body: 'Drill down by office, warehouse, or country. Identify the highest-emitting locations and prioritise intervention where it has the greatest impact.',
-                    },
-                    {
-                      title: 'Path-to-net-zero projection',
-                      body: 'A dynamic model projects your future emissions under different scenarios — energy transition, fleet electrification, supplier switching — so you can stress-test your strategy before committing.',
-                    },
-                  ].map((item) => (
-                    <div
-                      key={item.title}
-                      style={{
-                        paddingLeft: 18,
-                        borderLeft: `3px solid ${ORANGE}`,
-                      }}
-                    >
-                      <p style={{ fontWeight: 700, color: DARK, marginBottom: 6 }}>{item.title}</p>
-                      <BodyText style={{ fontSize: 15 }}>{item.body}</BodyText>
-                    </div>
-                  ))}
                 </div>
               </div>
             </div>
+
+            {/* Right: text */}
+            <div style={{ order: 1 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 20 }}>
+                <div style={{
+                  width: 40, height: 40, borderRadius: '50%',
+                  background: OL, border: `2px solid ${OB}`,
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                }}>
+                  <span style={{ fontSize: 13, fontWeight: 800, color: '#92400E' }}>02</span>
+                </div>
+                <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: O }}>
+                  Step two
+                </span>
+              </div>
+
+              <h2 style={{
+                fontSize: 'clamp(24px, 3.5vw, 38px)',
+                fontWeight: 800, letterSpacing: '-0.02em', marginBottom: 16, color: D,
+              }}>
+                We calculate your complete footprint
+              </h2>
+
+              <p style={{ fontSize: 16, color: G, lineHeight: 1.75, marginBottom: 32 }}>
+                GHG Protocol emission factors are applied automatically across all categories.
+                The result: a complete, explainable Scope 1, 2 &amp; 3 footprint — per category,
+                per location, per year.
+              </p>
+
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+                {[
+                  { title: 'GHG Protocol emission factors', body: 'Updated annually from authoritative national registries and IPCC AR6. Applied automatically — you never need to look up a conversion factor.' },
+                  { title: 'Complete Scope 1, 2 & 3 coverage', body: 'Every emission source covered: from your gas heating to your supply chain purchases. The exact breakdown your customers are asking for.' },
+                  { title: 'Per-category transparency', body: 'Every number is traceable to its source data point. No black boxes. Auditors and customers can follow the calculation.' },
+                  { title: 'Multi-location & multi-entity', body: 'Multiple offices, warehouses, or subsidiaries handled in a single measurement. Consolidate or report separately — your choice.' },
+                ].map(item => (
+                  <div key={item.title} style={{
+                    paddingLeft: 16, borderLeft: `3px solid ${O}`,
+                  }}>
+                    <p style={{ fontSize: 14, fontWeight: 700, color: D, marginBottom: 4 }}>{item.title}</p>
+                    <p style={{ fontSize: 14, color: G, lineHeight: 1.65 }}>{item.body}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* ── 4. STEP 3 — REPORT ──────────────────────────────────────────── */}
-        <section style={{ background: '#F9FAFB', padding: '96px 24px' }}>
-          <div style={{ maxWidth: 1100, margin: '0 auto' }}>
-            <div
-              style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-                gap: 56,
-                alignItems: 'start',
-              }}
-            >
-              {/* Left: copy */}
-              <div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 24 }}>
-                  <StepBadge n="3" />
-                  <SectionLabel>Step three</SectionLabel>
+      {/* ── STEP 3: REPORT ───────────────────────────────────────────────────── */}
+      <section style={{ background: W, padding: '80px 24px', borderBottom: `1px solid ${B}` }}>
+        <div style={{ maxWidth: 1040, margin: '0 auto' }}>
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+            gap: 60,
+            alignItems: 'center',
+          }}>
+            {/* Left: text */}
+            <div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 20 }}>
+                <div style={{
+                  width: 40, height: 40, borderRadius: '50%',
+                  background: OL, border: `2px solid ${OB}`,
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                }}>
+                  <span style={{ fontSize: 13, fontWeight: 800, color: '#92400E' }}>03</span>
                 </div>
-                <SectionHeading>Report, share &amp; track progress</SectionHeading>
-                <BodyText>
-                  Once your footprint is calculated, CO₂ Expert generates a GHG Protocol-compliant report you can share with customers, banks, and auditors immediately — and track year on year.
-                </BodyText>
+                <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: O }}>
+                  Step three
+                </span>
+              </div>
 
-                <div style={{ marginTop: 28 }}>
-                  <p style={{ fontWeight: 700, color: DARK, marginBottom: 12 }}>What your report includes</p>
-                  <BodyText>
-                    A complete Scope 1, 2 &amp; 3 breakdown with methodology notes, data sources, and emission factors. Exportable as a branded PDF, shareable via a secure link, and downloadable in machine-readable format for CSRD reporting.
-                  </BodyText>
-                </div>
+              <h2 style={{
+                fontSize: 'clamp(24px, 3.5vw, 38px)',
+                fontWeight: 800, letterSpacing: '-0.02em', marginBottom: 16, color: D,
+              }}>
+                A shareable report. Ready in days.
+              </h2>
 
-                <div
-                  style={{
-                    marginTop: 28,
-                    padding: '20px 24px',
-                    background: '#FFF7ED',
-                    border: `1px solid #FED7AA`,
-                    borderRadius: 10,
-                  }}
-                >
-                  <p style={{ fontWeight: 700, color: '#92400E', marginBottom: 8 }}>
-                    Built for stakeholder transparency
-                  </p>
-                  <ul style={{ paddingLeft: 18, margin: 0 }}>
+              <p style={{ fontSize: 16, color: G, lineHeight: 1.75, marginBottom: 28 }}>
+                Once your footprint is calculated, CO₂ Expert generates a GHG Protocol-compliant
+                report you can send to any customer, bank, or procurement team immediately.
+              </p>
+
+              <div style={{ marginBottom: 28 }}>
+                <div style={{
+                  background: OL, border: `1px solid ${OB}`,
+                  borderRadius: 10, padding: '16px 20px',
+                }}>
+                  <p style={{ fontSize: 13, fontWeight: 700, color: '#92400E', marginBottom: 10 }}>What your report includes</p>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                     {[
-                      'Customer-ready PDF — answer procurement questionnaires in one click.',
-                      'Audit trail — every data point is traceable to its source.',
-                      'Year-on-year dashboard — track your reduction progress automatically.',
-                      'CSRD-ready export — structured data for regulatory submissions.',
-                    ].map((point) => (
-                      <li key={point} style={{ fontSize: 15, color: '#78350F', lineHeight: 1.7, marginBottom: 4 }}>
-                        {point}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Process steps */}
-                <div style={{ marginTop: 32 }}>
-                  <p style={{ fontWeight: 700, color: DARK, marginBottom: 16 }}>From calculation to shareable report in three steps</p>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: 0 }}>
-                    {[
-                      { n: 'A', label: 'Review your footprint', desc: 'Our climate experts validate your data and flag any anomalies before the report is finalised.' },
-                      { n: 'B', label: 'Generate your report', desc: 'One click produces a branded, GHG Protocol-compliant PDF — ready to share with any stakeholder.' },
-                      { n: 'C', label: 'Track year on year', desc: 'Your dashboard updates every reporting period so you can monitor progress toward your reduction targets.' },
-                    ].map((s, i) => (
-                      <div key={s.n} style={{ display: 'flex', gap: 16, position: 'relative' }}>
-                        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                          <div
-                            style={{
-                              width: 36,
-                              height: 36,
-                              borderRadius: '50%',
-                              background: DARK,
-                              color: '#fff',
-                              display: 'flex',
-                              alignItems: 'center',
-                              justifyContent: 'center',
-                              fontWeight: 700,
-                              fontSize: 14,
-                              flexShrink: 0,
-                              zIndex: 1,
-                            }}
-                          >
-                            {s.n}
-                          </div>
-                          {i < 2 && (
-                            <div style={{ width: 2, flex: 1, background: BORDER, minHeight: 24 }} />
-                          )}
-                        </div>
-                        <div style={{ paddingBottom: 24 }}>
-                          <p style={{ fontWeight: 700, color: DARK, marginBottom: 4 }}>{s.label}</p>
-                          <p style={{ fontSize: 14, color: '#6B7280', lineHeight: 1.6 }}>{s.desc}</p>
-                        </div>
+                      'Complete Scope 1, 2 & 3 breakdown',
+                      'Methodology notes and emission factors used',
+                      'Branded PDF ready to share with customers',
+                      'Machine-readable export for CSRD submissions',
+                      'Secure share link for procurement portals',
+                      'Audit trail — every figure traceable to source data',
+                    ].map(point => (
+                      <div key={point} style={{ display: 'flex', alignItems: 'flex-start', gap: 8 }}>
+                        <Tick color={O}/>
+                        <span style={{ fontSize: 13, color: '#78350F', lineHeight: 1.5 }}>{point}</span>
                       </div>
                     ))}
                   </div>
                 </div>
               </div>
 
-              {/* Right: report mockup */}
-              <div>
-                <Card
-                  style={{
-                    boxShadow: '0 12px 48px rgba(0,0,0,0.12)',
-                    position: 'relative',
-                    overflow: 'hidden',
-                  }}
-                >
-                  {/* Top stripe */}
-                  <div
-                    style={{
-                      position: 'absolute',
-                      top: 0,
-                      left: 0,
-                      right: 0,
-                      height: 6,
-                      background: `linear-gradient(90deg, #14442E, ${ORANGE})`,
-                    }}
-                  />
+              <p style={{ fontSize: 13, color: '#9CA3AF', borderTop: `1px solid ${B}`, paddingTop: 16 }}>
+                Output formats: branded PDF, Excel export, CSRD-ready XML
+              </p>
+            </div>
 
-                  <div style={{ paddingTop: 12 }}>
-                    {/* Header */}
-                    <div style={{ textAlign: 'center', borderBottom: `1px solid ${BORDER}`, paddingBottom: 20, marginBottom: 20 }}>
-                      <p style={{ fontSize: 11, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#9CA3AF', marginBottom: 6 }}>
-                        GHG Protocol Carbon Footprint Report
-                      </p>
-                      <p style={{ fontSize: 22, fontWeight: 800, color: DARK }}>CO₂ Expert</p>
-                      <p style={{ fontSize: 12, color: '#6B7280', marginTop: 4 }}>Scope 1, 2 &amp; 3 — Reporting year 2024</p>
-                    </div>
+            {/* Right: report card mockup */}
+            <div>
+              <div style={{
+                background: W, border: `1px solid ${B}`, borderRadius: 16,
+                boxShadow: '0 12px 48px rgba(0,0,0,0.10)',
+                overflow: 'hidden',
+              }}>
+                {/* Top accent bar */}
+                <div style={{
+                  height: 5,
+                  background: `linear-gradient(90deg, ${O}, #E8831A)`,
+                }}/>
 
-                    {/* Body */}
-                    <div style={{ textAlign: 'center', marginBottom: 24 }}>
-                      <p style={{ fontSize: 14, color: '#6B7280', marginBottom: 4 }}>Prepared for</p>
-                      <p style={{ fontSize: 20, fontWeight: 800, color: DARK, marginBottom: 4 }}>Acme BV</p>
-                      <p style={{ fontSize: 14, color: '#6B7280', marginBottom: 16 }}>Total measured carbon footprint</p>
-                      <p style={{ fontSize: 28, fontWeight: 900, color: '#14442E' }}>1 247 tCO₂e</p>
-                    </div>
-
-                    {/* Key figures */}
-                    <div
-                      style={{
-                        display: 'grid',
-                        gridTemplateColumns: '1fr 1fr 1fr',
-                        gap: 1,
-                        background: BORDER,
-                        border: `1px solid ${BORDER}`,
-                        borderRadius: 8,
-                        overflow: 'hidden',
-                        marginBottom: 20,
-                      }}
-                    >
-                      {[
-                        { label: 'Scope 1', value: '312 tCO₂e' },
-                        { label: 'Scope 2', value: '498 tCO₂e' },
-                        { label: 'Scope 3', value: '437 tCO₂e' },
-                      ].map((fig) => (
-                        <div key={fig.label} style={{ background: '#fff', padding: '12px 10px', textAlign: 'center' }}>
-                          <p style={{ fontSize: 11, color: '#9CA3AF', marginBottom: 4 }}>{fig.label}</p>
-                          <p style={{ fontSize: 13, fontWeight: 700, color: DARK }}>{fig.value}</p>
-                        </div>
-                      ))}
-                    </div>
-
-                    {/* Status */}
-                    <div
-                      style={{
-                        background: '#F0FDF4',
-                        border: '1px solid #BBF7D0',
-                        borderRadius: 8,
-                        padding: '12px 16px',
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                        alignItems: 'center',
-                        marginBottom: 20,
-                      }}
-                    >
-                      <div>
-                        <p style={{ fontSize: 11, color: '#9CA3AF', marginBottom: 2 }}>Standard</p>
-                        <p style={{ fontSize: 13, fontWeight: 700, color: '#166534', fontFamily: 'monospace' }}>GHG Protocol Corporate Standard</p>
-                      </div>
-                      <div
-                        style={{
-                          background: '#16A34A',
-                          color: '#fff',
-                          fontSize: 11,
-                          fontWeight: 700,
-                          padding: '4px 10px',
-                          borderRadius: 20,
-                        }}
-                      >
-                        VERIFIED
-                      </div>
-                    </div>
-
-                    {/* Footer */}
-                    <div style={{ textAlign: 'center' }}>
-                      <div
-                        style={{
-                          display: 'inline-flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          width: 64,
-                          height: 64,
-                          borderRadius: '50%',
-                          border: `3px solid ${ORANGE}`,
-                          color: ORANGE,
-                          fontSize: 28,
-                          marginBottom: 8,
-                        }}
-                      >
-                        <svg width='28' height='28' viewBox='0 0 24 24' fill='none'><circle cx='12' cy='12' r='11' stroke='#059669' strokeWidth='1.5'/><path d='M7 12l3.5 3.5 6.5-7' stroke='#059669' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round'/></svg>
-                      </div>
-                      <p style={{ fontSize: 11, color: '#9CA3AF' }}>Report generated {new Date(2025, 1, 14).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
-                    </div>
+                <div style={{ padding: '24px' }}>
+                  {/* Report header */}
+                  <div style={{ textAlign: 'center', marginBottom: 20, paddingBottom: 20, borderBottom: `1px solid ${B}` }}>
+                    <p style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: G, marginBottom: 6 }}>
+                      GHG Protocol Carbon Footprint Report
+                    </p>
+                    <p style={{ fontSize: 20, fontWeight: 800, color: D }}>CO₂ Expert</p>
+                    <p style={{ fontSize: 12, color: G, marginTop: 3 }}>Scope 1, 2 &amp; 3 — Reporting year 2024</p>
                   </div>
-                </Card>
-              </div>
-            </div>
-          </div>
-        </section>
 
-        {/* ── 5. TIMELINE ─────────────────────────────────────────────────── */}
-        <section style={{ background: DARK, padding: '96px 24px', color: '#fff' }}>
-          <div style={{ maxWidth: 900, margin: '0 auto', textAlign: 'center' }}>
-            <SectionLabel>Speed</SectionLabel>
-            <h2
-              style={{
-                fontSize: 'clamp(28px, 4vw, 40px)',
-                fontWeight: 800,
-                color: '#fff',
-                lineHeight: 1.2,
-                marginBottom: 16,
-              }}
-            >
-              From signup to verified report in 2 weeks
-            </h2>
-            <p style={{ fontSize: 17, color: '#94A3B8', maxWidth: 560, margin: '0 auto 64px' }}>
-              Our guided onboarding and pre-built emission factors mean most organisations complete their first footprint in days, not months.
-            </p>
-
-            {/* Timeline */}
-            <div
-              style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
-                gap: 0,
-                position: 'relative',
-              }}
-            >
-              {[
-                {
-                  period: 'Day 1',
-                  title: 'Account setup',
-                  desc: 'Create your organisation profile, invite team members, configure reporting boundaries.',
-                  icon: 'M5 12h14M12 5l7 7-7 7',
-                },
-                {
-                  period: 'Week 1',
-                  title: 'Data input & calculation',
-                  desc: 'Upload existing data or enter manually. Automatic Scope 1/2/3 calculation with audit trail.',
-                  icon: 'M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3',
-                },
-                {
-                  period: 'Week 2',
-                  title: 'Review & validate',
-                  desc: 'Our climate experts review your footprint. You receive a quality-assurance report.',
-                  icon: 'M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0',
-                },
-                {
-                  period: 'Completion',
-                  title: 'Report delivered',
-                  desc: 'Receive your GHG Protocol-compliant footprint report — ready to share with customers, banks, and auditors.',
-                  icon: 'M8.21 13.89L7 23l5-3 5 3-1.21-9.12M22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24z',
-                },
-              ].map((milestone, i) => (
-                <div
-                  key={milestone.period}
-                  style={{
-                    padding: '32px 24px',
-                    borderTop: `3px solid ${i === 0 ? ORANGE : 'rgba(245,166,35,0.3)'}`,
-                    textAlign: 'left',
-                    position: 'relative',
-                  }}
-                >
-                  <span style={{ display: 'block', marginBottom: 12 }}><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d={milestone.icon}/></svg></span>
-                  <p
-                    style={{
-                      fontSize: 11,
-                      letterSpacing: '0.12em',
-                      textTransform: 'uppercase',
-                      color: ORANGE,
-                      fontWeight: 700,
-                      marginBottom: 6,
-                    }}
-                  >
-                    {milestone.period}
-                  </p>
-                  <p style={{ fontWeight: 700, fontSize: 17, marginBottom: 10, color: '#fff' }}>{milestone.title}</p>
-                  <p style={{ fontSize: 14, color: '#94A3B8', lineHeight: 1.65 }}>{milestone.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ── 6. STANDARDS ────────────────────────────────────────────────── */}
-        <section style={{ background: '#fff', padding: '96px 24px' }}>
-          <div style={{ maxWidth: 1100, margin: '0 auto' }}>
-            <div style={{ textAlign: 'center', marginBottom: 56 }}>
-              <SectionLabel>Built on international standards</SectionLabel>
-              <SectionHeading>Recognised globally, trusted by auditors</SectionHeading>
-              <BodyText style={{ maxWidth: 600, margin: '0 auto' }}>
-                CO₂ Expert is designed from the ground up to comply with the leading international frameworks, so your footprint report holds up to scrutiny — from investors, regulators, and the public.
-              </BodyText>
-            </div>
-
-            <div
-              style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
-                gap: 24,
-              }}
-            >
-              {[
-                {
-                  acronym: 'GHG Protocol',
-                  full: 'Greenhouse Gas Protocol',
-                  body: 'The world\'s most widely used accounting standard for greenhouse gas emissions. Defines Scope 1, 2, and 3 boundaries and calculation methodologies. Required by most ESG reporting frameworks.',
-                  badge: '#2563EB',
-                },
-                {
-                  acronym: 'ISO 14064',
-                  full: 'International Organization for Standardization',
-                  body: 'The international standard for GHG inventories and verification. ISO 14064-1 covers organisational reporting; ISO 14064-3 covers third-party verification. Widely accepted by regulators and rating agencies.',
-                  badge: '#7C3AED',
-                },
-                {
-                  acronym: 'Verra VCS',
-                  full: 'Verified Carbon Standard',
-                  body: 'The largest voluntary carbon credit certification programme. VCS-verified projects are audited by independent third parties and registered on Verra\'s public registry. Prevents double-counting through serial-number retirement.',
-                  badge: '#059669',
-                },
-                {
-                  acronym: 'Gold Standard',
-                  full: 'Gold Standard for the Global Goals',
-                  body: 'Founded by WWF and other NGOs, Gold Standard certifies projects that deliver the highest levels of environmental integrity and sustainable development co-benefits — biodiversity, clean water, and community livelihoods.',
-                  badge: ORANGE,
-                },
-              ].map((standard) => (
-                <Card key={standard.acronym} style={{ display: 'flex', flexDirection: 'column', gap: 0 }}>
-                  <div
-                    style={{
+                  {/* Company + total */}
+                  <div style={{ textAlign: 'center', marginBottom: 20 }}>
+                    <p style={{ fontSize: 13, color: G, marginBottom: 2 }}>Prepared for</p>
+                    <p style={{ fontSize: 18, fontWeight: 800, color: D, marginBottom: 8 }}>Acme Manufacturing BV</p>
+                    <div style={{
                       display: 'inline-block',
-                      background: standard.badge,
-                      color: '#fff',
-                      fontSize: 12,
-                      fontWeight: 800,
-                      padding: '4px 12px',
-                      borderRadius: 20,
-                      marginBottom: 16,
-                      alignSelf: 'flex-start',
-                    }}
-                  >
-                    {standard.acronym}
+                      background: OL, border: `1px solid ${OB}`,
+                      borderRadius: 10, padding: '10px 24px',
+                    }}>
+                      <p style={{ fontSize: 28, fontWeight: 900, color: D, lineHeight: 1 }}>
+                        148.4
+                        <span style={{ fontSize: 14, fontWeight: 600, color: G }}> tCO₂e</span>
+                      </p>
+                      <p style={{ fontSize: 11, color: '#92400E', marginTop: 2 }}>Total measured footprint</p>
+                    </div>
                   </div>
-                  <p style={{ fontSize: 13, color: '#9CA3AF', marginBottom: 8 }}>{standard.full}</p>
-                  <BodyText style={{ fontSize: 15 }}>{standard.body}</BodyText>
-                </Card>
-              ))}
+
+                  {/* Scope grid */}
+                  <div style={{
+                    display: 'grid', gridTemplateColumns: '1fr 1fr 1fr',
+                    gap: 8, marginBottom: 16,
+                  }}>
+                    {[
+                      { scope: 'Scope 1', value: '48.2 t', color: '#EF4444', bg: '#FEF2F2' },
+                      { scope: 'Scope 2', value: '36.8 t', color: '#3B82F6', bg: '#EFF6FF' },
+                      { scope: 'Scope 3', value: '63.4 t', color: '#10B981', bg: '#ECFDF5' },
+                    ].map(s => (
+                      <div key={s.scope} style={{
+                        background: s.bg, borderRadius: 8,
+                        padding: '10px 8px', textAlign: 'center',
+                      }}>
+                        <p style={{ fontSize: 10, fontWeight: 700, color: s.color, marginBottom: 3 }}>{s.scope}</p>
+                        <p style={{ fontSize: 14, fontWeight: 800, color: s.color }}>{s.value}</p>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Standard badge */}
+                  <div style={{
+                    display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+                    padding: '10px 14px',
+                    background: '#F0FDF4', border: '1px solid #BBF7D0', borderRadius: 8,
+                    marginBottom: 16,
+                  }}>
+                    <div>
+                      <p style={{ fontSize: 10, color: G, marginBottom: 2 }}>Standard</p>
+                      <p style={{ fontSize: 12, fontWeight: 700, color: '#166534' }}>GHG Protocol Corporate Standard</p>
+                    </div>
+                    <div style={{
+                      background: '#16A34A', color: W,
+                      fontSize: 10, fontWeight: 800,
+                      padding: '4px 10px', borderRadius: 20, letterSpacing: '0.06em',
+                    }}>
+                      VERIFIED
+                    </div>
+                  </div>
+
+                  {/* Actions */}
+                  <div style={{ display: 'flex', gap: 8 }}>
+                    <div style={{
+                      flex: 1, padding: '9px 12px', textAlign: 'center',
+                      background: O, borderRadius: 7,
+                      fontSize: 12, fontWeight: 700, color: W,
+                    }}>
+                      Download PDF
+                    </div>
+                    <div style={{
+                      flex: 1, padding: '9px 12px', textAlign: 'center',
+                      background: W, border: `1.5px solid ${B}`, borderRadius: 7,
+                      fontSize: 12, fontWeight: 600, color: D,
+                    }}>
+                      Copy share link
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* ── 7. CTA ──────────────────────────────────────────────────────── */}
-        <section
-          style={{
-            background: 'linear-gradient(135deg, #0D2B1F 0%, #14442E 100%)',
-            padding: '96px 24px',
-            textAlign: 'center',
-            color: '#fff',
-          }}
-        >
-          <div style={{ maxWidth: 640, margin: '0 auto' }}>
-            <p
-              style={{
-                fontSize: 13,
-                fontWeight: 700,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: ORANGE,
-                marginBottom: 20,
-              }}
-            >
-              Get started today
-            </p>
-            <h2
-              style={{
-                fontSize: 'clamp(28px, 4vw, 44px)',
-                fontWeight: 800,
-                lineHeight: 1.2,
-                marginBottom: 20,
-              }}
-            >
-              Ready to measure your carbon footprint?
+      {/* ── STEP 4: TRACK ────────────────────────────────────────────────────── */}
+      <section style={{ background: '#FFFBF5', padding: '80px 24px', borderBottom: `1px solid ${OB}` }}>
+        <div style={{ maxWidth: 1040, margin: '0 auto' }}>
+          <div style={{ textAlign: 'center', marginBottom: 56 }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12, marginBottom: 16 }}>
+              <div style={{
+                width: 40, height: 40, borderRadius: '50%',
+                background: OL, border: `2px solid ${OB}`,
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+              }}>
+                <span style={{ fontSize: 13, fontWeight: 800, color: '#92400E' }}>04</span>
+              </div>
+              <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: O }}>
+                Step four
+              </span>
+            </div>
+            <h2 style={{ fontSize: 'clamp(24px, 3.5vw, 38px)', fontWeight: 800, letterSpacing: '-0.02em', marginBottom: 12, color: D }}>
+              Track progress year on year
             </h2>
-            <p style={{ fontSize: 18, color: '#CBD5E1', lineHeight: 1.7, marginBottom: 40 }}>
-              We show you exactly what your footprint looks like before your customer asks.
+            <p style={{ fontSize: 16, color: G, maxWidth: 520, margin: '0 auto', lineHeight: 1.7 }}>
+              Return next year with updated data. See what changed, set targets, and show
+              measurable improvement — what customers are increasingly asking for.
             </p>
-            <div style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap' }}>
-              <Link
-                href="/contact"
-                style={{
-                  display: 'inline-block',
-                  background: ORANGE,
-                  color: '#fff',
-                  fontWeight: 700,
-                  fontSize: 16,
-                  padding: '16px 36px',
-                  borderRadius: 8,
-                  textDecoration: 'none',
-                  letterSpacing: '0.02em',
-                }}
-              >
-                Book a free 30-minute call
-              </Link>
-              <Link
-                href="/pricing"
-                style={{
-                  display: 'inline-block',
-                  background: 'transparent',
-                  color: '#fff',
-                  fontWeight: 600,
-                  fontSize: 16,
-                  padding: '16px 36px',
-                  borderRadius: 8,
-                  textDecoration: 'none',
-                  border: '2px solid rgba(255,255,255,0.3)',
-                  letterSpacing: '0.02em',
-                }}
-              >
-                View pricing
-              </Link>
+          </div>
+
+          {/* Year comparison visual */}
+          <div style={{
+            background: W, border: `1px solid ${B}`, borderRadius: 16,
+            boxShadow: '0 4px 24px rgba(0,0,0,0.06)', overflow: 'hidden',
+            maxWidth: 780, margin: '0 auto',
+          }}>
+            <div style={{ padding: '20px 24px', borderBottom: `1px solid ${B}`, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <div>
+                <p style={{ fontSize: 13, fontWeight: 700, color: D }}>Year-on-year comparison</p>
+                <p style={{ fontSize: 11, color: G, marginTop: 2 }}>Total tCO₂e per reporting year</p>
+              </div>
+              <div style={{
+                background: '#ECFDF5', border: '1px solid #BBF7D0',
+                borderRadius: 20, padding: '4px 12px',
+                fontSize: 11, fontWeight: 700, color: '#16A34A',
+              }}>
+                -21% since 2022
+              </div>
+            </div>
+
+            <div style={{ padding: '24px' }}>
+              {/* Bar chart */}
+              <div style={{ display: 'flex', alignItems: 'flex-end', gap: 14, height: 140, marginBottom: 12 }}>
+                {[
+                  { year: '2021', value: 188, pct: 100, label: '188 t' },
+                  { year: '2022', value: 172, pct: 92, label: '172 t' },
+                  { year: '2023', value: 159, pct: 85, label: '159 t' },
+                  { year: '2024', value: 148, pct: 79, label: '148 t', current: true },
+                  { year: '2025', value: 130, pct: 69, label: '~130 t', projected: true },
+                ].map((bar, i) => (
+                  <div key={bar.year} style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4 }}>
+                    <span style={{ fontSize: 10, color: bar.current ? D : G, fontWeight: bar.current ? 700 : 400 }}>{bar.label}</span>
+                    <div style={{
+                      width: '100%',
+                      height: bar.pct * 1.3,
+                      background: bar.projected
+                        ? `repeating-linear-gradient(45deg, ${O}, ${O} 3px, ${OL} 3px, ${OL} 7px)`
+                        : bar.current
+                          ? O
+                          : OB,
+                      borderRadius: '6px 6px 0 0',
+                      border: bar.current ? `1.5px solid #E8831A` : `1px solid ${OB}`,
+                    }}/>
+                    <span style={{
+                      fontSize: 11, fontWeight: bar.current ? 700 : 400,
+                      color: bar.projected ? O : bar.current ? D : G,
+                    }}>
+                      {bar.year}{bar.projected ? '*' : ''}
+                    </span>
+                  </div>
+                ))}
+              </div>
+
+              <p style={{ fontSize: 11, color: '#9CA3AF', marginBottom: 20 }}>
+                * 2025 figure projected based on current reduction trajectory
+              </p>
+
+              {/* Net-zero callout */}
+              <div style={{
+                background: OL, border: `1px solid ${OB}`,
+                borderRadius: 10, padding: '14px 18px',
+                display: 'flex', gap: 12, alignItems: 'flex-start',
+              }}>
+                <div style={{ color: O, flexShrink: 0, marginTop: 2 }}>
+                  <Icon d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" size={18}/>
+                </div>
+                <div>
+                  <p style={{ fontSize: 13, fontWeight: 700, color: '#92400E', marginBottom: 3 }}>On track for net-zero</p>
+                  <p style={{ fontSize: 13, color: '#78350F', lineHeight: 1.55 }}>
+                    At the current -12% annual reduction rate, your organisation reaches net-zero by <strong>2036</strong>.
+                    Accelerate to -18% to align with the Science Based Targets 1.5&deg;C pathway by 2030.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-      </main>
+      {/* ── STANDARDS ────────────────────────────────────────────────────────── */}
+      <section style={{ background: W, padding: '80px 24px', borderBottom: `1px solid ${B}` }}>
+        <div style={{ maxWidth: 940, margin: '0 auto' }}>
+          <div style={{ textAlign: 'center', marginBottom: 48 }}>
+            <p style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: O, marginBottom: 14 }}>
+              Built on international standards
+            </p>
+            <h2 style={{ fontSize: 'clamp(22px, 3vw, 36px)', fontWeight: 800, letterSpacing: '-0.02em', color: D, marginBottom: 12 }}>
+              Recognised globally. Trusted by auditors.
+            </h2>
+            <p style={{ fontSize: 16, color: G, maxWidth: 500, margin: '0 auto', lineHeight: 1.7 }}>
+              Your report is built on the frameworks your customers, banks, and regulators
+              already accept — no translation layer needed.
+            </p>
+          </div>
 
-      <Footer />
-    </>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 16 }}>
+            {[
+              { name: 'GHG Protocol',  sub: 'Corporate Standard',          color: '#065F46', bg: '#ECFDF5', border: '#A7F3D0', body: 'The global gold standard for measuring and reporting corporate greenhouse gas emissions. Defines Scope 1, 2 & 3 boundaries. Required by most ESG frameworks.' },
+              { name: 'ISO 14064',     sub: 'GHG Inventories & Verification', color: '#1D4ED8', bg: '#EFF6FF', border: '#BFDBFE', body: 'International standard for GHG accounting and third-party verification. Accepted by regulators and rating agencies worldwide.' },
+              { name: 'CSRD / ESRS',  sub: 'EU Sustainability Reporting',   color: '#6D28D9', bg: '#F5F3FF', border: '#DDD6FE', body: 'EU Corporate Sustainability Reporting Directive. Mandatory for companies with 1,000+ employees from 2025. Your supply chain must comply.' },
+              { name: 'VSME Standard', sub: 'SME Voluntary Standard',        color: '#92400E', bg: OL,       border: OB,        body: 'The EFRAG voluntary standard specifically designed for SMBs. Proportionate, practical, and accepted by large companies for supply-chain reporting.' },
+            ].map(s => (
+              <div key={s.name} style={{
+                background: W, borderRadius: 12, border: `1px solid ${B}`,
+                padding: '20px',
+                boxShadow: '0 1px 4px rgba(0,0,0,0.04)',
+              }}>
+                <div style={{
+                  display: 'inline-flex', alignItems: 'center',
+                  background: s.bg, border: `1px solid ${s.border}`,
+                  borderRadius: 8, padding: '5px 12px', marginBottom: 12,
+                }}>
+                  <span style={{ fontSize: 12, fontWeight: 800, color: s.color }}>{s.name}</span>
+                </div>
+                <p style={{ fontSize: 11, color: G, fontWeight: 600, marginBottom: 8 }}>{s.sub}</p>
+                <p style={{ fontSize: 13, color: G, lineHeight: 1.65 }}>{s.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── CTA ──────────────────────────────────────────────────────────────── */}
+      <section style={{ background: OL, padding: '80px 24px', borderTop: `1px solid ${OB}` }}>
+        <div style={{ maxWidth: 600, margin: '0 auto', textAlign: 'center' }}>
+          <div style={{
+            width: 56, height: 56, borderRadius: 14,
+            background: O, margin: '0 auto 24px',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+          }}>
+            <Icon d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" size={26} color={W}/>
+          </div>
+
+          <h2 style={{ fontSize: 'clamp(24px, 3.5vw, 38px)', fontWeight: 800, color: D, marginBottom: 14, letterSpacing: '-0.02em' }}>
+            Your next customer questionnaire is coming.
+          </h2>
+          <p style={{ fontSize: 17, color: '#78350F', marginBottom: 36, lineHeight: 1.65, maxWidth: 480, margin: '0 auto 36px' }}>
+            Book a free 30-minute call. We show you exactly what your footprint looks like
+            and how to get a report ready before your customer asks.
+          </p>
+
+          <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
+            <a href="/contact" style={{
+              display: 'inline-flex', alignItems: 'center', gap: 8,
+              background: O, color: W, fontWeight: 700, fontSize: 16,
+              padding: '14px 28px', borderRadius: 8, textDecoration: 'none',
+              boxShadow: `0 4px 14px ${O}50`,
+            }}>
+              Book a free demo
+              <Icon d="M5 12h14M12 5l7 7-7 7" size={16} color={W}/>
+            </a>
+            <a href="/pricing" style={{
+              display: 'inline-flex', alignItems: 'center', gap: 8,
+              background: W, color: '#92400E', fontWeight: 600, fontSize: 16,
+              padding: '14px 28px', borderRadius: 8, textDecoration: 'none',
+              border: `1.5px solid ${OB}`,
+            }}>
+              View pricing
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <Footer lang="en" />
+    </main>
   )
 }
