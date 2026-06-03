@@ -1,12 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import type { Metadata } from 'next'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
-
-// Note: metadata export is not supported in 'use client' components.
-// Move to a separate layout.tsx or use generateMetadata in a server wrapper if needed.
 
 const categories = [
   {
@@ -85,7 +81,7 @@ const categories = [
       },
       {
         q: 'Will this satisfy my bank or financing institution?',
-        a: 'Many banks and investors are now incorporating sustainability criteria into credit assessments and financing conditions. A GHG Protocol-compliant carbon footprint report from CO2 Expert meets the data standards most financial institutions use. We recommend checking your specific bank\'s requirements, but our reports are accepted by the major Dutch financial institutions.',
+        a: "Many banks and investors are now incorporating sustainability criteria into credit assessments and financing conditions. A GHG Protocol-compliant carbon footprint report from CO2 Expert meets the data standards most financial institutions use. We recommend checking your specific bank's requirements, but our reports are accepted by the major Dutch financial institutions.",
       },
     ],
   },
@@ -104,38 +100,83 @@ export default function FaqPage() {
 
       {/* HERO */}
       <section
-        style={{ background: '#1A1A2E' }}
-        className="py-20 px-6 text-center text-white"
+        style={{
+          backgroundColor: '#FFFFFF',
+          padding: '96px 24px 80px',
+          textAlign: 'center',
+          position: 'relative',
+          overflow: 'hidden',
+        }}
       >
-        <div className="max-w-2xl mx-auto">
-          <p
-            className="text-sm font-semibold uppercase tracking-widest mb-4"
-            style={{ color: '#F5A623' }}
+        {/* Orange glow accent */}
+        <div
+          style={{
+            position: 'absolute',
+            top: -120,
+            left: '50%',
+            transform: 'translateX(-50%)',
+            width: 600,
+            height: 400,
+            borderRadius: '50%',
+            background: 'radial-gradient(ellipse, rgba(245,166,35,0.12) 0%, transparent 70%)',
+            pointerEvents: 'none',
+          }}
+        />
+        <div style={{ maxWidth: 640, margin: '0 auto', position: 'relative' }}>
+          <span
+            style={{
+              display: 'inline-block',
+              backgroundColor: '#FFF7ED',
+              border: '1px solid #FED7AA',
+              borderRadius: 50,
+              padding: '4px 14px',
+              fontSize: 12,
+              fontWeight: 700,
+              letterSpacing: '0.1em',
+              textTransform: 'uppercase',
+              color: '#F5A623',
+              marginBottom: 20,
+            }}
           >
             FAQ
-          </p>
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
+          </span>
+          <h1
+            style={{
+              fontSize: 'clamp(32px, 5vw, 48px)',
+              fontWeight: 800,
+              color: '#1A1A2E',
+              marginBottom: 16,
+              letterSpacing: '-0.025em',
+              lineHeight: 1.15,
+            }}
+          >
             Frequently asked questions
           </h1>
-          <p className="text-lg text-gray-300">
-            Everything you need to know about measuring, reducing, and
-            offsetting your CO₂ footprint.
+          <p style={{ fontSize: 18, color: '#6B7280', lineHeight: 1.7, maxWidth: 520, margin: '0 auto' }}>
+            Everything you need to know about measuring, reducing, and reporting your CO&#x2082; footprint.
           </p>
         </div>
       </section>
 
       {/* FAQ ACCORDION */}
-      <section className="py-20 px-6 bg-white">
-        <div className="max-w-3xl mx-auto space-y-14">
+      <section style={{ backgroundColor: '#FFFFFF', padding: '16px 24px 80px' }}>
+        <div style={{ maxWidth: 720, margin: '0 auto', display: 'flex', flexDirection: 'column', gap: 52 }}>
           {categories.map((cat, catIdx) => (
             <div key={cat.title}>
               <h2
-                className="text-xl font-bold mb-6 pb-3 border-b-2"
-                style={{ color: '#1A1A2E', borderColor: '#F5A623' }}
+                style={{
+                  fontSize: 18,
+                  fontWeight: 700,
+                  color: '#F5A623',
+                  marginBottom: 20,
+                  paddingBottom: 12,
+                  borderBottom: '2px solid #FED7AA',
+                  letterSpacing: '-0.01em',
+                }}
               >
                 {cat.title}
               </h2>
-              <div className="space-y-3">
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
                 {cat.questions.map((item, qIdx) => {
                   const key = `${catIdx}-${qIdx}`
                   const isOpen = openIndex === key
@@ -143,23 +184,73 @@ export default function FaqPage() {
                   return (
                     <div
                       key={key}
-                      className="border border-gray-200 rounded-xl overflow-hidden"
+                      style={{
+                        border: '1px solid #E5E7EB',
+                        borderRadius: 12,
+                        overflow: 'hidden',
+                        backgroundColor: '#FFFFFF',
+                        transition: 'border-color 0.2s',
+                      }}
                     >
                       <button
                         onClick={() => toggle(key)}
-                        className="w-full flex items-center justify-between px-6 py-5 text-left font-semibold transition-colors hover:bg-gray-50"
-                        style={{ color: '#1A1A2E' }}
                         aria-expanded={isOpen}
+                        style={{
+                          width: '100%',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'space-between',
+                          padding: '18px 22px',
+                          textAlign: 'left',
+                          background: isOpen ? '#FFFBF5' : '#FFFFFF',
+                          border: 'none',
+                          cursor: 'pointer',
+                          transition: 'background 0.2s',
+                          gap: 16,
+                        }}
                       >
-                        <span>{item.q}</span>
                         <span
-                          className="ml-4 flex-shrink-0 text-xl font-bold transition-transform duration-300"
                           style={{
-                            color: '#F5A623',
-                            transform: isOpen ? 'rotate(45deg)' : 'rotate(0deg)',
+                            fontSize: 15,
+                            fontWeight: 600,
+                            color: '#1A1A2E',
+                            lineHeight: 1.45,
+                            fontFamily: "'Inter', sans-serif",
                           }}
                         >
-                          +
+                          {item.q}
+                        </span>
+                        <span
+                          style={{
+                            flexShrink: 0,
+                            width: 28,
+                            height: 28,
+                            borderRadius: '50%',
+                            backgroundColor: isOpen ? '#F5A623' : '#FFF7ED',
+                            border: `1px solid ${isOpen ? '#F5A623' : '#FED7AA'}`,
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            transition: 'background 0.2s, border-color 0.2s',
+                          }}
+                        >
+                          <svg
+                            width="12"
+                            height="12"
+                            viewBox="0 0 12 12"
+                            fill="none"
+                            style={{
+                              transition: 'transform 0.3s',
+                              transform: isOpen ? 'rotate(45deg)' : 'rotate(0deg)',
+                            }}
+                          >
+                            <path
+                              d="M6 1v10M1 6h10"
+                              stroke={isOpen ? '#FFFFFF' : '#F5A623'}
+                              strokeWidth="1.8"
+                              strokeLinecap="round"
+                            />
+                          </svg>
                         </span>
                       </button>
                       <div
@@ -169,7 +260,15 @@ export default function FaqPage() {
                           overflow: 'hidden',
                         }}
                       >
-                        <p className="px-6 pb-5 text-gray-600 leading-relaxed">
+                        <p
+                          style={{
+                            padding: '4px 22px 20px',
+                            fontSize: 15,
+                            color: '#6B7280',
+                            lineHeight: 1.75,
+                            fontFamily: "'Inter', sans-serif",
+                          }}
+                        >
                           {item.a}
                         </p>
                       </div>
@@ -184,26 +283,49 @@ export default function FaqPage() {
 
       {/* CTA */}
       <section
-        className="py-16 px-6 text-center"
-        style={{ background: '#F9F9FB' }}
+        style={{
+          backgroundColor: '#FFF7ED',
+          borderTop: '1px solid #FED7AA',
+          padding: '72px 24px',
+          textAlign: 'center',
+        }}
       >
-        <div className="max-w-xl mx-auto">
+        <div style={{ maxWidth: 520, margin: '0 auto' }}>
           <h2
-            className="text-2xl font-bold mb-4"
-            style={{ color: '#1A1A2E' }}
+            style={{
+              fontSize: 'clamp(22px, 3vw, 28px)',
+              fontWeight: 800,
+              color: '#1A1A2E',
+              marginBottom: 12,
+              letterSpacing: '-0.02em',
+            }}
           >
             Still have questions?
           </h2>
-          <p className="text-gray-600 mb-8">
-            Our team is happy to walk you through anything. Book a free 30-minute
-            call or send us a message.
+          <p style={{ color: '#6B7280', fontSize: 16, lineHeight: 1.7, marginBottom: 32 }}>
+            Our team is happy to walk you through anything. Book a free 30-minute call or send us a message.
           </p>
           <a
             href="/contact"
-            className="inline-block px-8 py-4 rounded-lg font-semibold text-white transition-opacity hover:opacity-90"
-            style={{ background: '#F5A623' }}
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 8,
+              backgroundColor: '#F5A623',
+              color: '#FFFFFF',
+              fontWeight: 700,
+              fontSize: 16,
+              padding: '14px 28px',
+              borderRadius: 10,
+              textDecoration: 'none',
+              letterSpacing: '0.01em',
+              transition: 'opacity 0.2s',
+            }}
           >
-            Contact us
+            Book a free call
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+              <path d="M5 12h14M12 5l7 7-7 7" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
           </a>
         </div>
       </section>

@@ -89,25 +89,40 @@ export default function PartnersPage() {
 
       {/* ── HERO ── */}
       <section style={{
-        background: `linear-gradient(150deg, #0f1922 0%, ${DARK} 100%)`,
-        padding: '120px 24px 88px', textAlign: 'center', color: '#fff',
+        backgroundColor: '#FFFFFF',
+        padding: '112px 24px 88px', textAlign: 'center',
+        position: 'relative', overflow: 'hidden',
       }}>
-        <div style={{ maxWidth: 740, margin: '0 auto' }}>
-          <p style={{
-            fontSize: 12, fontWeight: 700, letterSpacing: '0.14em',
+        {/* Orange glow accent */}
+        <div style={{
+          position: 'absolute', top: -100, left: '50%',
+          transform: 'translateX(-50%)',
+          width: 700, height: 420, borderRadius: '50%',
+          background: 'radial-gradient(ellipse, rgba(245,166,35,0.13) 0%, transparent 70%)',
+          pointerEvents: 'none',
+        }}/>
+        <div style={{ maxWidth: 740, margin: '0 auto', position: 'relative' }}>
+          <span style={{
+            display: 'inline-block',
+            backgroundColor: '#FFF7ED',
+            border: '1px solid #FED7AA',
+            borderRadius: 50,
+            padding: '4px 14px',
+            fontSize: 12, fontWeight: 700, letterSpacing: '0.12em',
             textTransform: 'uppercase', color: ORANGE, marginBottom: 20,
           }}>
             Partner Programme
-          </p>
+          </span>
           <h1 style={{
             fontSize: 'clamp(30px, 5vw, 54px)', fontWeight: 800,
             lineHeight: 1.15, letterSpacing: '-0.025em', marginBottom: 24,
+            color: DARK,
           }}>
-            Help your clients answer the CO₂ question
+            Help your clients answer the CO&#x2082; question
             <br /><span style={{ color: ORANGE }}>before they lose the contract</span>
           </h1>
           <p style={{
-            fontSize: 18, color: 'rgba(255,255,255,0.65)',
+            fontSize: 18, color: '#6B7280',
             lineHeight: 1.7, maxWidth: 580, margin: '0 auto 40px',
           }}>
             Your clients are receiving sustainability questionnaires from large customers.
@@ -248,11 +263,11 @@ export default function PartnersPage() {
       </section>
 
       {/* ── WHAT YOU GET ── */}
-      <section style={{ background: DARK, padding: '80px 24px' }}>
+      <section style={{ background: '#FFF7ED', padding: '80px 24px', borderTop: `1px solid #FED7AA`, borderBottom: `1px solid #FED7AA` }}>
         <div style={{ maxWidth: 800, margin: '0 auto' }}>
           <h2 style={{
             fontSize: 'clamp(22px, 3vw, 34px)', fontWeight: 800,
-            color: '#fff', textAlign: 'center', marginBottom: 48, letterSpacing: '-0.02em',
+            color: DARK, textAlign: 'center', marginBottom: 48, letterSpacing: '-0.02em',
           }}>
             What partners get
           </h2>
@@ -260,14 +275,15 @@ export default function PartnersPage() {
             {whatYouGet.map(item => (
               <div key={item} style={{
                 display: 'flex', alignItems: 'center', gap: 12,
-                background: 'rgba(255,255,255,0.06)',
-                border: '1px solid rgba(255,255,255,0.1)',
+                background: '#FFFFFF',
+                border: '1px solid #FED7AA',
                 borderRadius: 10, padding: '14px 18px',
+                boxShadow: '0 1px 4px rgba(245,166,35,0.07)',
               }}>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0 }}>
                   <path d="M5 12l4 4 10-10" stroke={ORANGE} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
-                <span style={{ fontSize: 14, color: 'rgba(255,255,255,0.85)', fontWeight: 500 }}>{item}</span>
+                <span style={{ fontSize: 14, color: DARK, fontWeight: 500 }}>{item}</span>
               </div>
             ))}
           </div>

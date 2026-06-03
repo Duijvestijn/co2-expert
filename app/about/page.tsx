@@ -8,162 +8,511 @@ export const metadata: Metadata = {
     'CO₂ Expert was built to solve one problem: businesses receiving CO2 data requests from large customers and having no way to answer. We give SMBs a complete, verified footprint report in days.',
 };
 
-const projects = [
-  {
-    name: 'Greenzone Cameroon',
-    type: 'Agroforestry',
-    badge: 'Verra VCS',
-    region: 'Central Africa',
-  },
-  {
-    name: 'Bulindi Uganda',
-    type: 'Reforestation',
-    badge: 'Gold Standard',
-    region: 'East Africa',
-  },
-  {
-    name: 'Hongera Kenya',
-    type: 'Cookstoves',
-    badge: 'Gold Standard',
-    region: 'East Africa',
-  },
-  {
-    name: 'Lake Aral Kazakhstan',
-    type: 'Ecosystem Restoration',
-    badge: 'Verra VCS',
-    region: 'Central Asia',
-  },
-];
-
 const values = [
   {
-    icon: '◎',
     title: 'Transparency',
     body: 'Every emission figure is traceable to a specific data input and calculation. We publish our methodology openly so anyone can verify our numbers.',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F5A623" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="11" cy="11" r="8" />
+        <path d="M21 21l-4.35-4.35" />
+      </svg>
+    ),
   },
   {
-    icon: '⬡',
     title: 'Science-based',
     body: 'Our measurement framework follows GHG Protocol and ISO 14064. We stay aligned with IPCC guidance and CSRD requirements.',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F5A623" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2v-4M9 21H5a2 2 0 01-2-2v-4m0 0h18" />
+      </svg>
+    ),
   },
   {
-    icon: '▲',
-    title: 'Impact-first',
-    body: 'Our measurement platform is backed by Green Earth Group\'s real climate projects — reforestation, agroforestry, cookstoves. Data you can stand behind.',
+    title: 'Built for business',
+    body: 'We designed for SMBs with real deadlines, not for multinationals with ESG teams. Fast to set up, easy to maintain, and ready to share with your customers.',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F5A623" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="2" y="7" width="20" height="14" rx="2" />
+        <path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2" />
+      </svg>
+    ),
   },
 ];
 
 export default function AboutPage() {
   return (
     <>
-      <Nav />
+      <Nav lang="en" />
 
-      <main style={{ fontFamily: "'Inter', sans-serif" }}>
+      <main style={{ fontFamily: "'Inter', sans-serif", backgroundColor: '#FFFFFF' }}>
+
         {/* HERO */}
         <section
           style={{
-            background: 'linear-gradient(135deg, #0f2614 0%, #1a3a20 40%, #1A1A2E 100%)',
-            padding: '100px 24px 88px',
+            backgroundColor: '#FFFFFF',
+            padding: '96px 24px 88px',
             textAlign: 'center',
+            position: 'relative',
+            overflow: 'hidden',
           }}
         >
-          <p
+          {/* Orange glow — top right */}
+          <div
+            aria-hidden="true"
             style={{
-              fontSize: 13,
-              fontWeight: 600,
-              letterSpacing: '0.1em',
-              textTransform: 'uppercase',
-              color: '#6EE7B7',
-              marginBottom: 16,
+              position: 'absolute',
+              top: -80,
+              right: -80,
+              width: 400,
+              height: 400,
+              borderRadius: '50%',
+              background: 'radial-gradient(circle, rgba(245,166,35,0.10) 0%, transparent 70%)',
+              pointerEvents: 'none',
             }}
-          >
-            Our mission
-          </p>
-          <h1
+          />
+          {/* Orange glow — bottom left */}
+          <div
+            aria-hidden="true"
             style={{
-              fontSize: 46,
-              fontWeight: 800,
-              lineHeight: 1.15,
-              color: '#ffffff',
-              maxWidth: 680,
-              margin: '0 auto',
+              position: 'absolute',
+              bottom: -60,
+              left: -60,
+              width: 300,
+              height: 300,
+              borderRadius: '50%',
+              background: 'radial-gradient(circle, rgba(245,166,35,0.07) 0%, transparent 70%)',
+              pointerEvents: 'none',
             }}
-          >
-            We believe every business deserves a carbon footprint report they can actually use
-          </h1>
+          />
+
+          <div style={{ position: 'relative', zIndex: 1 }}>
+            <div
+              style={{
+                display: 'inline-block',
+                backgroundColor: '#FFF7ED',
+                border: '1px solid #FED7AA',
+                borderRadius: 20,
+                padding: '5px 14px',
+                fontSize: 12,
+                fontWeight: 700,
+                letterSpacing: '0.08em',
+                textTransform: 'uppercase',
+                color: '#F5A623',
+                marginBottom: 20,
+              }}
+            >
+              Our story
+            </div>
+
+            <h1
+              style={{
+                fontSize: 46,
+                fontWeight: 800,
+                lineHeight: 1.15,
+                color: '#1A1A2E',
+                maxWidth: 680,
+                margin: '0 auto 20px',
+              }}
+            >
+              We built co2.expert because{' '}
+              <span
+                style={{
+                  background: 'linear-gradient(135deg, #F5A623, #E8831A)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                }}
+              >
+                businesses kept losing contracts.
+              </span>
+            </h1>
+
+            <p
+              style={{
+                fontSize: 18,
+                color: '#6B7280',
+                maxWidth: 560,
+                margin: '0 auto',
+                lineHeight: 1.65,
+              }}
+            >
+              Large customers started sending CO2 questionnaires to their suppliers. Most SMBs had
+              no data, no platform, and no way to respond. We built the tool that fixes that.
+            </p>
+          </div>
         </section>
 
-        {/* THE STORY */}
+        {/* STORY — two column */}
         <section
           style={{
-            maxWidth: 720,
-            margin: '0 auto',
-            padding: '72px 24px',
-            textAlign: 'center',
+            backgroundColor: '#FFFFFF',
+            borderTop: '1px solid #E5E7EB',
+            padding: '80px 24px',
           }}
         >
-          <h2
+          <div
             style={{
-              fontSize: 26,
-              fontWeight: 800,
-              color: '#1A1A2E',
-              marginBottom: 20,
+              maxWidth: 1000,
+              margin: '0 auto',
+              display: 'grid',
+              gridTemplateColumns: '1fr 1fr',
+              gap: 64,
+              alignItems: 'center',
             }}
           >
-            The story
-          </h2>
-          <p
-            style={{
-              fontSize: 17,
-              color: '#4B5563',
-              lineHeight: 1.8,
-            }}
-          >
-            co2.expert was built to solve a specific problem: businesses kept receiving sustainability
-            questionnaires from large customers and had no way to answer them. The existing tools were
-            either too complex, too expensive, or designed for multinationals with dedicated ESG teams.
-            We built a platform that helps SMBs measure and report their carbon footprint — Scope 1, 2
-            & 3, GHG Protocol compliant — so they can answer customer and bank data requests with
-            confidence.
-          </p>
+            {/* Left: story text */}
+            <div>
+              <h2
+                style={{
+                  fontSize: 28,
+                  fontWeight: 800,
+                  color: '#1A1A2E',
+                  marginBottom: 20,
+                  lineHeight: 1.25,
+                }}
+              >
+                The CO2 questionnaire problem
+              </h2>
+              <p
+                style={{
+                  fontSize: 16,
+                  color: '#4B5563',
+                  lineHeight: 1.8,
+                  marginBottom: 16,
+                }}
+              >
+                Every week, SMBs across Europe receive sustainability questionnaires from large
+                corporate customers. The questionnaires ask for Scope 1, 2 &amp; 3 data, GHG
+                Protocol methodology, and a verified report they can pass to their own auditors.
+              </p>
+              <p
+                style={{
+                  fontSize: 16,
+                  color: '#4B5563',
+                  lineHeight: 1.8,
+                  marginBottom: 16,
+                }}
+              >
+                The existing tools were either built for multinationals with dedicated ESG teams, or
+                required a consultant costing tens of thousands of euros. Small businesses had no
+                practical path.
+              </p>
+              <p
+                style={{
+                  fontSize: 16,
+                  color: '#4B5563',
+                  lineHeight: 1.8,
+                }}
+              >
+                We built co2.expert to give any business — from a 10-person logistics company to a
+                regional manufacturer — the ability to measure, report, and share a complete carbon
+                footprint in days, not months.
+              </p>
+            </div>
+
+            {/* Right: problem flow diagram */}
+            <div
+              style={{
+                backgroundColor: '#FAFAFA',
+                borderRadius: 16,
+                border: '1px solid #E5E7EB',
+                padding: '32px 28px',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: 0,
+              }}
+            >
+              {/* Step 1 */}
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'flex-start',
+                  gap: 16,
+                }}
+              >
+                <div
+                  style={{
+                    width: 36,
+                    height: 36,
+                    borderRadius: '50%',
+                    backgroundColor: '#FFF7ED',
+                    border: '1.5px solid #FED7AA',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flexShrink: 0,
+                    fontSize: 13,
+                    fontWeight: 700,
+                    color: '#F5A623',
+                  }}
+                >
+                  1
+                </div>
+                <div style={{ paddingTop: 6 }}>
+                  <p style={{ fontSize: 14, fontWeight: 700, color: '#1A1A2E', margin: '0 0 2px' }}>
+                    Company receives CO2 questionnaire
+                  </p>
+                  <p style={{ fontSize: 13, color: '#6B7280', margin: 0 }}>
+                    From a large customer or bank
+                  </p>
+                </div>
+              </div>
+
+              {/* Arrow */}
+              <div style={{ display: 'flex', paddingLeft: 17, marginTop: 4, marginBottom: 4 }}>
+                <div style={{ width: 2, height: 20, backgroundColor: '#E5E7EB' }} />
+              </div>
+
+              {/* Step 2 — problem */}
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'flex-start',
+                  gap: 16,
+                }}
+              >
+                <div
+                  style={{
+                    width: 36,
+                    height: 36,
+                    borderRadius: '50%',
+                    backgroundColor: '#FEF2F2',
+                    border: '1.5px solid #FECACA',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flexShrink: 0,
+                    fontSize: 13,
+                    fontWeight: 700,
+                    color: '#EF4444',
+                  }}
+                >
+                  !
+                </div>
+                <div style={{ paddingTop: 6 }}>
+                  <p style={{ fontSize: 14, fontWeight: 700, color: '#1A1A2E', margin: '0 0 2px' }}>
+                    Has no data to answer with
+                  </p>
+                  <p style={{ fontSize: 13, color: '#6B7280', margin: 0 }}>
+                    No platform, no methodology, no report
+                  </p>
+                </div>
+              </div>
+
+              {/* Arrow */}
+              <div style={{ display: 'flex', paddingLeft: 17, marginTop: 4, marginBottom: 4 }}>
+                <div style={{ width: 2, height: 20, backgroundColor: '#E5E7EB' }} />
+              </div>
+
+              {/* Step 3 — CO2 Expert */}
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'flex-start',
+                  gap: 16,
+                }}
+              >
+                <div
+                  style={{
+                    width: 36,
+                    height: 36,
+                    borderRadius: '50%',
+                    backgroundColor: '#FFF7ED',
+                    border: '1.5px solid #F5A623',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flexShrink: 0,
+                    fontSize: 13,
+                    fontWeight: 700,
+                    color: '#F5A623',
+                  }}
+                >
+                  2
+                </div>
+                <div style={{ paddingTop: 6 }}>
+                  <p style={{ fontSize: 14, fontWeight: 700, color: '#1A1A2E', margin: '0 0 2px' }}>
+                    Onboards to CO₂ Expert
+                  </p>
+                  <p style={{ fontSize: 13, color: '#6B7280', margin: 0 }}>
+                    2-week setup, GHG Protocol compliant
+                  </p>
+                </div>
+              </div>
+
+              {/* Arrow */}
+              <div style={{ display: 'flex', paddingLeft: 17, marginTop: 4, marginBottom: 4 }}>
+                <div style={{ width: 2, height: 20, backgroundColor: '#E5E7EB' }} />
+              </div>
+
+              {/* Step 4 — Result */}
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'flex-start',
+                  gap: 16,
+                }}
+              >
+                <div
+                  style={{
+                    width: 36,
+                    height: 36,
+                    borderRadius: '50%',
+                    backgroundColor: '#F0FDF4',
+                    border: '1.5px solid #A7F3D0',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flexShrink: 0,
+                  }}
+                >
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#059669" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M5 12l4 4 10-10" />
+                  </svg>
+                </div>
+                <div style={{ paddingTop: 6 }}>
+                  <p style={{ fontSize: 14, fontWeight: 700, color: '#1A1A2E', margin: '0 0 2px' }}>
+                    Has verified report to share
+                  </p>
+                  <p style={{ fontSize: 13, color: '#6B7280', margin: 0 }}>
+                    Customer-ready PDF, reusable every year
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </section>
 
         {/* GREEN EARTH GROUP */}
         <section
           style={{
-            backgroundColor: '#F0FDF4',
-            borderTop: '1px solid #D1FAE5',
-            borderBottom: '1px solid #D1FAE5',
-            padding: '72px 24px',
+            backgroundColor: '#FFFBF5',
+            borderTop: '1px solid #FED7AA',
+            borderBottom: '1px solid #FED7AA',
+            padding: '80px 24px',
           }}
         >
-          <div style={{ maxWidth: 880, margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 56, alignItems: 'center' }}>
-            <div>
+          <div style={{ maxWidth: 800, margin: '0 auto' }}>
+            <p
+              style={{
+                fontSize: 12,
+                fontWeight: 700,
+                letterSpacing: '0.1em',
+                textTransform: 'uppercase',
+                color: '#F5A623',
+                marginBottom: 16,
+                textAlign: 'center',
+              }}
+            >
+              Our parent company
+            </p>
+            <h2
+              style={{
+                fontSize: 28,
+                fontWeight: 800,
+                color: '#1A1A2E',
+                marginBottom: 12,
+                textAlign: 'center',
+                lineHeight: 1.25,
+              }}
+            >
+              Powered by Green Earth Group N.V. (EARTH)
+            </h2>
+            <p
+              style={{
+                fontSize: 16,
+                color: '#6B7280',
+                textAlign: 'center',
+                marginBottom: 40,
+                lineHeight: 1.6,
+              }}
+            >
+              co2.expert is backed by one of Europe&apos;s largest end-to-end carbon project developers.
+            </p>
+
+            {/* Key fact card with orange left border */}
+            <div
+              style={{
+                backgroundColor: '#FFFFFF',
+                borderRadius: 12,
+                border: '1px solid #E5E7EB',
+                borderLeft: '4px solid #F5A623',
+                padding: '28px 32px',
+                boxShadow: '0 1px 4px rgba(0,0,0,0.04)',
+                marginBottom: 32,
+              }}
+            >
               <p
                 style={{
-                  fontSize: 12,
-                  fontWeight: 700,
-                  letterSpacing: '0.1em',
-                  textTransform: 'uppercase',
-                  color: '#059669',
-                  marginBottom: 12,
+                  fontSize: 16,
+                  color: '#374151',
+                  lineHeight: 1.75,
+                  margin: '0 0 12px',
                 }}
               >
-                Our parent company
-              </p>
-              <h2 style={{ fontSize: 28, fontWeight: 800, color: '#1A1A2E', marginBottom: 16 }}>
-                Powered by Green Earth Group N.V.
-              </h2>
-              <p style={{ fontSize: 16, color: '#374151', lineHeight: 1.75, marginBottom: 16 }}>
                 Green Earth Group (GEG) is an end-to-end carbon project developer with active
-                reforestation, agroforestry, and cookstove programmes across Africa and Central Asia.
-                GEG is publicly listed on Euronext under the ticker{' '}
+                reforestation, agroforestry, and cookstove programmes across Africa and Central
+                Asia. GEG is publicly listed on Euronext under the ticker{' '}
                 <strong style={{ color: '#1A1A2E' }}>EARTH</strong>.
               </p>
-              <p style={{ fontSize: 16, color: '#374151', lineHeight: 1.75, marginBottom: 24 }}>
-                The direct connection gives co2.expert customers access to verified project data
-                and methodology that underpins every GHG Protocol report generated on the platform.
+              <p
+                style={{
+                  fontSize: 16,
+                  color: '#374151',
+                  lineHeight: 1.75,
+                  margin: 0,
+                }}
+              >
+                This connection gives every co2.expert customer access to verified project
+                methodology that underpins every GHG Protocol report generated on the platform.
               </p>
+            </div>
+
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(4, 1fr)',
+                gap: 16,
+                marginBottom: 32,
+              }}
+            >
+              {[
+                { label: 'Listed on', value: 'Euronext — EARTH' },
+                { label: 'Project types', value: 'Reforestation · Agroforestry · Cookstoves' },
+                { label: 'Regions', value: 'Africa · Central Asia' },
+                { label: 'Standards', value: 'Verra VCS · Gold Standard' },
+              ].map(({ label, value }) => (
+                <div
+                  key={label}
+                  style={{
+                    backgroundColor: '#FFFFFF',
+                    borderRadius: 10,
+                    border: '1px solid #E5E7EB',
+                    padding: '16px 18px',
+                    boxShadow: '0 1px 4px rgba(0,0,0,0.04)',
+                  }}
+                >
+                  <p
+                    style={{
+                      fontSize: 11,
+                      fontWeight: 700,
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.08em',
+                      color: '#9CA3AF',
+                      marginBottom: 4,
+                    }}
+                  >
+                    {label}
+                  </p>
+                  <p style={{ fontSize: 14, fontWeight: 600, color: '#1A1A2E', margin: 0, lineHeight: 1.4 }}>
+                    {value}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            <div style={{ textAlign: 'center' }}>
               <a
                 href="https://green.earth"
                 target="_blank"
@@ -171,39 +520,98 @@ export default function AboutPage() {
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
-                  gap: 8,
-                  color: '#059669',
+                  gap: 6,
+                  color: '#F5A623',
                   fontWeight: 600,
                   fontSize: 15,
                   textDecoration: 'none',
                 }}
               >
-                Visit green.earth →
+                Visit green.earth
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
               </a>
             </div>
-            <div
+          </div>
+        </section>
+
+        {/* MISSION / VALUES */}
+        <section
+          style={{
+            backgroundColor: '#FFFFFF',
+            padding: '80px 24px',
+          }}
+        >
+          <div style={{ maxWidth: 900, margin: '0 auto' }}>
+            <h2
               style={{
-                backgroundColor: '#ffffff',
-                borderRadius: 16,
-                padding: 32,
-                border: '1px solid #D1FAE5',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: 16,
+                fontSize: 30,
+                fontWeight: 800,
+                color: '#1A1A2E',
+                textAlign: 'center',
+                marginBottom: 12,
               }}
             >
-              {[
-                { label: 'Listed on', value: 'Euronext — ticker EARTH' },
-                { label: 'Project types', value: 'Reforestation · Agroforestry · Cookstoves' },
-                { label: 'Regions', value: 'Africa · Central Asia' },
-                { label: 'Standards', value: 'Verra VCS · Gold Standard' },
-              ].map(({ label, value }) => (
-                <div key={label}>
-                  <p style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', color: '#6B7280', marginBottom: 2 }}>
-                    {label}
-                  </p>
-                  <p style={{ fontSize: 15, fontWeight: 600, color: '#1A1A2E', margin: 0 }}>
-                    {value}
+              What we stand for
+            </h2>
+            <p
+              style={{
+                textAlign: 'center',
+                color: '#6B7280',
+                fontSize: 16,
+                marginBottom: 48,
+                lineHeight: 1.5,
+              }}
+            >
+              Three principles guide every decision we make.
+            </p>
+
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(3, 1fr)',
+                gap: 24,
+              }}
+            >
+              {values.map((v) => (
+                <div
+                  key={v.title}
+                  style={{
+                    backgroundColor: '#FFFFFF',
+                    borderRadius: 12,
+                    padding: '32px 24px',
+                    border: '1px solid #E5E7EB',
+                    boxShadow: '0 1px 4px rgba(0,0,0,0.04)',
+                  }}
+                >
+                  <div
+                    style={{
+                      width: 48,
+                      height: 48,
+                      borderRadius: 12,
+                      backgroundColor: '#FFF7ED',
+                      border: '1px solid #FED7AA',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      marginBottom: 18,
+                    }}
+                  >
+                    {v.icon}
+                  </div>
+                  <h3
+                    style={{
+                      fontSize: 18,
+                      fontWeight: 800,
+                      color: '#1A1A2E',
+                      marginBottom: 10,
+                    }}
+                  >
+                    {v.title}
+                  </h3>
+                  <p style={{ fontSize: 14, color: '#4B5563', lineHeight: 1.7, margin: 0 }}>
+                    {v.body}
                   </p>
                 </div>
               ))}
@@ -211,191 +619,108 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* OUR PROJECTS */}
-        <section style={{ maxWidth: 960, margin: '0 auto', padding: '72px 24px' }}>
-          <h2
-            style={{
-              fontSize: 28,
-              fontWeight: 800,
-              color: '#1A1A2E',
-              textAlign: 'center',
-              marginBottom: 12,
-            }}
-          >
-            Our projects
-          </h2>
-          <p
-            style={{
-              textAlign: 'center',
-              color: '#6B7280',
-              fontSize: 16,
-              marginBottom: 44,
-            }}
-          >
-            Green Earth Group runs verified climate projects across Africa and Central Asia
-          </p>
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
-              gap: 20,
-            }}
-          >
-            {projects.map((p) => (
-              <div
-                key={p.name}
-                style={{
-                  backgroundColor: '#ffffff',
-                  borderRadius: 14,
-                  padding: '24px 20px',
-                  border: '1.5px solid #E5E7EB',
-                  boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
-                }}
-              >
-                <div
-                  style={{
-                    width: 44,
-                    height: 44,
-                    borderRadius: 10,
-                    backgroundColor: '#F0FDF4',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    marginBottom: 14,
-                    color: '#059669',
-                  }}
-                >
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22V12M12 12C12 12 7 8 7 5a5 5 0 0 1 10 0c0 3-5 7-5 7z"/></svg>
-                </div>
-                <h3 style={{ fontSize: 16, fontWeight: 700, color: '#1A1A2E', marginBottom: 4 }}>
-                  {p.name}
-                </h3>
-                <p style={{ fontSize: 13, color: '#6B7280', marginBottom: 12 }}>
-                  {p.type} · {p.region}
-                </p>
-                <span
-                  style={{
-                    display: 'inline-block',
-                    fontSize: 11,
-                    fontWeight: 700,
-                    letterSpacing: '0.06em',
-                    textTransform: 'uppercase',
-                    backgroundColor: '#ECFDF5',
-                    color: '#059669',
-                    padding: '3px 10px',
-                    borderRadius: 20,
-                    border: '1px solid #A7F3D0',
-                  }}
-                >
-                  {p.badge}
-                </span>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* VALUES */}
-        <section style={{ maxWidth: 880, margin: '0 auto', padding: '72px 24px' }}>
-          <h2
-            style={{
-              fontSize: 28,
-              fontWeight: 800,
-              color: '#1A1A2E',
-              textAlign: 'center',
-              marginBottom: 44,
-            }}
-          >
-            What we stand for
-          </h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24 }}>
-            {values.map((v) => (
-              <div
-                key={v.title}
-                style={{
-                  backgroundColor: '#ffffff',
-                  borderRadius: 16,
-                  padding: '32px 24px',
-                  border: '1.5px solid #E5E7EB',
-                  boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
-                }}
-              >
-                <div
-                  style={{
-                    width: 44,
-                    height: 44,
-                    borderRadius: 10,
-                    backgroundColor: '#FEF3C7',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    fontSize: 20,
-                    marginBottom: 16,
-                    color: '#F5A623',
-                  }}
-                >
-                  {v.icon}
-                </div>
-                <h3 style={{ fontSize: 18, fontWeight: 800, color: '#1A1A2E', marginBottom: 10 }}>
-                  {v.title}
-                </h3>
-                <p style={{ fontSize: 14, color: '#4B5563', lineHeight: 1.7, margin: 0 }}>
-                  {v.body}
-                </p>
-              </div>
-            ))}
+        {/* WHAT WE BUILD */}
+        <section
+          style={{
+            backgroundColor: '#FAFAFA',
+            borderTop: '1px solid #E5E7EB',
+            borderBottom: '1px solid #E5E7EB',
+            padding: '80px 24px',
+          }}
+        >
+          <div style={{ maxWidth: 720, margin: '0 auto', textAlign: 'center' }}>
+            <h2
+              style={{
+                fontSize: 30,
+                fontWeight: 800,
+                color: '#1A1A2E',
+                marginBottom: 20,
+              }}
+            >
+              What we build
+            </h2>
+            <p
+              style={{
+                fontSize: 17,
+                color: '#4B5563',
+                lineHeight: 1.8,
+                marginBottom: 16,
+              }}
+            >
+              co2.expert is a carbon footprint measurement platform for small and medium businesses.
+              It covers Scope 1, 2 &amp; 3 emissions, follows GHG Protocol methodology, and
+              produces a verified, customer-ready PDF report your team can actually share.
+            </p>
+            <p
+              style={{
+                fontSize: 17,
+                color: '#4B5563',
+                lineHeight: 1.8,
+              }}
+            >
+              It is designed for companies that receive sustainability questionnaires from large
+              customers — manufacturers, logistics providers, food producers, professional services
+              firms — and need to respond quickly without hiring a consultant or building an ESG
+              team from scratch.
+            </p>
           </div>
         </section>
 
         {/* CTA */}
         <section
           style={{
-            backgroundColor: '#1A1A2E',
+            backgroundColor: '#FFF7ED',
+            borderTop: '1px solid #FED7AA',
             padding: '80px 24px',
             textAlign: 'center',
           }}
         >
-          <h2
-            style={{
-              fontSize: 36,
-              fontWeight: 800,
-              color: '#ffffff',
-              marginBottom: 16,
-            }}
-          >
-            Know your footprint before your customers ask
-          </h2>
-          <p
-            style={{
-              fontSize: 17,
-              color: '#9CA3AF',
-              maxWidth: 440,
-              margin: '0 auto 36px',
-              lineHeight: 1.6,
-            }}
-          >
-            Hundreds of SMBs already use co2.expert to answer sustainability questionnaires
-            from their customers and banks. Yours can be next.
-          </p>
-          <a
-            href="/contact"
-            style={{
-              display: 'inline-block',
-              backgroundColor: '#F5A623',
-              color: '#ffffff',
-              fontWeight: 700,
-              fontSize: 16,
-              padding: '14px 36px',
-              borderRadius: 10,
-              textDecoration: 'none',
-              letterSpacing: '0.02em',
-            }}
-          >
-            Book a free call →
-          </a>
+          <div style={{ maxWidth: 520, margin: '0 auto' }}>
+            <h2
+              style={{
+                fontSize: 34,
+                fontWeight: 800,
+                color: '#1A1A2E',
+                marginBottom: 16,
+                lineHeight: 1.25,
+              }}
+            >
+              Book a free 30-minute call
+            </h2>
+            <p
+              style={{
+                fontSize: 17,
+                color: '#6B7280',
+                lineHeight: 1.65,
+                marginBottom: 36,
+              }}
+            >
+              Tell us about your situation. We will tell you exactly what a footprint report would
+              look like for your business — and what it would cost.
+            </p>
+            <a
+              href="/contact"
+              style={{
+                display: 'inline-block',
+                background: 'linear-gradient(135deg, #F5A623, #E8831A)',
+                color: '#FFFFFF',
+                fontWeight: 700,
+                fontSize: 16,
+                padding: '15px 36px',
+                borderRadius: 10,
+                textDecoration: 'none',
+                letterSpacing: '0.02em',
+                boxShadow: '0 4px 14px rgba(245,166,35,0.30)',
+              }}
+            >
+              Book a free call
+            </a>
+          </div>
         </section>
+
       </main>
 
-      <Footer />
+      <Footer lang="en" />
     </>
   );
 }
