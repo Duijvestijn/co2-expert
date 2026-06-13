@@ -93,7 +93,7 @@ export default function HoeHetWerktPage() {
         {/* ── 1. HERO ─────────────────────────────────────────────────────── */}
         <section style={{
           background: W,
-          paddingTop: 132, paddingBottom: 80, paddingLeft: 24, paddingRight: 24,
+          paddingTop: 'clamp(64px, 12vw, 132px)', paddingBottom: 'clamp(48px, 8vw, 80px)', paddingLeft: 24, paddingRight: 24,
           borderBottom: `1px solid ${B}`,
           position: 'relative', overflow: 'hidden',
         }}>

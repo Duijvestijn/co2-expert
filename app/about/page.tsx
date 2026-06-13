@@ -51,7 +51,7 @@ export default function AboutPage() {
         <section
           style={{
             backgroundColor: '#FFFFFF',
-            padding: '96px 24px 88px',
+            padding: 'clamp(56px, 10vw, 96px) 24px clamp(48px, 8vw, 88px)',
             textAlign: 'center',
             position: 'relative',
             overflow: 'hidden',
@@ -107,7 +107,7 @@ export default function AboutPage() {
 
             <h1
               style={{
-                fontSize: 46,
+                fontSize: 'clamp(28px, 6vw, 46px)',
                 fontWeight: 800,
                 lineHeight: 1.15,
                 color: '#1A1A2E',
@@ -156,7 +156,7 @@ export default function AboutPage() {
               maxWidth: 1000,
               margin: '0 auto',
               display: 'grid',
-              gridTemplateColumns: '1fr 1fr',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
               gap: 64,
               alignItems: 'center',
             }}
@@ -472,7 +472,7 @@ export default function AboutPage() {
             <div
               style={{
                 display: 'grid',
-                gridTemplateColumns: 'repeat(4, 1fr)',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))',
                 gap: 16,
                 marginBottom: 32,
               }}
@@ -570,7 +570,7 @@ export default function AboutPage() {
             <div
               style={{
                 display: 'grid',
-                gridTemplateColumns: 'repeat(3, 1fr)',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
                 gap: 24,
               }}
             >

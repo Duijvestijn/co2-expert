@@ -102,7 +102,7 @@ export default function FaqPage() {
       <section
         style={{
           backgroundColor: '#FFFFFF',
-          padding: '96px 24px 80px',
+          padding: 'clamp(56px, 10vw, 96px) 24px clamp(48px, 8vw, 80px)',
           textAlign: 'center',
           position: 'relative',
           overflow: 'hidden',

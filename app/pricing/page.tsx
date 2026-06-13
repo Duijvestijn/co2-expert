@@ -172,7 +172,7 @@ export default function PricingPage() {
         <section
           style={{
             backgroundColor: '#FFFFFF',
-            padding: '88px 24px 80px',
+            padding: 'clamp(56px, 10vw, 88px) 24px clamp(48px, 8vw, 80px)',
             textAlign: 'center',
             position: 'relative',
             overflow: 'hidden',
@@ -228,7 +228,7 @@ export default function PricingPage() {
 
             <h1
               style={{
-                fontSize: 46,
+                fontSize: 'clamp(28px, 6vw, 46px)',
                 fontWeight: 800,
                 lineHeight: 1.15,
                 maxWidth: 640,
@@ -268,7 +268,7 @@ export default function PricingPage() {
           <div style={{ maxWidth: 1040, margin: '0 auto' }}>
             <h2
               style={{
-                fontSize: 30,
+                fontSize: 'clamp(22px, 4vw, 30px)',
                 fontWeight: 800,
                 color: '#1A1A2E',
                 textAlign: 'center',
@@ -292,7 +292,7 @@ export default function PricingPage() {
             <div
               style={{
                 display: 'grid',
-                gridTemplateColumns: 'repeat(3, 1fr)',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
                 gap: 20,
                 alignItems: 'start',
               }}
@@ -546,7 +546,7 @@ export default function PricingPage() {
           <div style={{ maxWidth: 840, margin: '0 auto', textAlign: 'center' }}>
             <h2
               style={{
-                fontSize: 30,
+                fontSize: 'clamp(22px, 4vw, 30px)',
                 fontWeight: 800,
                 color: '#1A1A2E',
                 marginBottom: 12,
@@ -630,7 +630,7 @@ export default function PricingPage() {
           >
             <h2
               style={{
-                fontSize: 30,
+                fontSize: 'clamp(22px, 4vw, 30px)',
                 fontWeight: 800,
                 color: '#1A1A2E',
                 marginBottom: 20,
@@ -704,7 +704,7 @@ export default function PricingPage() {
           <div style={{ maxWidth: 680, margin: '0 auto' }}>
             <h2
               style={{
-                fontSize: 30,
+                fontSize: 'clamp(22px, 4vw, 30px)',
                 fontWeight: 800,
                 color: '#1A1A2E',
                 textAlign: 'center',
@@ -729,7 +729,7 @@ export default function PricingPage() {
           <div style={{ maxWidth: 540, margin: '0 auto' }}>
             <h2
               style={{
-                fontSize: 34,
+                fontSize: 'clamp(24px, 4.5vw, 34px)',
                 fontWeight: 800,
                 color: '#1A1A2E',
                 marginBottom: 16,

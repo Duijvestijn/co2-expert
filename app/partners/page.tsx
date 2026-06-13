@@ -90,7 +90,7 @@ export default function PartnersPage() {
       {/* ── HERO ── */}
       <section style={{
         backgroundColor: '#FFFFFF',
-        padding: '112px 24px 88px', textAlign: 'center',
+        padding: 'clamp(64px, 12vw, 112px) 24px clamp(48px, 8vw, 88px)', textAlign: 'center',
         position: 'relative', overflow: 'hidden',
       }}>
         {/* Orange glow accent */}

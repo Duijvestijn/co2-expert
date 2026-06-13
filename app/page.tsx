@@ -41,7 +41,7 @@ export default function HomePage() {
       {/* ── HERO — light, orange, tech ────────────────────────────────────── */}
       <section style={{
         background: W,
-        paddingTop: 132, paddingBottom: 80, paddingLeft: 24, paddingRight: 24,
+        paddingTop: 'clamp(64px, 12vw, 132px)', paddingBottom: 'clamp(48px, 8vw, 80px)', paddingLeft: 24, paddingRight: 24,
         borderBottom: `1px solid ${B}`,
         position: 'relative', overflow: 'hidden',
       }}>
@@ -145,7 +145,7 @@ export default function HomePage() {
             {/* Dashboard preview */}
             <div style={{ padding: 20, background: '#FAFBFF' }}>
               {/* Stats row */}
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 10, marginBottom: 16 }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(64px, 1fr))', gap: 10, marginBottom: 16 }}>
                 {[
                   { l: 'Total Emissions', v: '24.6t', sub: 'CO₂e', c: O },
                   { l: 'Scope 1', v: '8.2t', sub: 'direct', c: '#EF4444' },

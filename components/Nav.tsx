@@ -40,7 +40,7 @@ export default function Nav({ lang = 'en' }: NavProps) {
         </Link>
 
         {/* Desktop nav */}
-        <nav style={{ display: 'flex', alignItems: 'center', gap: 4, flex: 1 }} className="hidden md:flex">
+        <nav style={{ alignItems: 'center', gap: 4, flex: 1 }} className="hidden md:flex">
           {NAV_LINKS.map(l => (
             <Link key={l.href} href={nl && l.hrefNL ? l.hrefNL : l.href} style={{
               fontSize: 14, fontWeight: 500, color: '#374151', padding: '6px 14px',
@@ -65,14 +65,14 @@ export default function Nav({ lang = 'en' }: NavProps) {
           </Link>
 
           {/* Login */}
-          <Link href="https://app.co2.expert/login" style={{
+          <Link href="https://app.co2.expert/login" className="hidden md:block" style={{
             fontSize: 14, fontWeight: 600, color: '#374151', textDecoration: 'none',
           }}>
             {nl ? 'Inloggen' : 'Login'}
           </Link>
 
           {/* CTA */}
-          <Link href={nl ? '/nl/contact' : '/contact'} className="btn-primary" style={{ padding: '9px 20px', fontSize: 14 }}>
+          <Link href={nl ? '/nl/contact' : '/contact'} className="btn-primary hidden md:flex" style={{ padding: '9px 20px', fontSize: 14 }}>
             {nl ? 'Plan een gesprek' : 'Book a free call'}
           </Link>
         </div>

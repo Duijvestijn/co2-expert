@@ -42,7 +42,7 @@ export default function HowItWorksPage() {
       {/* ── HERO ─────────────────────────────────────────────────────────────── */}
       <section style={{
         background: W,
-        paddingTop: 132, paddingBottom: 80, paddingLeft: 24, paddingRight: 24,
+        paddingTop: 'clamp(64px, 12vw, 132px)', paddingBottom: 'clamp(48px, 8vw, 80px)', paddingLeft: 24, paddingRight: 24,
         borderBottom: `1px solid ${B}`,
         position: 'relative', overflow: 'hidden',
       }}>
@@ -523,7 +523,7 @@ export default function HowItWorksPage() {
 
                   {/* Scope grid */}
                   <div style={{
-                    display: 'grid', gridTemplateColumns: '1fr 1fr 1fr',
+                    display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(80px, 1fr))',
                     gap: 8, marginBottom: 16,
                   }}>
                     {[
