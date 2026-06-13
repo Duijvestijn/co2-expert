@@ -61,14 +61,24 @@ export interface DemoPageProps {
   ctaSecondary?: string
 }
 
+// ── Team members shown in the booking section (all pages)
+// To use real photos: add files to /public/team/ and set photoUrl below
+// To add real photos: place files at /public/team/ferdia.jpg etc., then set photoUrl below
+const TEAM_MEMBERS = [
+  { initials: 'FO', name: 'Ferdia',   photoUrl: undefined as string | undefined },
+  { initials: 'W',  name: 'Wienke',   photoUrl: undefined as string | undefined },
+  { initials: 'JP', name: 'Josefien', photoUrl: undefined as string | undefined },
+]
+
 // ── Sub-components ───────────────────────────────────────────────────────────
-function ConsultantAvatar({ initials, photoUrl, size = 96 }: {
-  initials: string; photoUrl?: string; size?: number
+function ConsultantAvatar({ initials, photoUrl, size = 96, ring = false }: {
+  initials: string; photoUrl?: string; size?: number; ring?: boolean
 }) {
+  const ringStyle = ring ? { boxShadow: `0 0 0 3px ${W}` } : {}
   if (photoUrl) {
     return (
       <Image src={photoUrl} alt={initials} width={size} height={size}
-        style={{ borderRadius: '50%', objectFit: 'cover', width: size, height: size }} />
+        style={{ borderRadius: '50%', objectFit: 'cover', width: size, height: size, ...ringStyle }} />
     )
   }
   return (
@@ -76,7 +86,7 @@ function ConsultantAvatar({ initials, photoUrl, size = 96 }: {
       width: size, height: size, borderRadius: '50%',
       background: `linear-gradient(135deg, ${O}, #E8831A)`,
       display: 'flex', alignItems: 'center', justifyContent: 'center',
-      flexShrink: 0,
+      flexShrink: 0, ...ringStyle,
     }}>
       <span style={{ fontSize: size * 0.33, fontWeight: 800, color: W, letterSpacing: '-0.02em' }}>
         {initials}
@@ -122,7 +132,7 @@ export default function DemoLandingPage({
   ctaPrimary, ctaSecondary,
 }: DemoPageProps) {
   const isNL = lang === 'nl'
-  const bookText  = ctaPrimary  ?? (isNL ? `Gesprek plannen met ${consultant.name.split(' ')[0]}` : `Book a call with ${consultant.name.split(' ')[0]}`)
+  const bookText  = ctaPrimary  ?? (isNL ? 'Demo inplannen' : 'Schedule a demo')
   const learnText = ctaSecondary ?? (isNL ? 'Hoe het werkt' : 'See how it works')
   const logoSrc   = isNL ? '/logo.svg' : '/logo.svg'
 
@@ -406,20 +416,24 @@ export default function DemoLandingPage({
       {/* ── CONSULTANT ──────────────────────────────────────────────────── */}
       <section style={{ background: OL, borderTop: `1px solid ${OB}`, borderBottom: `1px solid ${OB}`, padding: 'clamp(48px, 8vw, 80px) 24px' }}>
         <div style={{ maxWidth: 700, margin: '0 auto', textAlign: 'center' }}>
-          <ConsultantAvatar initials={consultant.initials} photoUrl={consultant.photoUrl} size={88} />
-          <div style={{ marginTop: 20, marginBottom: 8 }}>
-            <span style={{
-              display: 'inline-block', background: W, border: `1px solid ${OB}`,
-              borderRadius: 50, padding: '3px 12px', fontSize: 11, fontWeight: 700,
-              letterSpacing: '0.08em', textTransform: 'uppercase', color: O,
-            }}>
-              {consultant.langTag}
-            </span>
+          {/* Three overlapping team faces */}
+          <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 28 }}>
+            {TEAM_MEMBERS.map((m, i) => (
+              <div key={m.initials} style={{
+                marginLeft: i > 0 ? -14 : 0,
+                zIndex: TEAM_MEMBERS.length - i,
+                position: 'relative',
+              }}>
+                <ConsultantAvatar initials={m.initials} photoUrl={m.photoUrl} size={72} ring />
+              </div>
+            ))}
           </div>
           <h2 style={{ fontSize: 'clamp(20px, 3vw, 26px)', fontWeight: 800, color: D, marginBottom: 6 }}>
-            {consultant.name}
+            {isNL ? 'Praat met ons team' : 'Talk to our team'}
           </h2>
-          <p style={{ fontSize: 14, color: O, fontWeight: 600, marginBottom: 16 }}>{consultant.role}</p>
+          <p style={{ fontSize: 14, color: O, fontWeight: 600, marginBottom: 16 }}>
+            {isNL ? 'Carbon Strategy Consultants — CO₂ Expert' : 'Carbon Strategy Consultants — CO₂ Expert'}
+          </p>
           <p style={{ fontSize: 15, color: G, lineHeight: 1.75, maxWidth: 520, margin: '0 auto 32px' }}>
             {consultant.bio}
           </p>
@@ -429,7 +443,7 @@ export default function DemoLandingPage({
             padding: '15px 32px', borderRadius: 10, textDecoration: 'none',
             boxShadow: `0 6px 24px ${O}50`,
           }}>
-            {isNL ? `Plan een gesprek met ${consultant.name.split(' ')[0]}` : `Book a call with ${consultant.name.split(' ')[0]}`}
+            {isNL ? 'Demo inplannen' : 'Schedule a demo'}
             <Icon d="M5 12h14M12 5l7 7-7 7" size={16} color={W} />
           </a>
           <p style={{ marginTop: 16, fontSize: 12, color: '#9CA3AF' }}>
@@ -464,8 +478,8 @@ export default function DemoLandingPage({
           </h2>
           <p style={{ fontSize: 16, color: '#9CA3AF', lineHeight: 1.7, marginBottom: 32 }}>
             {isNL
-              ? `Plan een gratis gesprek met ${consultant.name.split(' ')[0]}. Geen PowerPoint, geen verkooppraatje — gewoon antwoorden op jouw vragen.`
-              : `Book a free call with ${consultant.name.split(' ')[0]}. No PowerPoint, no sales pitch — just answers to your questions.`}
+              ? 'Geen PowerPoint, geen verkooppraatje — gewoon antwoorden op jouw vragen. Gratis, 30 minuten.'
+              : 'No PowerPoint, no sales pitch — just direct answers to your questions. Free, 30 minutes.'}
           </p>
           <a href={consultant.calendarUrl} target="_blank" rel="noopener noreferrer" style={{
             display: 'inline-flex', alignItems: 'center', gap: 8,
@@ -473,7 +487,7 @@ export default function DemoLandingPage({
             padding: '16px 36px', borderRadius: 10, textDecoration: 'none',
             boxShadow: `0 6px 24px ${O}50`,
           }}>
-            {isNL ? 'Gratis gesprek plannen' : 'Book your free call'}
+            {isNL ? 'Demo inplannen' : 'Schedule a demo'}
             <Icon d="M5 12h14M12 5l7 7-7 7" size={16} color={W} />
           </a>
         </div>
