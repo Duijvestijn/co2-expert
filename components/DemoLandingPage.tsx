@@ -4,14 +4,14 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 // ── Design tokens
-const O   = '#F5A623'
-const D   = '#0D1521'
-const D2  = '#1A2A3A'
-const G   = '#8B95A3'
-const W   = '#FFFFFF'
-const OL  = '#FFF7ED'
-const OB  = '#FED7AA'
-const B   = '#E5E7EB'
+const O  = '#F5A623'
+const D  = '#111827'
+const G  = '#6B7280'
+const W  = '#FFFFFF'
+const OL = '#FFF7ED'
+const OB = '#FED7AA'
+const B  = '#E5E7EB'
+const LG = '#F9FAFB'
 
 function Icon({ d, size = 20, color = O }: { d: string; size?: number; color?: string }) {
   return (
@@ -23,7 +23,6 @@ function Icon({ d, size = 20, color = O }: { d: string; size?: number; color?: s
   )
 }
 
-// ── Types
 export interface CaseStudy {
   company: string
   sector: string
@@ -61,7 +60,6 @@ export interface DemoPageProps {
   ctaSecondary?: string
 }
 
-// ── Team — place real photos at /public/team/{ferdia,wienke,josefien}.jpg
 const TEAM_MEMBERS = [
   { initials: 'FO', name: 'Ferdia',   photoUrl: undefined as string | undefined },
   { initials: 'W',  name: 'Wienke',   photoUrl: undefined as string | undefined },
@@ -75,7 +73,7 @@ function TeamAvatar({ initials, photoUrl, size = 72 }: {
     return (
       <Image src={photoUrl} alt={initials} width={size} height={size}
         style={{ borderRadius: '50%', objectFit: 'cover', width: size, height: size,
-          border: '2px solid rgba(245,166,35,0.4)' }} />
+          border: `3px solid ${W}`, boxShadow: `0 0 0 2px ${OB}` }} />
     )
   }
   return (
@@ -83,10 +81,10 @@ function TeamAvatar({ initials, photoUrl, size = 72 }: {
       width: size, height: size, borderRadius: '50%',
       background: `linear-gradient(135deg, ${O}, #C8710E)`,
       display: 'flex', alignItems: 'center', justifyContent: 'center',
-      flexShrink: 0,
-      border: '2px solid rgba(245,166,35,0.4)',
+      flexShrink: 0, border: `3px solid ${W}`,
+      boxShadow: `0 0 0 2px ${OB}, 0 4px 12px rgba(245,166,35,0.2)`,
     }}>
-      <span style={{ fontSize: size * 0.3, fontWeight: 800, color: W, letterSpacing: '-0.02em' }}>
+      <span style={{ fontSize: size * 0.3, fontWeight: 800, color: W }}>
         {initials}
       </span>
     </div>
@@ -96,21 +94,20 @@ function TeamAvatar({ initials, photoUrl, size = 72 }: {
 function FAQItem({ q, a }: { q: string; a: string }) {
   const [open, setOpen] = useState(false)
   return (
-    <div style={{ borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
+    <div style={{ borderBottom: `1px solid ${B}` }}>
       <button
         onClick={() => setOpen(!open)}
         aria-expanded={open}
         style={{
-          width: '100%', textAlign: 'left', padding: '22px 0',
+          width: '100%', textAlign: 'left', padding: '20px 0',
           background: 'none', border: 'none', cursor: 'pointer',
           display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 16,
         }}
       >
-        <span style={{ fontSize: 15, fontWeight: 600, color: W, lineHeight: 1.4 }}>{q}</span>
+        <span style={{ fontSize: 15, fontWeight: 600, color: D, lineHeight: 1.4 }}>{q}</span>
         <span style={{
           width: 28, height: 28, borderRadius: '50%',
-          background: open ? O : 'rgba(245,166,35,0.1)',
-          border: `1px solid ${open ? O : 'rgba(245,166,35,0.25)'}`,
+          background: open ? O : OL, border: `1px solid ${open ? O : OB}`,
           display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
           transition: 'transform 0.25s ease, background 0.2s ease',
           transform: open ? 'rotate(45deg)' : 'none',
@@ -119,57 +116,56 @@ function FAQItem({ q, a }: { q: string; a: string }) {
         </span>
       </button>
       <div style={{ maxHeight: open ? '400px' : '0', overflow: 'hidden', transition: 'max-height 0.3s ease' }}>
-        <p style={{ fontSize: 14, color: G, lineHeight: 1.8, paddingBottom: 22, margin: 0 }}>{a}</p>
+        <p style={{ fontSize: 14, color: G, lineHeight: 1.8, paddingBottom: 20, margin: 0 }}>{a}</p>
       </div>
     </div>
   )
 }
 
-// ── CO₂ Scope breakdown — the actual product output, shown as preview in hero
+// ── CO₂ Scope widget — shows what the product output looks like
 function ScopeWidget({ lang }: { lang: 'en' | 'nl' }) {
   const isNL = lang === 'nl'
   const scopes = [
-    { label: 'Scope 1', sub: isNL ? 'Directe emissies'   : 'Direct emissions',    pct: 24, value: '240 tCO₂e' },
-    { label: 'Scope 2', sub: isNL ? 'Ingekochte energie' : 'Purchased energy',    pct: 16, value: '160 tCO₂e' },
-    { label: 'Scope 3', sub: isNL ? 'Waardeketen'        : 'Value chain',         pct: 60, value: '600 tCO₂e' },
+    { label: 'Scope 1', sub: isNL ? 'Directe emissies'   : 'Direct emissions',  pct: 24, value: '240 tCO₂e' },
+    { label: 'Scope 2', sub: isNL ? 'Ingekochte energie' : 'Purchased energy',  pct: 16, value: '160 tCO₂e' },
+    { label: 'Scope 3', sub: isNL ? 'Waardeketen'        : 'Value chain',        pct: 60, value: '600 tCO₂e' },
   ]
   return (
     <div style={{
-      background: D2, border: '1px solid rgba(245,166,35,0.18)',
-      borderRadius: 14, padding: '24px 26px', width: '100%', maxWidth: 320,
+      background: W, border: `1px solid ${B}`,
+      borderRadius: 16, padding: '24px 26px', width: '100%', maxWidth: 320,
+      boxShadow: '0 8px 32px rgba(0,0,0,0.08)',
     }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 22 }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 }}>
         <span style={{ fontSize: 11, fontWeight: 700, color: O, letterSpacing: '0.1em', textTransform: 'uppercase' }}>
           CO₂ {isNL ? 'Voetafdruk Rapport' : 'Footprint Report'}
         </span>
         <span style={{
-          fontSize: 10, color: G, background: 'rgba(255,255,255,0.06)',
-          border: '1px solid rgba(255,255,255,0.08)', padding: '2px 8px', borderRadius: 4,
+          fontSize: 10, color: G, background: LG,
+          border: `1px solid ${B}`, padding: '2px 8px', borderRadius: 4, fontWeight: 500,
         }}>GHG Protocol</span>
       </div>
       {scopes.map((s, i) => (
         <div key={s.label} style={{ marginBottom: i < scopes.length - 1 ? 16 : 0 }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 7 }}>
             <div>
-              <span style={{ fontSize: 13, fontWeight: 700, color: W }}>{s.label}</span>
-              <span style={{ fontSize: 11, color: '#5B6475', marginLeft: 7 }}>{s.sub}</span>
+              <span style={{ fontSize: 13, fontWeight: 700, color: D }}>{s.label}</span>
+              <span style={{ fontSize: 11, color: G, marginLeft: 7 }}>{s.sub}</span>
             </div>
-            <span style={{ fontSize: 12, fontWeight: 600, color: O }}>{s.value}</span>
+            <span style={{ fontSize: 12, fontWeight: 700, color: O }}>{s.value}</span>
           </div>
-          <div style={{ height: 5, background: 'rgba(255,255,255,0.07)', borderRadius: 3 }}>
+          <div style={{ height: 6, background: B, borderRadius: 3 }}>
             <div style={{ width: `${s.pct}%`, height: '100%', background: O, borderRadius: 3, opacity: 0.7 + i * 0.1 }} />
           </div>
         </div>
       ))}
-      <div style={{ marginTop: 20, paddingTop: 18, borderTop: '1px solid rgba(255,255,255,0.07)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <span style={{ fontSize: 11, color: '#5B6475' }}>
-          {isNL ? 'Totaal · 2024' : 'Total · 2024'}
-        </span>
-        <span style={{ fontSize: 20, fontWeight: 900, color: W, letterSpacing: '-0.03em' }}>1,000 tCO₂e</span>
+      <div style={{ marginTop: 18, paddingTop: 16, borderTop: `1px solid ${B}`, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <span style={{ fontSize: 11, color: G }}>{isNL ? 'Totaal · 2024' : 'Total · 2024'}</span>
+        <span style={{ fontSize: 20, fontWeight: 900, color: D, letterSpacing: '-0.03em' }}>1,000 tCO₂e</span>
       </div>
       <div style={{
-        marginTop: 14, background: 'rgba(245,166,35,0.08)', border: '1px solid rgba(245,166,35,0.18)',
-        borderRadius: 6, padding: '8px 12px', fontSize: 11, color: O, fontWeight: 600,
+        marginTop: 12, background: OL, border: `1px solid ${OB}`,
+        borderRadius: 7, padding: '8px 12px', fontSize: 11, color: '#92400E', fontWeight: 600,
         display: 'flex', alignItems: 'center', gap: 6,
       }}>
         <Icon d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" size={12} color={O} />
@@ -179,7 +175,6 @@ function ScopeWidget({ lang }: { lang: 'en' | 'nl' }) {
   )
 }
 
-// ── Main component
 export default function DemoLandingPage({
   lang, badge, headline, headlineAccent, subheadline,
   urgencyNote, painPoints, cases, consultant, faqs,
@@ -215,48 +210,27 @@ export default function DemoLandingPage({
     )
   }
 
-  const DemoBtn = ({ href, size = 'md', variant = 'primary' }: {
-    href: string; size?: 'sm' | 'md' | 'lg'; variant?: 'primary' | 'ghost'
-  }) => {
-    const pad = size === 'lg' ? '15px 34px' : size === 'sm' ? '9px 18px' : '12px 26px'
-    const fs  = size === 'lg' ? 16 : size === 'sm' ? 13 : 14
-    return (
-      <a href={href} target="_blank" rel="noopener noreferrer" style={{
-        display: 'inline-flex', alignItems: 'center', gap: 8,
-        background: variant === 'primary' ? O : 'transparent',
-        color: W, fontWeight: 700, fontSize: fs,
-        padding: pad, borderRadius: 8, textDecoration: 'none',
-        border: variant === 'ghost' ? `1.5px solid rgba(255,255,255,0.2)` : 'none',
-        boxShadow: variant === 'primary' ? `0 4px 20px rgba(245,166,35,0.35)` : 'none',
-        letterSpacing: '-0.01em',
-      }}>
-        {bookText}
-        <Icon d="M5 12h14M12 5l7 7-7 7" size={fs - 1} color={W} />
-      </a>
-    )
-  }
-
   return (
-    <div style={{ fontFamily: "'Inter', system-ui, sans-serif", color: D, background: D, minHeight: '100vh' }}>
+    <div style={{ fontFamily: "'Inter', system-ui, sans-serif", color: D, background: W, minHeight: '100vh' }}>
 
       {/* ── STICKY MOBILE CTA */}
       <div style={{
         position: 'fixed', bottom: 0, left: 0, right: 0, zIndex: 100,
-        background: D2, borderTop: '1px solid rgba(245,166,35,0.2)',
+        background: W, borderTop: `1px solid ${B}`,
         padding: '12px 20px',
         display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12,
-        boxShadow: '0 -8px 32px rgba(0,0,0,0.4)',
+        boxShadow: '0 -4px 20px rgba(0,0,0,0.08)',
         opacity: showSticky ? 1 : 0,
         transform: showSticky ? 'translateY(0)' : 'translateY(100%)',
         transition: 'opacity 0.3s ease, transform 0.3s ease',
         pointerEvents: showSticky ? 'auto' : 'none',
       }}>
-        <p style={{ margin: 0, fontSize: 13, fontWeight: 600, color: G, flex: 1, lineHeight: 1.3 }}>
+        <p style={{ margin: 0, fontSize: 13, fontWeight: 600, color: D, flex: 1, lineHeight: 1.3 }}>
           {isNL ? '30 min · gratis · geen verplichtingen' : '30 min · free · no commitment'}
         </p>
         <a href={consultant.calendarUrl} target="_blank" rel="noopener noreferrer" style={{
           background: O, color: W, fontWeight: 700, fontSize: 14,
-          padding: '10px 20px', borderRadius: 7, textDecoration: 'none',
+          padding: '10px 20px', borderRadius: 8, textDecoration: 'none',
           display: 'inline-flex', alignItems: 'center', gap: 6, flexShrink: 0,
           boxShadow: `0 4px 14px rgba(245,166,35,0.4)`,
         }}>
@@ -268,15 +242,15 @@ export default function DemoLandingPage({
       {/* ── NAV */}
       <header style={{
         position: 'sticky', top: 0, zIndex: 50,
-        background: 'rgba(13,21,33,0.92)', backdropFilter: 'blur(16px)',
-        borderBottom: '1px solid rgba(255,255,255,0.07)',
+        background: 'rgba(255,255,255,0.96)', backdropFilter: 'blur(12px)',
+        borderBottom: `1px solid ${B}`,
       }}>
         <div style={{
           maxWidth: 1100, margin: '0 auto', padding: '0 24px',
           height: 60, display: 'flex', alignItems: 'center', justifyContent: 'space-between',
         }}>
-          <Link href={isNL ? '/nl' : '/'} style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
-            <Image src="/logo-white.svg" alt="CO₂ Expert" width={110} height={28}
+          <Link href={isNL ? '/nl' : '/'} style={{ textDecoration: 'none' }}>
+            <Image src="/logo.svg" alt="CO₂ Expert" width={110} height={28}
               style={{ height: 28, width: 'auto' }} priority />
           </Link>
           <a href={consultant.calendarUrl} target="_blank" rel="noopener noreferrer" style={{
@@ -291,28 +265,29 @@ export default function DemoLandingPage({
         </div>
       </header>
 
-      {/* ── HERO — dark, two-column with scope widget */}
+      {/* ── HERO — white, two-column with scope widget on desktop */}
       <section style={{
-        background: D, padding: 'clamp(64px, 10vw, 104px) 24px clamp(56px, 8vw, 88px)',
+        background: W, padding: 'clamp(64px, 10vw, 104px) 24px clamp(56px, 8vw, 88px)',
         position: 'relative', overflow: 'hidden',
       }}>
-        {/* Background grid texture */}
+        {/* Subtle orange glow top-center */}
         <div aria-hidden style={{
-          position: 'absolute', inset: 0, pointerEvents: 'none', opacity: 0.025,
-          backgroundImage: 'linear-gradient(rgba(245,166,35,0.8) 1px, transparent 1px), linear-gradient(90deg, rgba(245,166,35,0.8) 1px, transparent 1px)',
-          backgroundSize: '48px 48px',
+          position: 'absolute', top: -140, left: '30%',
+          width: 600, height: 400, borderRadius: '50%',
+          background: 'radial-gradient(ellipse, rgba(245,166,35,0.1) 0%, transparent 68%)',
+          pointerEvents: 'none',
         }} />
         <div style={{
           maxWidth: 1060, margin: '0 auto', position: 'relative',
-          display: 'grid', gridTemplateColumns: wideHero ? 'minmax(0,1fr) auto' : '1fr',
-          gap: 'clamp(40px, 6vw, 80px)', alignItems: 'center',
+          display: 'grid',
+          gridTemplateColumns: wideHero ? 'minmax(0,1fr) auto' : '1fr',
+          gap: 'clamp(40px, 6vw, 72px)', alignItems: 'center',
         }}>
-          {/* Left: copy */}
           <div>
             {badge && (
               <div style={{
-                display: 'inline-flex', alignItems: 'center', gap: 6, marginBottom: 28,
-                background: 'rgba(245,166,35,0.1)', border: '1px solid rgba(245,166,35,0.25)',
+                display: 'inline-flex', alignItems: 'center', gap: 6, marginBottom: 24,
+                background: OL, border: `1px solid ${OB}`,
                 borderRadius: 50, padding: '5px 14px',
                 fontSize: 11, fontWeight: 700, letterSpacing: '0.1em',
                 textTransform: 'uppercase', color: O,
@@ -324,23 +299,23 @@ export default function DemoLandingPage({
             <h1 style={{
               fontSize: 'clamp(28px, 5vw, 54px)', fontWeight: 900,
               lineHeight: 1.08, letterSpacing: '-0.03em',
-              color: W, margin: '0 0 24px',
+              color: D, margin: '0 0 22px',
             }}>
               {renderHeadline()}
             </h1>
             <p style={{
               fontSize: 'clamp(15px, 1.8vw, 18px)', color: G, lineHeight: 1.75,
-              maxWidth: 540, margin: '0 0 32px',
+              maxWidth: 520, margin: '0 0 28px',
             }}>
               {subheadline}
             </p>
             {urgencyNote && (
               <div style={{
                 display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: 28,
-                background: 'rgba(234,88,12,0.1)', border: '1px solid rgba(234,88,12,0.25)',
-                borderRadius: 7, padding: '9px 16px', fontSize: 13, color: '#FB923C', fontWeight: 600,
+                background: '#FEF3C7', border: '1px solid #FDE68A',
+                borderRadius: 7, padding: '9px 16px', fontSize: 13, color: '#92400E', fontWeight: 600,
               }}>
-                <Icon d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" size={14} color="#FB923C" />
+                <Icon d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" size={14} color="#D97706" />
                 {urgencyNote}
               </div>
             )}
@@ -349,22 +324,20 @@ export default function DemoLandingPage({
                 display: 'inline-flex', alignItems: 'center', gap: 8,
                 background: O, color: W, fontWeight: 700, fontSize: 15,
                 padding: '13px 28px', borderRadius: 8, textDecoration: 'none',
-                boxShadow: `0 6px 24px rgba(245,166,35,0.4)`,
-                letterSpacing: '-0.01em',
+                boxShadow: `0 6px 24px rgba(245,166,35,0.35)`,
               }}>
                 {bookText}
                 <Icon d="M5 12h14M12 5l7 7-7 7" size={15} color={W} />
               </a>
               <Link href={isNL ? '/nl/hoe-het-werkt' : '/how-it-works'} style={{
                 display: 'inline-flex', alignItems: 'center', gap: 6,
-                color: G, fontWeight: 600, fontSize: 14, textDecoration: 'none',
+                color: D, fontWeight: 600, fontSize: 14, textDecoration: 'none',
                 padding: '13px 20px', borderRadius: 8,
-                border: '1.5px solid rgba(255,255,255,0.1)',
+                border: `1.5px solid ${B}`,
               }}>
                 {learnText}
               </Link>
             </div>
-            {/* Social proof */}
             <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
               <div style={{ display: 'flex' }}>
                 {TEAM_MEMBERS.map((m, i) => (
@@ -372,47 +345,46 @@ export default function DemoLandingPage({
                     width: 28, height: 28, borderRadius: '50%',
                     background: `linear-gradient(135deg, ${O}, #C8710E)`,
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    marginLeft: i > 0 ? -7 : 0, border: '2px solid #0D1521',
+                    marginLeft: i > 0 ? -7 : 0, border: `2px solid ${W}`,
                     fontSize: 9, fontWeight: 800, color: W, position: 'relative', zIndex: 3 - i,
                   }}>
                     {m.initials}
                   </div>
                 ))}
               </div>
-              <span style={{ fontSize: 13, color: '#5B6475' }}>
+              <span style={{ fontSize: 13, color: G }}>
                 {isNL ? '500+ bedrijven geholpen · Gratis · 30 minuten' : '500+ companies helped · Free · 30 minutes'}
               </span>
             </div>
           </div>
-          {/* Right: scope widget — only on wide screens */}
           {wideHero && (
-            <div style={{ display: 'flex', justifyContent: 'flex-end', flexShrink: 0 }}>
+            <div style={{ flexShrink: 0 }}>
               <ScopeWidget lang={lang} />
             </div>
           )}
         </div>
       </section>
 
-      {/* ── DATA STRIP — dark dashboard row */}
-      <section style={{ background: '#0A1120', borderTop: '1px solid rgba(255,255,255,0.06)', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
+      {/* ── STATS STRIP */}
+      <section style={{ background: LG, borderTop: `1px solid ${B}`, borderBottom: `1px solid ${B}` }}>
         <div style={{
           maxWidth: 1000, margin: '0 auto', padding: '0 24px',
           display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))',
         }}>
           {[
-            { n: '500+',          label: isNL ? 'bedrijven gemeten' : 'companies measured' },
-            { n: 'GHG Protocol',  label: isNL ? 'gecertificeerde methode' : 'certified methodology' },
-            { n: 'Scope 1,2&3',   label: isNL ? 'volledig gedekt' : 'fully covered' },
-            { n: 'CSRD',          label: isNL ? 'rapporten geaccepteerd' : 'reports accepted' },
+            { n: '500+',         label: isNL ? 'bedrijven gemeten' : 'companies measured' },
+            { n: 'GHG Protocol', label: isNL ? 'gecertificeerde methode' : 'certified methodology' },
+            { n: 'Scope 1,2&3',  label: isNL ? 'volledig gedekt' : 'fully covered' },
+            { n: 'CSRD',         label: isNL ? 'rapporten geaccepteerd' : 'reports accepted' },
           ].map((s, i) => (
             <div key={s.n} style={{
               padding: '20px', textAlign: 'center',
-              borderLeft: i > 0 ? '1px solid rgba(255,255,255,0.06)' : 'none',
+              borderLeft: i > 0 ? `1px solid ${B}` : 'none',
             }}>
               <div style={{ fontSize: 'clamp(14px, 2vw, 18px)', fontWeight: 900, color: O, marginBottom: 4, letterSpacing: '-0.02em' }}>
                 {s.n}
               </div>
-              <div style={{ fontSize: 11, color: '#5B6475', fontWeight: 500 }}>{s.label}</div>
+              <div style={{ fontSize: 11, color: G, fontWeight: 500 }}>{s.label}</div>
             </div>
           ))}
         </div>
@@ -422,8 +394,8 @@ export default function DemoLandingPage({
       <section style={{ background: W, padding: 'clamp(64px, 10vw, 96px) 24px' }}>
         <div style={{ maxWidth: 860, margin: '0 auto' }}>
           <h2 style={{
-            fontSize: 'clamp(22px, 3.5vw, 36px)', fontWeight: 900, color: D,
-            letterSpacing: '-0.028em', marginBottom: 52, lineHeight: 1.1,
+            fontSize: 'clamp(22px, 3.5vw, 36px)', fontWeight: 900,
+            color: D, letterSpacing: '-0.028em', margin: '0 0 52px', lineHeight: 1.1,
           }}>
             {isNL ? 'Wij begrijpen de uitdaging.' : 'We understand the challenge.'}
           </h2>
@@ -435,59 +407,57 @@ export default function DemoLandingPage({
             }}>
               <span style={{
                 fontSize: 'clamp(28px, 5vw, 44px)', fontWeight: 900,
-                color: '#E5E7EB', lineHeight: 1, paddingTop: 4,
+                color: B, lineHeight: 1, paddingTop: 4,
               }}>
                 {String(i + 1).padStart(2, '0')}
               </span>
               <div>
-                <h3 style={{ fontSize: 'clamp(16px, 2.2vw, 20px)', fontWeight: 800, color: D, marginBottom: 10, lineHeight: 1.3, margin: '0 0 10px' }}>
+                <h3 style={{ fontSize: 'clamp(16px, 2.2vw, 20px)', fontWeight: 800, color: D, margin: '0 0 10px', lineHeight: 1.3 }}>
                   {p.title}
                 </h3>
-                <p style={{ fontSize: 15, color: '#4B5563', lineHeight: 1.8, margin: 0 }}>{p.body}</p>
+                <p style={{ fontSize: 15, color: G, lineHeight: 1.8, margin: 0 }}>{p.body}</p>
               </div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* ── CASE STUDIES — dark, metric-first */}
-      <section style={{ background: D, padding: 'clamp(64px, 10vw, 96px) 24px' }}>
+      {/* ── CASE STUDIES — warm light background, metric-first */}
+      <section style={{ background: LG, padding: 'clamp(64px, 10vw, 96px) 24px', borderTop: `1px solid ${B}` }}>
         <div style={{ maxWidth: 1000, margin: '0 auto' }}>
-          <div style={{ marginBottom: 52 }}>
-            <h2 style={{ fontSize: 'clamp(22px, 3.5vw, 36px)', fontWeight: 900, color: W, letterSpacing: '-0.028em', margin: '0 0 10px' }}>
+          <div style={{ marginBottom: 48 }}>
+            <h2 style={{ fontSize: 'clamp(22px, 3.5vw, 36px)', fontWeight: 900, color: D, letterSpacing: '-0.028em', margin: '0 0 8px' }}>
               {isNL ? 'Resultaten die spreken.' : 'Results that speak.'}
             </h2>
             <p style={{ fontSize: 15, color: G, margin: 0 }}>
               {isNL ? 'Drie verhalen van bedrijven die de stap zetten.' : 'Three stories from companies that made the move.'}
             </p>
           </div>
-          <div style={{
-            display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-            gap: 1, background: 'rgba(255,255,255,0.05)', borderRadius: 14, overflow: 'hidden',
-          }}>
-            {cases.map((c, i) => (
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 20 }}>
+            {cases.map(c => (
               <div key={c.company} style={{
-                background: D, padding: 'clamp(28px, 4vw, 36px) 28px',
+                background: W, border: `1px solid ${B}`, borderRadius: 14,
+                padding: '28px 24px', display: 'flex', flexDirection: 'column', gap: 12,
               }}>
                 {c.metric && (
                   <div style={{
-                    fontSize: 'clamp(13px, 1.8vw, 15px)', fontWeight: 800, color: O,
-                    lineHeight: 1.3, marginBottom: 10, paddingBottom: 14,
-                    borderBottom: '1px solid rgba(245,166,35,0.15)',
+                    fontSize: 14, fontWeight: 800, color: O,
+                    lineHeight: 1.3, paddingBottom: 12,
+                    borderBottom: `2px solid ${OB}`,
                   }}>
                     {c.metric}
                   </div>
                 )}
-                <div style={{ marginBottom: 3 }}>
-                  <span style={{ fontSize: 13, fontWeight: 700, color: W }}>{c.company}</span>
+                <div>
+                  <div style={{ fontSize: 13, fontWeight: 700, color: D }}>{c.company}</div>
+                  <div style={{ fontSize: 11, color: G }}>{c.sector}</div>
                 </div>
-                <div style={{ fontSize: 11, color: '#5B6475', marginBottom: 20 }}>{c.sector}</div>
                 {c.quote && (
                   <blockquote style={{
-                    margin: '0 0 16px', padding: '12px 16px',
-                    background: 'rgba(245,166,35,0.06)', borderLeft: `2px solid ${O}`,
-                    borderRadius: '0 6px 6px 0',
-                    fontSize: 13, color: '#C4CDD8', fontStyle: 'italic', lineHeight: 1.7,
+                    margin: 0, padding: '12px 16px',
+                    background: OL, borderLeft: `3px solid ${O}`,
+                    borderRadius: '0 8px 8px 0',
+                    fontSize: 13, color: '#6B4E1A', fontStyle: 'italic', lineHeight: 1.7,
                   }}>
                     "{c.quote}"
                   </blockquote>
@@ -499,9 +469,9 @@ export default function DemoLandingPage({
         </div>
       </section>
 
-      {/* ── CERTIFICATIONS — badge-styled, not plain text */}
-      <section style={{ background: '#0A1120', borderTop: '1px solid rgba(255,255,255,0.06)', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
-        <div style={{ maxWidth: 900, margin: '0 auto', padding: '20px 24px', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 8 }}>
+      {/* ── CERTIFICATION BADGES */}
+      <section style={{ background: W, borderTop: `1px solid ${B}`, borderBottom: `1px solid ${B}` }}>
+        <div style={{ maxWidth: 900, margin: '0 auto', padding: '18px 24px', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 8 }}>
           {[
             isNL ? 'GHG Protocol gecertificeerd' : 'GHG Protocol certified',
             isNL ? 'CSRD Scope 3 geaccepteerd'   : 'CSRD Scope 3 accepted',
@@ -510,10 +480,10 @@ export default function DemoLandingPage({
             isNL ? 'Geverifieerd door auditors'    : 'Verified by auditors',
           ].map(t => (
             <span key={t} style={{
-              display: 'inline-flex', alignItems: 'center', gap: 7,
-              background: 'rgba(245,166,35,0.07)', border: '1px solid rgba(245,166,35,0.2)',
-              borderRadius: 6, padding: '6px 13px',
-              fontSize: 12, fontWeight: 600, color: O,
+              display: 'inline-flex', alignItems: 'center', gap: 6,
+              background: OL, border: `1px solid ${OB}`,
+              borderRadius: 6, padding: '6px 12px',
+              fontSize: 12, fontWeight: 600, color: '#92400E',
             }}>
               <Icon d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" size={12} color={O} />
               {t}
@@ -522,23 +492,23 @@ export default function DemoLandingPage({
         </div>
       </section>
 
-      {/* ── HOW IT WORKS — pipeline: input → process → output */}
-      <section style={{ background: W, padding: 'clamp(64px, 10vw, 96px) 24px' }}>
+      {/* ── HOW IT WORKS — light, pipeline-style */}
+      <section style={{ background: LG, padding: 'clamp(64px, 10vw, 96px) 24px' }}>
         <div style={{ maxWidth: 960, margin: '0 auto' }}>
-          <h2 style={{ fontSize: 'clamp(22px, 3.5vw, 36px)', fontWeight: 900, color: D, letterSpacing: '-0.028em', margin: '0 0 10px' }}>
+          <h2 style={{ fontSize: 'clamp(22px, 3.5vw, 36px)', fontWeight: 900, color: D, letterSpacing: '-0.028em', margin: '0 0 8px' }}>
             {isNL ? 'Van nul naar rapport in 3 stappen' : 'From zero to report in 3 steps'}
           </h2>
-          <p style={{ fontSize: 15, color: '#6B7280', margin: '0 0 48px', lineHeight: 1.7 }}>
+          <p style={{ fontSize: 15, color: G, margin: '0 0 44px', lineHeight: 1.7 }}>
             {isNL
               ? 'Geen interne IT. Geen externe consultant. Geen maanden wachten.'
               : 'No internal IT project. No external consultant. No months of waiting.'}
           </p>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 12 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 14 }}>
             {[
               {
                 n: '01', phase: isNL ? '½ dag' : '½ day',
                 title: isNL ? 'Jouw data aanleveren' : 'Provide your data',
-                bg: OL, accent: '#92400E',
+                bg: W, border: `1px solid ${B}`,
                 items: isNL
                   ? ['Energiefacturen', 'Brandstofbonnen', 'Reiskosten', 'Inkoopdata']
                   : ['Energy bills', 'Fuel receipts', 'Travel records', 'Procurement data'],
@@ -546,43 +516,39 @@ export default function DemoLandingPage({
               {
                 n: '02', phase: isNL ? '3–4 weken' : '3–4 weeks',
                 title: isNL ? 'Wij berekenen alles' : 'We calculate everything',
-                bg: D, accent: O,
+                bg: D, border: 'none',
                 items: ['GHG Protocol', 'Scope 1 + 2 + 3', isNL ? 'Emissiefactoren' : 'Emission factors', isNL ? 'Kwaliteitscontrole' : 'Quality check'],
               },
               {
                 n: '03', phase: isNL ? 'Direct beschikbaar' : 'Immediately',
                 title: isNL ? 'Deel je rapport' : 'Share your report',
-                bg: D2, accent: O,
+                bg: OL, border: `1px solid ${OB}`,
                 items: [isNL ? 'Geverifieerd PDF' : 'Verified PDF', 'Scope 1,2&3 breakdown', isNL ? 'Deelbaar met klanten' : 'Share with clients', 'GHG Protocol conform'],
               },
-            ].map((step, i) => {
-              const dark = step.bg === D || step.bg === D2
+            ].map(step => {
+              const dark = step.bg === D
               return (
-                <div key={step.n} style={{
-                  background: step.bg, borderRadius: 14, padding: '28px 24px',
-                  border: dark ? '1px solid rgba(245,166,35,0.12)' : `1px solid ${OB}`,
-                  position: 'relative',
-                }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 18 }}>
-                    <span style={{ fontSize: 11, fontWeight: 900, color: step.accent, letterSpacing: '0.08em' }}>{step.n}</span>
+                <div key={step.n} style={{ background: step.bg, border: step.border, borderRadius: 14, padding: '28px 24px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 16 }}>
+                    <span style={{ fontSize: 11, fontWeight: 900, color: dark ? 'rgba(255,255,255,0.4)' : B, letterSpacing: '0.08em' }}>{step.n}</span>
                     <span style={{
                       fontSize: 11, fontWeight: 600,
                       color: dark ? O : '#92400E',
-                      background: dark ? 'rgba(245,166,35,0.1)' : 'rgba(245,166,35,0.15)',
-                      border: dark ? '1px solid rgba(245,166,35,0.2)' : `1px solid ${OB}`,
+                      background: dark ? 'rgba(245,166,35,0.15)' : OB,
+                      border: dark ? '1px solid rgba(245,166,35,0.3)' : `1px solid ${O}30`,
                       borderRadius: 50, padding: '2px 10px',
                     }}>
                       {step.phase}
                     </span>
                   </div>
-                  <h3 style={{ fontSize: 16, fontWeight: 800, color: dark ? W : D, marginBottom: 16, lineHeight: 1.3, margin: '0 0 16px' }}>
+                  <h3 style={{ fontSize: 16, fontWeight: 800, color: dark ? W : D, margin: '0 0 14px', lineHeight: 1.3 }}>
                     {step.title}
                   </h3>
                   <ul style={{ margin: 0, padding: 0, listStyle: 'none' }}>
                     {step.items.map(item => (
                       <li key={item} style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
-                        <div style={{ width: 4, height: 4, borderRadius: '50%', background: step.accent, flexShrink: 0 }} />
-                        <span style={{ fontSize: 13, color: dark ? G : '#6B7280', lineHeight: 1.4 }}>{item}</span>
+                        <div style={{ width: 4, height: 4, borderRadius: '50%', background: dark ? O : O, flexShrink: 0 }} />
+                        <span style={{ fontSize: 13, color: dark ? 'rgba(255,255,255,0.7)' : G, lineHeight: 1.4 }}>{item}</span>
                       </li>
                     ))}
                   </ul>
@@ -593,31 +559,33 @@ export default function DemoLandingPage({
         </div>
       </section>
 
-      {/* ── TEAM & DEMO CTA — dark, left/right split */}
-      <section style={{ background: D2, borderTop: '1px solid rgba(255,255,255,0.06)', padding: 'clamp(64px, 10vw, 96px) 24px' }}>
+      {/* ── TEAM & DEMO CTA — warm orange-tinted light */}
+      <section style={{
+        background: OL, borderTop: `1px solid ${OB}`, borderBottom: `1px solid ${OB}`,
+        padding: 'clamp(64px, 10vw, 96px) 24px',
+      }}>
         <div style={{
-          maxWidth: 900, margin: '0 auto',
-          display: 'grid', gridTemplateColumns: 'auto 1fr', gap: 'clamp(40px, 6vw, 72px)', alignItems: 'center',
+          maxWidth: 880, margin: '0 auto',
+          display: 'grid', gridTemplateColumns: wideHero ? 'auto 1fr' : '1fr',
+          gap: 'clamp(40px, 6vw, 64px)', alignItems: 'center',
         }}>
-          {/* Team avatars */}
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16 }}>
+          <div style={{ display: 'flex', flexDirection: wideHero ? 'column' : 'row', alignItems: 'center', gap: 16, justifyContent: wideHero ? 'flex-start' : 'center' }}>
             {TEAM_MEMBERS.map(m => (
               <div key={m.initials} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 7 }}>
                 <TeamAvatar initials={m.initials} photoUrl={m.photoUrl} size={64} />
-                <span style={{ fontSize: 11, fontWeight: 700, color: G }}>{m.name}</span>
+                <span style={{ fontSize: 11, fontWeight: 700, color: D }}>{m.name}</span>
               </div>
             ))}
           </div>
-          {/* Text + CTA */}
           <div>
             <div style={{
-              display: 'inline-flex', alignItems: 'center', gap: 6, marginBottom: 20,
-              background: 'rgba(245,166,35,0.1)', border: '1px solid rgba(245,166,35,0.2)',
+              display: 'inline-flex', alignItems: 'center', gap: 6, marginBottom: 18,
+              background: W, border: `1px solid ${OB}`,
               borderRadius: 6, padding: '5px 12px', fontSize: 11, fontWeight: 700, color: O, letterSpacing: '0.08em',
             }}>
               Carbon Strategy Consultants — CO₂ Expert
             </div>
-            <h2 style={{ fontSize: 'clamp(20px, 3vw, 30px)', fontWeight: 900, color: W, margin: '0 0 14px', letterSpacing: '-0.025em', lineHeight: 1.2 }}>
+            <h2 style={{ fontSize: 'clamp(20px, 3vw, 30px)', fontWeight: 900, color: D, margin: '0 0 12px', letterSpacing: '-0.025em', lineHeight: 1.2 }}>
               {isNL ? 'Plan een gratis demo' : 'Schedule a free demo'}
             </h2>
             <p style={{ fontSize: 15, color: G, lineHeight: 1.8, margin: '0 0 28px', maxWidth: 480 }}>
@@ -632,7 +600,7 @@ export default function DemoLandingPage({
               {isNL ? 'Demo inplannen' : 'Schedule a demo'}
               <Icon d="M5 12h14M12 5l7 7-7 7" size={15} color={W} />
             </a>
-            <p style={{ marginTop: 14, fontSize: 12, color: '#5B6475' }}>
+            <p style={{ marginTop: 12, fontSize: 12, color: G }}>
               {isNL
                 ? 'Gratis · 30 minuten · Binnen 24 uur een timeslot beschikbaar'
                 : 'Free · 30 minutes · A slot available within 24 hours'}
@@ -641,19 +609,17 @@ export default function DemoLandingPage({
         </div>
       </section>
 
-      {/* ── FAQ */}
-      <section style={{ background: D, padding: 'clamp(64px, 10vw, 96px) 24px' }}>
+      {/* ── FAQ — white */}
+      <section style={{ background: W, padding: 'clamp(64px, 10vw, 96px) 24px' }}>
         <div style={{ maxWidth: 660, margin: '0 auto' }}>
-          <h2 style={{ fontSize: 'clamp(22px, 3.5vw, 32px)', fontWeight: 900, color: W, margin: '0 0 8px', letterSpacing: '-0.025em' }}>
+          <h2 style={{ fontSize: 'clamp(22px, 3.5vw, 32px)', fontWeight: 900, color: D, margin: '0 0 8px', letterSpacing: '-0.025em' }}>
             {isNL ? 'Veelgestelde vragen' : 'Common questions'}
           </h2>
           <p style={{ fontSize: 15, color: G, margin: '0 0 40px' }}>
-            {isNL
-              ? 'Geen vraag te klein. Wij beantwoorden alles in de demo.'
-              : 'No question too small. We answer everything in the demo.'}
+            {isNL ? 'Geen vraag te klein. Wij beantwoorden alles in de demo.' : 'No question too small. We answer everything in the demo.'}
           </p>
           {faqs.map(f => <FAQItem key={f.q} q={f.q} a={f.a} />)}
-          <div style={{ marginTop: 36 }}>
+          <div style={{ marginTop: 32 }}>
             <a href={consultant.calendarUrl} target="_blank" rel="noopener noreferrer" style={{
               display: 'inline-flex', alignItems: 'center', gap: 8,
               color: O, fontWeight: 700, fontSize: 14, textDecoration: 'none',
@@ -665,22 +631,25 @@ export default function DemoLandingPage({
         </div>
       </section>
 
-      {/* ── FINAL CTA */}
-      <section style={{ background: '#0A1120', padding: 'clamp(64px, 10vw, 96px) 24px', position: 'relative', overflow: 'hidden' }}>
+      {/* ── FINAL CTA — only dark section, deliberate contrast */}
+      <section style={{
+        background: D, padding: 'clamp(64px, 10vw, 96px) 24px',
+        position: 'relative', overflow: 'hidden', textAlign: 'center',
+      }}>
         <div aria-hidden style={{
-          position: 'absolute', bottom: -120, right: -80,
-          width: 480, height: 480, borderRadius: '50%',
-          background: 'radial-gradient(ellipse, rgba(245,166,35,0.08) 0%, transparent 68%)',
+          position: 'absolute', top: -80, left: '50%', transform: 'translateX(-50%)',
+          width: 700, height: 400, borderRadius: '50%',
+          background: 'radial-gradient(ellipse, rgba(245,166,35,0.12) 0%, transparent 70%)',
           pointerEvents: 'none',
         }} />
-        <div style={{ maxWidth: 600, margin: '0 auto', textAlign: 'center', position: 'relative' }}>
+        <div style={{ maxWidth: 560, margin: '0 auto', position: 'relative' }}>
           <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 24 }}>
             {TEAM_MEMBERS.map((m, i) => (
               <div key={m.initials} style={{
                 width: 44, height: 44, borderRadius: '50%',
                 background: `linear-gradient(135deg, ${O}, #C8710E)`,
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
-                marginLeft: i > 0 ? -10 : 0, border: `2px solid #0A1120`,
+                marginLeft: i > 0 ? -10 : 0, border: `2px solid ${D}`,
                 fontSize: 11, fontWeight: 800, color: W, position: 'relative', zIndex: 3 - i,
               }}>
                 {m.photoUrl
@@ -692,7 +661,7 @@ export default function DemoLandingPage({
           <h2 style={{ fontSize: 'clamp(24px, 4vw, 40px)', fontWeight: 900, color: W, margin: '0 0 14px', letterSpacing: '-0.028em' }}>
             {isNL ? 'Klaar om te beginnen?' : 'Ready to get your number?'}
           </h2>
-          <p style={{ fontSize: 16, color: G, lineHeight: 1.75, margin: '0 0 36px' }}>
+          <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.6)', lineHeight: 1.75, margin: '0 0 36px' }}>
             {isNL
               ? 'Geen PowerPoint, geen verkooppraatje — gewoon antwoorden op jouw vragen. Gratis, 30 minuten.'
               : 'No PowerPoint, no sales pitch — just direct answers to your questions. Free, 30 minutes.'}
@@ -702,7 +671,6 @@ export default function DemoLandingPage({
             background: O, color: W, fontWeight: 700, fontSize: 16,
             padding: '15px 34px', borderRadius: 8, textDecoration: 'none',
             boxShadow: `0 6px 28px rgba(245,166,35,0.4)`,
-            letterSpacing: '-0.01em',
           }}>
             {isNL ? 'Demo inplannen' : 'Schedule a demo'}
             <Icon d="M5 12h14M12 5l7 7-7 7" size={16} color={W} />
@@ -711,7 +679,7 @@ export default function DemoLandingPage({
       </section>
 
       {/* ── FOOTER */}
-      <footer style={{ background: '#060C14', padding: '24px 24px', borderTop: '1px solid rgba(255,255,255,0.04)', textAlign: 'center' }}>
+      <footer style={{ background: '#0D1117', padding: '24px', textAlign: 'center', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
         <Link href={isNL ? '/nl' : '/'} style={{ display: 'inline-block', marginBottom: 12, textDecoration: 'none' }}>
           <Image src="/logo-white.svg" alt="CO₂ Expert" width={90} height={22}
             style={{ height: 22, width: 'auto', opacity: 0.35 }} />
