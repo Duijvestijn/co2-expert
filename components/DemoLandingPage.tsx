@@ -98,6 +98,7 @@ function FAQItem({ q, a }: { q: string; a: string }) {
       <button
         onClick={() => setOpen(!open)}
         aria-expanded={open}
+        aria-label={q}
         style={{
           width: '100%', textAlign: 'left', padding: '20px 0',
           background: 'none', border: 'none', cursor: 'pointer',
@@ -547,7 +548,7 @@ export default function DemoLandingPage({
                   <ul style={{ margin: 0, padding: 0, listStyle: 'none' }}>
                     {step.items.map(item => (
                       <li key={item} style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
-                        <div style={{ width: 4, height: 4, borderRadius: '50%', background: dark ? O : O, flexShrink: 0 }} />
+                        <div style={{ width: 4, height: 4, borderRadius: '50%', background: O, flexShrink: 0 }} />
                         <span style={{ fontSize: 13, color: dark ? 'rgba(255,255,255,0.7)' : G, lineHeight: 1.4 }}>{item}</span>
                       </li>
                     ))}

@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import DemoLandingPage from '@/components/DemoLandingPage'
 
 export const metadata: Metadata = {
-  title: "Je hebt je CO₂ nog niet gemeten. Dat is prima. — CO₂ Expert",
+  title: "CO₂ nog niet gemeten? Dat is prima. — CO₂ Expert",
   description: 'De meeste MKB-bedrijven zijn nog niet begonnen met het meten van hun CO₂-voetafdruk. De vraag is wanneer — niet óf. Dit is hoe je eerste meting er werkelijk uitziet.',
 }
 

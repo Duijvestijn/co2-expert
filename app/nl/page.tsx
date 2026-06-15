@@ -3,9 +3,9 @@ import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 
 export const metadata: Metadata = {
-  title: 'CO2-rapportage voor het MKB | co2.expert',
+  title: 'CO₂-rapportage voor het MKB — CO₂ Expert',
   description:
-    'Uw grote klanten moeten hun toeleveranciers rapporteren voor CSRD. Als u geen CO2-cijfers heeft, bent u de moeite van het beantwoorden niet waard. co2.expert geeft u een GHG Protocol-conform rapport in dagen.',
+    'Uw grote klanten moeten CO₂-data van hun toeleveranciers voor CSRD. CO₂ Expert geeft MKB-bedrijven een GHG Protocol-conform rapport in 2 weken.',
 }
 
 const O  = '#F5A623'

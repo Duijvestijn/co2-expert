@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import DemoLandingPage from '@/components/DemoLandingPage'
 
 export const metadata: Metadata = {
-  title: "You Haven't Measured Your CO₂ Yet. That's Actually Fine. — CO₂ Expert",
+  title: "Haven't Measured CO₂ Yet? That's Fine. — CO₂ Expert",
   description: 'Most SMEs haven\'t started measuring their carbon footprint. The question is when — not if. Here\'s what your first measurement actually looks like.',
 }
 
@@ -51,11 +51,11 @@ export default function StartDemoPage() {
           quote: 'We thought it was just a compliance exercise. It turned into something much more useful.',
         },
         {
-          company: 'Bar Company',
+          company: 'Meridian Events Group',
           sector: 'Catering services · Netherlands',
           flag: '🍽️',
           metric: 'Baseline measurement → reduction plan → public-sector contracts',
-          result: 'Bar Company started with zero sustainability data. Their CO₂ Expert baseline measurement gave them the foundation to build a reduction plan, qualify for public tenders, and eventually secure green financing — all within 18 months of their first measurement.',
+          result: 'Meridian Events Group started with zero sustainability data. Their CO₂ Expert baseline measurement gave them the foundation to build a reduction plan, qualify for public tenders, and eventually secure green financing — all within 18 months of their first measurement.',
           quote: 'We had to start somewhere. We\'re glad we started early.',
         },
         {

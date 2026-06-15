@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import DemoLandingPage from '@/components/DemoLandingPage'
 
 export const metadata: Metadata = {
-  title: 'Je klanten krijgen CO₂-vragenlijsten — CO₂ Expert voor accountants',
+  title: 'CO₂-vragenlijsten voor uw klanten — CO₂ Expert',
   description: 'Als meest vertrouwde adviseur zullen je klanten bij jou aankloppen met duurzaamheidsvragen. Partner met CO₂ Expert en je hebt het antwoord — plus een nieuwe terugkerende dienst.',
 }
 
@@ -71,7 +71,7 @@ export default function AccountantNLDemoPage() {
       faqs={[
         {
           q: 'Hoe ziet een partnerrelatie met CO₂ Expert eruit?',
-          a: 'Je verwijst klanten door naar CO₂ Expert via jouw unieke partnerlink. Wij verzorgen de meting, berekening en rapportage. Jij blijft betrokken als vertrouwde adviseur. We bieden training, co-branded materialen en een vaste accountcontact. Zie ons Partnerprogramma voor alle details.',
+          a: 'Je verwijst klanten door naar CO₂ Expert via jouw unieke partnerlink. Wij verzorgen de meting, berekening en rapportage. Jij blijft betrokken als vertrouwde adviseur. We bieden training, co-branded materialen en een vaste accountcontact.',
         },
         {
           q: 'Hoe pak ik het aan als een klant me nu vraagt over CSRD?',

@@ -2,8 +2,8 @@ import type { Metadata } from 'next'
 import DemoLandingPage from '@/components/DemoLandingPage'
 
 export const metadata: Metadata = {
-  title: 'Your Clients Are Getting CO₂ Questionnaires — CO₂ Expert for Accountants',
-  description: 'As their most trusted advisor, your business clients will come to you with sustainability questions. Partner with CO₂ Expert and you\'ll have an answer — plus a new recurring revenue stream.',
+  title: 'CO₂ Questionnaires for Your Clients — CO₂ Expert',
+  description: 'Your business clients will come to you with sustainability questions. Partner with CO₂ Expert — give them the answer, plus a new recurring service line.',
 }
 
 const FERDIA = {
@@ -59,11 +59,11 @@ export default function AccountantDemoPage() {
           quote: 'Our advisor sorted it. That\'s exactly what we pay them for.',
         },
         {
-          company: 'Bar Company',
+          company: 'Meridian Events Group',
           sector: 'Catering services · Netherlands',
           flag: '🍽️',
           metric: 'Annual CO₂ report now bundled with year-end accounts',
-          result: 'Bar Company\'s accounting firm now includes a CO₂ Expert measurement as part of their standard annual engagement. The addition increased client retention and unlocked a new recurring revenue stream for the practice.',
+          result: 'Meridian Events Group\'s accounting firm now includes a CO₂ Expert measurement as part of their standard annual engagement. The addition increased client retention and unlocked a new recurring revenue stream for the practice.',
           quote: 'Clients didn\'t expect it — and now they wouldn\'t want to go without it.',
         },
       ]}
@@ -71,7 +71,7 @@ export default function AccountantDemoPage() {
       faqs={[
         {
           q: 'What does a partner relationship with CO₂ Expert look like?',
-          a: 'You refer clients to CO₂ Expert through your unique partner link. We handle the measurement, calculation, and reporting. You stay involved as the trusted advisor. We provide training, co-branded materials, and a dedicated account contact. See our Partner Programme for full details.',
+          a: 'You refer clients to CO₂ Expert through your unique partner link. We handle the measurement, calculation, and reporting. You stay involved as the trusted advisor. We provide training, co-branded materials, and a dedicated account contact.',
         },
         {
           q: 'How do I handle a client who asks me about CSRD now?',

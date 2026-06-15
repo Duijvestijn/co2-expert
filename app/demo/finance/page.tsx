@@ -44,11 +44,11 @@ export default function FinanceDemoPage() {
       ]}
       cases={[
         {
-          company: 'Bar Company',
+          company: 'Meridian Events Group',
           sector: 'Catering services · Netherlands',
           flag: '🍽️',
           metric: 'Secured green financing with CO₂ Expert report as supporting document',
-          result: 'Bar Company\'s bank required environmental impact data as part of a business loan application. Their CO₂ Expert report was submitted as supporting documentation for an ESG-linked financing product, securing more favourable interest conditions.',
+          result: 'Meridian Events Group\'s bank required environmental impact data as part of a business loan application. Their CO₂ Expert report was submitted as supporting documentation for an ESG-linked financing product, securing more favourable interest conditions.',
           quote: 'The bank accepted the report immediately. No further questions.',
         },
         {

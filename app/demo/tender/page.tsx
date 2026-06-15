@@ -52,11 +52,11 @@ export default function TenderDemoPage() {
           quote: 'We didn\'t realise how many doors a verified report would open.',
         },
         {
-          company: 'Bar Company',
+          company: 'Meridian Events Group',
           sector: 'Catering services · Netherlands',
           flag: '🍽️',
           metric: 'Secured first public-sector contract with CO₂ report',
-          result: 'Bar Company had been losing public catering tenders to larger competitors who could demonstrate sustainability credentials. Within 8 weeks of their CO₂ Expert measurement, they qualified for — and won — their first public-sector catering contract.',
+          result: 'Meridian Events Group had been losing public catering tenders to larger competitors who could demonstrate sustainability credentials. Within 8 weeks of their CO₂ Expert measurement, they qualified for — and won — their first public-sector catering contract.',
           quote: 'The CO₂ report was the deciding factor. The client told us directly.',
         },
         {

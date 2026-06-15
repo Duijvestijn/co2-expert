@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import DemoLandingPage from '@/components/DemoLandingPage'
 
 export const metadata: Metadata = {
-  title: 'Your Biggest Customer Sent a CO₂ Questionnaire — CO₂ Expert',
+  title: 'CO₂ Questionnaire from Your Biggest Customer — CO₂ Expert',
   description: 'Received a sustainability questionnaire from a large customer? CO₂ Expert helps SMEs measure their carbon footprint and deliver a verified report — in weeks, not months.',
 }
 
